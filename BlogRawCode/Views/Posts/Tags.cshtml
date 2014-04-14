@@ -1,0 +1,16 @@
+﻿@using Blog.Models
+@model IEnumerable<Post>
+
+
+@{
+    ViewBag.Title = "Tag : " + ViewBag.tagname;
+    bool isAdmin = ViewBag.IsAdmin ?? false;
+}
+
+<h3 class="message">Here is a list of Posts for : @ViewBag.tagname</></h3>
+
+@foreach (Post post in Model)
+{
+    @PostHelper.Render(post, Html, isAdmin, false)
+}
+
