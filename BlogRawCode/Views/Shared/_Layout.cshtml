@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html dir="rtl">
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
@@ -11,8 +11,10 @@
 </head>
 
 <body>
+    <div class="Lastseparator"></div>
     <div id="header">
-        <a href="@Href("~/")"><img src="@Href("~/Content/Images/Title.png")" /></a>
+        <a href="@Href("~/")"><img class="titleImage-1" src="@Href("~/Content/Images/ListChick.png")" /><img class="titleImage-2" src="@Href("~/Content/Images/Titleper.png")" /></a>
+        @RenderSection("ForkMe", false)
     </div>
     <div id="content">
         <div id="topSeparator" class="separator"></div>
@@ -20,7 +22,9 @@
         <div id="main">
             @RenderBody()
         </div>
+
         @RenderSection("SideBar",false)
+        
         <div id="bottomSeparator" class="separator"></div>
     </div>
     <div id="footer">
@@ -39,5 +43,6 @@
             </div>    
         }
     </div>
+    <div class="Lastseparator"></div>
 </body>
 </html>

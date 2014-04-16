@@ -19,18 +19,20 @@
             <div class="postBody">@html.Raw(post.Body)</div>
             
             <div class="tagList">
-                Tags:
+                تگ :
                 @foreach(Tag tag in post.Tags)
                 {
                     <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name</a></span>    
                 }
             </div>
+
             <div class="linkList">
                 @{ string url="http://techlist.ir/posts/details/" + post.ID;}
                 <a href="http://www.reddit.com/submit" target="_blank" onclick="window.location = 'http://www.reddit.com/submit?url=@url'; return false"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="@url" data-text="Check out =>">Tweet</a>
                     <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
             </div>
+
         </div>
         
         @if(IsAdmin)
@@ -42,43 +44,47 @@
         }
     </div>
     
+    <!-- -------------Comments----------------- -->
+    
     if(showComments == true){
         <div id="commentContainer">
             <a id="comments"></a>
-            @foreach(Comment comment in post.Comments.OrderBy(x => x.DateTime))
+            @foreach(Comment comment in post.Comments.OrderByDescending(x => x.DateTime))
             {
              <div class="comment">
                  <div class="commentName">
                      @if(!string.IsNullOrWhiteSpace(comment.Email))
                      {
-                      <a href="mailto:@comment.Email">@comment.Name</a>   
+                      <a href="mailto:@comment.Email">@comment.Name</a>
+                         @:می گوید:   
                      }
                      else
                      {
-                      @comment.Name   
+                      @comment.Name
+                        @:می گوید:   
                      }
                  </div>
-                 Said:
+                 
                  <div class="commentBody">
-                     @html.Raw(html.Encode(comment.Body).Replace("\n", "<br/>")) <!-- comment body is in html and we are replacing nw lines with line breaks -->
+                     @html.Raw(comment.Body) <!-- comment body is in html and we are replacing new lines with line breaks -->
                  </div>
                  <div class="commentTime">
                      at: @comment.DateTime.ToString("HH:mm") on @comment.DateTime.ToString("yyyy/MM/dd")
                  </div>
-                 @if(IsAdmin)
+                 @if (IsAdmin)
                  {
                     <div class="CommentControlPanel">
-                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)">Delete</a>
+                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)">حذف</a>
                     </div>
                  }
              </div> 
             }
             <div id="commentEditor">
-                <div id="commentPrompt">Leave a Comment down Below!</div>
+                <div id="commentPrompt">نظرات</div><br />
                 <form action="@Href("~/Posts/Comment/" + post.ID)" method="post">
-                    Name<br /><input type="text" id="commentNamePrompt" name="name" />  <br />
-                    Email<br /><input type="text" id="commentEmailPrompt" name="email" />  <br />
-                    Comment<br /><textarea id="commentBodyInput" name="body" rows="10" cols="60"></textarea><br />
+                    نام<br /><input type="text" id="commentNamePrompt" name="name" />  <br />
+                    پست الکترونیکی<br /><input type="text" id="commentEmailPrompt" name="email" />  <br />
+                    متن نظر<br /><textarea id="elm1" name="body"></textarea><br />
                     <input type="submit" id="commentSubmitInput" name="submit" value="Submit!" /><br />
                 </form>
             </div>

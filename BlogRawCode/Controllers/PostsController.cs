@@ -54,9 +54,11 @@ namespace Blog.Controllers
             ViewBag.IsAdmin = IsAdmin;
             return View(post);
         }
-
+        
+        [HttpPost]
         public ActionResult Comment(int? id, string name, string email, string body)
         {
+            //TODO: validate this shit
             Post post = GetPost(id);
             Comment comment = new Comment();
 
@@ -65,10 +67,10 @@ namespace Blog.Controllers
             comment.Name = name;
             comment.Email = email;
             comment.Body = body;
-
+    
             model.Comments.Add(comment);
             model.SaveChanges();
-
+            
             return RedirectToAction("Details", new { id = id });
         }
 
@@ -88,10 +90,16 @@ namespace Blog.Controllers
             if (IsAdmin)
             {
                 Comment comment = model.Comments.Where(x => x.ID == id).First();
+                var postID = comment.Post.ID;
                 model.Comments.Remove(comment);
                 model.SaveChanges();
+                return RedirectToAction("Details", new { id = postID });
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return RedirectToAction("NotAdmin");
+            }
+            
         }
 
         public ActionResult Tags(string id)
@@ -132,8 +140,10 @@ namespace Blog.Controllers
 
         }
 
+        [ValidateInput(false)]
         public ActionResult Edit(int? id)
         {
+            ViewBag.IsAdmin = IsAdmin;
             Post post = GetPost(id);
             StringBuilder tagList = new StringBuilder();
             foreach( Tag tag in post.Tags)
@@ -143,6 +153,11 @@ namespace Blog.Controllers
 
             ViewBag.Tags = tagList.ToString();
             return View(post);
+        }
+
+        public ActionResult NotAdmin()
+        {
+            return View();
         }
 
         private Tag GetTag(string tagName)

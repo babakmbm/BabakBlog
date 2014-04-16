@@ -5,4 +5,19 @@
     bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
+@section ExtraHeaders
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")"></script>
+    <script>
+        tinymce.init({
+            language : 'fa',
+            selector: "textarea#elm1",
+            theme: "modern",
+            width: 520,
+            height: 180
+        });
+</script>
+
+}
+
 @PostHelper.Render(Model, Html, isAdmin, true)

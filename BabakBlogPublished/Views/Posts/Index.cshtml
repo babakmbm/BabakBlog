@@ -9,12 +9,18 @@
     bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
+@section ForkME
+{
+    <a id="forkme" href="https://github.com/babakmbm/BabakBlog" target="_blank"></a>
+}
+
 @section SideBar
 {
     <div id="sidebar">
         <div><img id="portrait" src="@Href("/Content/Images/portrait.jpg")" alt="portrait" /></div>
-        <div id="twitterHeader"><a href="http://twitter.com/babakmbm" target="_blank">Babak Hosseini On twitter</a></div>
-        <div id="GithubLink"><a href="https://github.com/babakmbm" target="_blank">Code On Github</a></div>
+        <div id="GithubLink"><a href="https://github.com/babakmbm/BabakBlog" target="_blank">Code On Github</a></div>
+        <div id="facebookHeader"><a href="http://facebook.com/babakmbm" target="_blank">On Facebook</a></div>
+        <div id="twitterHeader"><a href="http://twitter.com/babakmbm" target="_blank">On twitter</a></div>
         <div id="FeedList"><a href="@Href("~/Posts/RSS")" target="_blank">RSS Feed</a></div>
     </div>
 }
@@ -23,15 +29,17 @@
 {
     @PostHelper.Render(post, Html, isAdmin, false)
 }
+@if (isNextLinkVisible)
+{
+    <a class="pagingLinks" id="nextLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber + 1 ))">&lt;صفحه بعدی</a>
+}
+
+@if(ViewBag.PageNumber != 0)
+{
+    <a class="pagingLinks" id="firstLink" href="@Href("~/Posts/Index/" + 0)">خانه</a>
+}
 
 @if (isPreviousLinkVisible)
 {
-    <a class="pagingLinks" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">&lt; Previous Page</a>
-}
-
-    <a class="pagingLinks" id="firstLink" href="@Href("~/Posts/Index/" + 0)">First Page</a>
-
-@if (isNextLinkVisible)
-{
-    <a class="pagingLinks" id="nextLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber + 1 ))">Next Page &gt;</a>
+    <a class="pagingLinks" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">صفحه قبلی&gt;</a>
 }

@@ -12,12 +12,38 @@
 
 #header 
 {
-    padding:10px;
+    padding:10px 55px;
+    text-align:right;
+}
+
+#forkme 
+{
+  display: block;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: url(/Content/Images/forkme.png) no-repeat;
+  width: 149px;
+  height: 149px;
+  text-indent: -1000px;
+  overflow: hidden;
+}
+
+.titleImage-1 
+{
+    width:11%;
+}
+
+.titleImage-2 
+{
+    width:44%;
 }
 
 #footer 
 {
-    padding:10px;
+    padding:20px 0 120px 0;
     color: #808080;
 }
 
@@ -35,6 +61,13 @@
     background-image:url('/Content/Images/separator.png');
 }
 
+.Lastseparator 
+{
+    clear:both;
+    height:4px;
+    background-image:url('/Content/Images/Lastseparator.png');
+}
+
 #topSeparator 
 {
     margin-bottom:20px;
@@ -47,7 +80,7 @@
 
 #content 
 {
-    background-image: url('/Content/Images/Background.png')
+    background-image: url('/Content/Images/Background.png');
 }
 
 img 
@@ -58,12 +91,13 @@ img
 .postTitle
 {
     margin:auto;
-    text-align:left;
+    text-align:right;
     width:615px;
-    font-size:40px;
+    font-size:20px;
     font-weight:bold;
     font-family: 'Palatino Linotype', Palatino;
     padding-left:85px;
+    padding-bottom:10px;
 }
 
 .postTitle a:link, .postTitle a:visited, .postTitle a:active
@@ -98,7 +132,6 @@ img
     width:60px;
     padding:5px;
     background:#303030;
-    border-left:1px groove;
     border-radius:3px;
 }
 
@@ -117,7 +150,6 @@ img
     width:60px;
     padding:5px;
     background:#217aa6;
-    border-left-:1px groove;
     border-radius:3px;
 }
 
@@ -154,6 +186,8 @@ img
 
 .postContent 
 {
+    direction:rtl;
+    text-align:right;
     padding:15px 15px 15px 50px;
     width:600px;
     margin-left:35px;
@@ -165,13 +199,13 @@ img
 
 .postBody 
 {
-    text-align:left;
+    text-align:justify;
     line-height:1.5em;
 }
 
 .tagList 
 {
-    float:left;
+    float:right;
     text-decoration:none;
 }
 
@@ -189,7 +223,7 @@ img
 
 .linkList 
 {
-    text-align:right;
+    text-align:left;
 }
 
 linkList a 
@@ -221,30 +255,33 @@ linkList a
     color:#217AA6;
 }
 
-.comment, #commentEditor 
-{
-    text-align:left;
-    color:#000;
-    background-color:#fff;
-    padding:15px 15px 15px 50px;
-    margin-bottom:30px;
-}
-
 .comment 
 {
+    text-align:right;
+    color:#000;
+    padding:15px;
+    background-color:#fff;
+    margin-bottom:30px;
     border:4px groove;
     border-radius:5px;
 }
 
 #commentEditor 
 {
+    text-align:right;
+    color:#000;
+    padding:15px;
+    background-color:#fff;
+    margin-bottom:30px;
     border: 4px groove;
 }
+
+
 #commentContainer 
 {
-    width:665px;
+    text-align:right;
+    width:570px;
     margin:auto;
-    margin-left:50px;
 }
 
 .commentName 
@@ -260,7 +297,7 @@ linkList a
 .commentTime 
 {
     font-style:italic;
-    text-align:right;
+    text-align:left;
     font-size:10px;
 }
 
@@ -268,9 +305,16 @@ linkList a
 {
 }
 
+#commentPrompt 
+{
+    font-size:20px;
+    font-weight:bold;
+}
+
 #sidebar 
 {
-    float:left;
+    float:right;
+    width:15%;
     margin:80px 30px 0 20px;
     padding:10px 10px 10px 10px;
     z-index:1;
@@ -287,22 +331,24 @@ linkList a
 {
     color:#217aa6;
 }
-#main 
-{
-    margin:5px 0 20px 5%;
-    float:left;
-    z-index:2;
-}
 
-#portrait, #twitterHeader, #FeedList 
+#portrait, #twitterHeader, #FeedList, #facebookHeader, #GithubLink
 {
-    margin:10px 0 10px 0;
+    margin:10% 0 10px 0;
 }
 
 #portrait 
 {
+        width:50%;
         border:6px groove;
 }
+
+#main 
+{
+    margin:5px 5% 20px 0;
+    float:right;
+}
+
 
 .pagingLinks 
 {
@@ -319,16 +365,16 @@ linkList a
 
 .message 
 {
+    direction:rtl;
     padding:15px 15px 15px 50px;
     width:600px;
-    text-align:left;
+    text-align:right;
     margin-left:35px;
     margin-bottom:80px;
     color:#000000;
     background-color:#ffffff;
     border:4px groove; 
     border-radius:5px;
-    font-style:italic;
 }
 
 #LoginContainer 
