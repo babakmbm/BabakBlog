@@ -1,0 +1,76 @@
+﻿@model Blog.Models.Comment
+
+@{
+    ViewBag.Title = "ارسال نظرات";
+}
+
+@section ExtraHeaders
+{
+<script type="text/javascript" src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")"></script>
+<script>
+    tinymce.init({
+        language : 'fa',
+        selector: "textarea#elm1",
+        theme: "modern",
+        width: 520,
+        height: 150
+    });
+</script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+
+<div id="commentEditor">
+    <div id="commentPrompt">نظرات</div>
+    <br />
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+            
+            <div class="editor-field" hidden="hidden">
+                @Html.EditorFor(model => model.PostID)
+                @Html.ValidationMessageFor(model => model.PostID)
+            </div>
+
+            <div class="editor-field" hidden="hidden">
+                @Html.EditorFor(model => model.DateTime)
+                @Html.ValidationMessageFor(model => model.DateTime)
+            </div>
+
+            <div class="editor-label">
+                *@Html.LabelFor(model => model.Name)
+                 <span class="validationMessage">@Html.ValidationMessageFor(model => model.Name)</span>
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                
+            </div>
+            <br />
+        
+            <div class="editor-label">
+                *@Html.LabelFor(model => model.Email) 
+                 <span class="validationMessage">@Html.ValidationMessageFor(model => model.Email)</span>
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email) 
+                
+            </div>
+            
+            <br />
+            <div class="editor-label">
+                *@Html.LabelFor(model => model.Body)
+                 <span class="validationMessage">@Html.ValidationMessageFor(model => model.Body)</span>
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Body, new { id = "elm1" })
+            </div>
+
+            <p id="submitButton">
+                <input type="submit" value="ارسال" />
+            </p>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("بازگشت به پست", "Details/" +  Model.PostID)
+</div>

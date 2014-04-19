@@ -11,6 +11,7 @@ namespace Blog.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Web.Mvc;
     
     public partial class Post
     {
@@ -24,7 +25,6 @@ namespace Blog.Models
         public string Title { get; set; }
         public System.DateTime DateTime { get; set; }
         public string Body { get; set; }
-    
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
     }

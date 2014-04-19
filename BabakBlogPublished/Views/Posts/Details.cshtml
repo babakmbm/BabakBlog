@@ -1,23 +1,10 @@
 ﻿@model Blog.Models.Post
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
     bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
-@section ExtraHeaders
-{
-    <script type="text/javascript" src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")"></script>
-    <script>
-        tinymce.init({
-            language : 'fa',
-            selector: "textarea#elm1",
-            theme: "modern",
-            width: 520,
-            height: 180
-        });
-</script>
+@Html.Partial("PostPartial")
+<a href="@Url.Content("~/Posts/CreateComment/"+Model.ID)">Post a Comment</a>
 
-}
-
-@PostHelper.Render(Model, Html, isAdmin, true)

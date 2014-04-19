@@ -1,0 +1,98 @@
+﻿@model Blog.Models.Post
+@using Blog.Models;
+@{
+    bool isAdmin = ViewBag.IsAdmin ?? false;
+    bool showComments = ViewBag.ShowComments ?? true;
+}
+<div class="postTitle">@Html.DisplayFor(model => model.Title)</div>
+<div class="postContainer">
+    <div class="postTabs">
+        <div class="dateTab">
+            <div class="month">@Html.DisplayFor(model=> model.DateTime.Month)</div>
+            <div class="day">@Html.DisplayFor(model => model.DateTime.Day)</div>
+        </div>  
+        <div class="commentsTab">
+            <a href="@Href("~/Posts/Details/" + Model.ID + "#comments")">
+                <div class="commentsIcon">.</div> @Model.Comments.Count()
+            </a>
+        </div>
+    </div>
+    <div class="postContent">
+        <div class="postBody">@(new System.Web.HtmlString(Model.Body))</div>
+            
+        <div class="tagList">
+            تگ :
+            @foreach(Tag tag in Model.Tags)
+            {
+                <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name</a></span>    
+            }
+        </div>
+
+        <div class="linkList">
+            @{ string url="http://techlist.ir/posts/details/" + Model.ID;}
+            <a href="http://www.reddit.com/submit" target="_blank" onclick="window.location = 'http://www.reddit.com/submit?url=@url'; return false"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="@url" data-text="Check out =>">Tweet</a>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+        </div>
+    </div>
+    @if(isAdmin)
+        {
+            <div class="PostControlPanel">
+                <a href="@Href("~/Posts/Delete/" + Model.ID)">Delete</a>
+                <a href="@Href("~/Posts/Edit/" + Model.ID)">Edit</a>
+            </div>
+        }
+</div>
+
+<!-- -------------Comments----------------- -->
+    
+    @if(showComments == true){
+        <div id="commentContainer">
+            <a id="comments"></a>
+            @foreach(Comment comment in Model.Comments.OrderByDescending(x => x.DateTime))
+            {
+             <div class="comment">
+                 <div class="commentName">
+                     @if(!string.IsNullOrWhiteSpace(comment.Email))
+                     {
+                      <a href="mailto:@comment.Email">@comment.Name</a>
+                         @:می گوید:   
+                     }
+                     else
+                     {
+                      @comment.Name
+                        @:می گوید:   
+                     }
+                 </div>
+                 
+                 <div class="commentBody">
+                      @(new System.Web.HtmlString(comment.Body))
+                 </div>
+                 <div class="commentTime">
+                     at: @comment.DateTime.ToString("HH:mm") on @comment.DateTime.ToString("yyyy/MM/dd")
+                 </div>
+                 @if (isAdmin)
+                 {
+                    <div class="CommentControlPanel">
+                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)">حذف</a>
+                    </div>
+                 }
+             </div> 
+            }
+            <!--
+            <div id="commentEditor">
+                <div id="commentPrompt">نظرات</div><br />
+                <form action="@Href("~/Posts/Comment/")" method="post">
+                    <input type="hidden" name="ID" />
+                    <input type="hidden" name="PostID" />
+                    <input type="hidden" name="DateTime" />
+                    نام<br /><input type="text" id="commentNamePrompt" name="Name" />  <br />
+                    پست الکترونیکی<br /><input type="text" id="commentEmailPrompt" name="Email" />  <br />
+                    متن نظر<br /><textarea id="elm1" name="Body"></textarea><br />
+                    <input type="submit" class="commentSubmitInput" name="submit" value="Submit!" /><br />
+                </form>
+            </div>
+                -->
+        </div>    
+    }
+        

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Blog.Models;
 using System.Text;
 using System.ServiceModel.Syndication;
+using System.Data;
 
 namespace Blog.Controllers
 {
@@ -54,24 +55,30 @@ namespace Blog.Controllers
             ViewBag.IsAdmin = IsAdmin;
             return View(post);
         }
+
+        [HttpGet]
+        public ActionResult CreateComment(int id)
+        {
+            Comment comment = new Comment();
+            comment.PostID = id;
+            comment.DateTime = DateTime.Now;
+            return View(comment);
+        }
+        
         
         [HttpPost]
-        public ActionResult Comment(int? id, string name, string email, string body)
+        [ValidateInput(false)]
+        public ActionResult CreateComment(Comment comment)
         {
-            //TODO: validate this shit
-            Post post = GetPost(id);
-            Comment comment = new Comment();
+            if (ModelState.IsValid)
+            {
+                model.Comments.Add(comment);
+                model.SaveChanges();
 
-            comment.Post = post;
-            comment.DateTime = DateTime.Now;
-            comment.Name = name;
-            comment.Email = email;
-            comment.Body = body;
-    
-            model.Comments.Add(comment);
-            model.SaveChanges();
-            
-            return RedirectToAction("Details", new { id = id });
+                return RedirectToAction("Details", new { id = comment.PostID });
+            }
+
+            return View(comment);
         }
 
         public ActionResult Delete(int id)

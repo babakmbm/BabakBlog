@@ -149,6 +149,7 @@
     <Content Include="Content\Images\ListChick.png" />
     <Content Include="Content\Images\ListChickBlack.png" />
     <Content Include="Content\Images\ListChickBlack01.png" />
+    <Content Include="Content\Images\pass.jpg" />
     <Content Include="Content\Images\portrait.jpg" />
     <Content Include="Content\Images\separator.png" />
     <Content Include="Content\Images\shirt.jpg" />
@@ -347,6 +348,8 @@
     <Content Include="Scripts\tinymce\plugins\pre\langs\.svn\entries" />
     <Content Include="Scripts\tinymce\plugins\pre\langs\.svn\text-base\en.js.svn-base" />
     <Content Include="Scripts\tinymce\plugins\pre\langs\.svn\text-base\en_dlg.js.svn-base" />
+    <Content Include="Views\Shared\PostPartial.cshtml" />
+    <Content Include="Views\Posts\CreateComment.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

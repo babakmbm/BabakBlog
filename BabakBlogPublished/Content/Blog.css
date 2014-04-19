@@ -309,6 +309,7 @@ linkList a
 {
     font-size:20px;
     font-weight:bold;
+    font-family:'Dast Nevis';
 }
 
 #sidebar 
@@ -383,4 +384,32 @@ linkList a
     padding:50px 120px 50px 30px;
     text-align:left;
     border:4px groove;
+}
+.commentSubmitInput 
+{
+    text-align:left;
+}
+
+.editor-label 
+{
+    font-family:'Dast Nevis';
+    padding-bottom:10px;
+}
+
+.validationMessage 
+{
+    padding-right:20px;
+    color:red;
+    font-weight:bold;
+}
+
+#submitButton 
+{
+    text-align:left;
+}
+
+#submitButton input 
+{
+    padding:5px 25px;
+    cursor:pointer;
 }

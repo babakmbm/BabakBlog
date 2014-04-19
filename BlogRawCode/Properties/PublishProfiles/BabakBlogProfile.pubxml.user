@@ -11,10 +11,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Code/PostHelper.cshtml">
-      <publishTime>04/16/2014 01:33:13</publishTime>
+      <publishTime>04/17/2014 16:49:33</publishTime>
     </File>
     <File Include="bin/Blog.dll">
-      <publishTime>04/17/2014 01:09:46</publishTime>
+      <publishTime>04/19/2014 18:48:49</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/18/2014 22:48:07</publishTime>
@@ -50,7 +50,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:09</publishTime>
     </File>
     <File Include="Content/Blog.css">
-      <publishTime>04/17/2014 01:06:44</publishTime>
+      <publishTime>04/19/2014 15:30:53</publishTime>
     </File>
     <File Include="Content/Images/Background.png">
       <publishTime>04/07/2014 01:09:20</publishTime>
@@ -81,6 +81,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Images/ListChickBlack01.png">
       <publishTime>04/16/2014 21:53:15</publishTime>
+    </File>
+    <File Include="Content/Images/pass.jpg">
+      <publishTime>04/17/2014 15:46:23</publishTime>
     </File>
     <File Include="Content/Images/portrait.jpg">
       <publishTime>04/10/2014 03:10:01</publishTime>
@@ -274,6 +277,69 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/tinymce/plugins/paste/plugin.min.js">
       <publishTime>04/15/2014 16:02:32</publishTime>
     </File>
+    <File Include="Scripts/tinymce/plugins/pre/.svn/all-wcprops">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/.svn/entries">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/.svn/text-base/dialog.htm.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/.svn/text-base/editor_plugin.js.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/dialog.htm">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/editor_plugin.js">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/img/.svn/all-wcprops">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/img/.svn/entries">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/img/.svn/prop-base/pre.gif.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/img/.svn/text-base/pre.gif.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/img/pre.gif">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/js/.svn/all-wcprops">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/js/.svn/entries">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/js/.svn/text-base/dialog.js.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/js/dialog.js">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/langs/.svn/all-wcprops">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/langs/.svn/entries">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/langs/.svn/text-base/en.js.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/langs/.svn/text-base/en_dlg.js.svn-base">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/langs/en.js">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
+    <File Include="Scripts/tinymce/plugins/pre/langs/en_dlg.js">
+      <publishTime>04/17/2014 01:30:47</publishTime>
+    </File>
     <File Include="Scripts/tinymce/plugins/preview/plugin.min.js">
       <publishTime>04/15/2014 16:02:32</publishTime>
     </File>
@@ -379,8 +445,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Accounts/Login.cshtml">
       <publishTime>04/15/2014 17:28:08</publishTime>
     </File>
+    <File Include="Views/Posts/CreateComment.cshtml">
+      <publishTime>04/19/2014 15:28:00</publishTime>
+    </File>
     <File Include="Views/Posts/Details.cshtml">
-      <publishTime>04/15/2014 23:23:33</publishTime>
+      <publishTime>04/19/2014 16:36:21</publishTime>
     </File>
     <File Include="Views/Posts/Edit.cshtml">
       <publishTime>04/17/2014 00:50:39</publishTime>
@@ -397,8 +466,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>03/18/2014 22:48:06</publishTime>
     </File>
+    <File Include="Views/Shared/PostPartial.cshtml">
+      <publishTime>04/19/2014 17:57:32</publishTime>
+    </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/17/2014 01:05:24</publishTime>
+      <publishTime>04/17/2014 15:23:33</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>03/18/2014 22:48:06</publishTime>
@@ -407,7 +479,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/17/2014 01:09:47</publishTime>
+      <publishTime>04/19/2014 18:48:52</publishTime>
     </File>
   </ItemGroup>
 </Project>
