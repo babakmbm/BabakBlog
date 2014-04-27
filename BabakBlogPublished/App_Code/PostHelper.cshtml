@@ -22,7 +22,7 @@
                 تگ :
                 @foreach(Tag tag in post.Tags)
                 {
-                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name</a></span>    
+                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<img src="/Content/Images/tag.png" /></a></span>    
                 }
             </div>
 
@@ -66,7 +66,7 @@
                  </div>
                  
                  <div class="commentBody">
-                     @html.Raw(comment.Body) <!-- comment body is in html and we are replacing new lines with line breaks -->
+                     @html.Raw(comment.Body)
                  </div>
                  <div class="commentTime">
                      at: @comment.DateTime.ToString("HH:mm") on @comment.DateTime.ToString("yyyy/MM/dd")
@@ -79,15 +79,17 @@
                  }
              </div> 
             }
-            <div id="commentEditor">
-                <div id="commentPrompt">نظرات</div><br />
-                <form action="@Href("~/Posts/Comment/" + post.ID)" method="post">
-                    نام<br /><input type="text" id="commentNamePrompt" name="name" />  <br />
-                    پست الکترونیکی<br /><input type="text" id="commentEmailPrompt" name="email" />  <br />
-                    متن نظر<br /><textarea id="elm1" name="body"></textarea><br />
-                    <input type="submit" class="commentSubmitInput" name="submit" value="Submit!" /><br />
-                </form>
-            </div>
+            <!-- 
+                <div id="commentEditor">
+                    <div id="commentPrompt">نظرات</div><br />
+                    <form action="@Href("~/Posts/Comment/" + post.ID)" method="post">
+                        نام<br /><input type="text" id="commentNamePrompt" name="name" />  <br />
+                        پست الکترونیکی<br /><input type="text" id="commentEmailPrompt" name="email" />  <br />
+                        متن نظر<br /><textarea id="elm1" name="body"></textarea><br />
+                        <input type="submit" class="commentSubmitInput" name="submit" value="Submit!" /><br />
+                    </form>
+                </div>
+             -->
         </div>    
     }
 }

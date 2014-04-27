@@ -74,7 +74,6 @@ namespace Blog.Controllers
             {
                 model.Comments.Add(comment);
                 model.SaveChanges();
-
                 return RedirectToAction("Details", new { id = comment.PostID });
             }
 
@@ -117,6 +116,60 @@ namespace Blog.Controllers
             return View("Tags", tag.Posts);
         }
 
+        [HttpGet]
+        public ActionResult CreatePost()
+        {
+            if (IsAdmin)
+            {
+                Post post = new Post();
+                post.DateTime = DateTime.Now;
+                return View(post);
+            }
+            else
+            {
+                return RedirectToAction("NotAdmin");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult CreatePost(Post post, string t)
+        {
+            if (IsAdmin)
+            {
+                if (!string.IsNullOrEmpty(t))
+                {
+                    ViewBag.tagsFlag = true;
+                    ViewBag.TTags = t;
+                    var tags = t ?? string.Empty;
+                    string[] tagNames = tags.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string tagName in tagNames)
+                    {
+                        post.Tags.Add(GetTag(tagName));
+                    }
+                    if (ModelState.IsValid)
+                    {
+                        model.Posts.Add(post);
+                        model.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+
+                    return View(post);
+                }
+                else
+                {
+                    ViewBag.tagsFlag = false;
+                    ViewBag.NoTags = "حداقل یک تگ وارد کنید";
+                    return View(post);
+                }
+            }
+            else
+            {
+                return RedirectToAction("NotAdmin");
+            }
+        }
+        
+        
+        /*
         [ValidateInput(false)]
         public ActionResult Update(int? id, string title, string body, DateTime dateTime, string tags)
         {
@@ -161,6 +214,7 @@ namespace Blog.Controllers
             ViewBag.Tags = tagList.ToString();
             return View(post);
         }
+        */
 
         public ActionResult NotAdmin()
         {

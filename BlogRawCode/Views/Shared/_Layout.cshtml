@@ -14,7 +14,7 @@
     <div class="Lastseparator"></div>
     <div id="header">
         <a href="@Href("~/")"><img class="titleImage-1" src="@Href("~/Content/Images/ListChick.png")" /><img class="titleImage-2" src="@Href("~/Content/Images/Titleper.png")" /></a>
-        @RenderSection("ForkMe", false)
+        <a id="forkme" href="https://github.com/babakmbm/BabakBlog" target="_blank"></a>
     </div>
     <div id="content">
         <div id="topSeparator" class="separator"></div>
@@ -32,7 +32,7 @@
         @if (ViewBag.IsAdmin ?? false)
         {
             <div class="controlpanel">
-                <a href="@Href("~/Posts/Edit")">New Post</a>
+                <a href="@Href("~/Posts/CreatePost")">New Post</a>
                 <a href="@Href("~/Accounts/Logout")">Logout</a>
             </div>
         }

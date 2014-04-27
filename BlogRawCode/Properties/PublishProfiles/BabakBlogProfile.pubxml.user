@@ -11,10 +11,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Code/PostHelper.cshtml">
-      <publishTime>04/17/2014 16:49:33</publishTime>
+      <publishTime>04/25/2014 01:24:16</publishTime>
     </File>
     <File Include="bin/Blog.dll">
-      <publishTime>04/19/2014 18:48:49</publishTime>
+      <publishTime>04/25/2014 01:33:57</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/18/2014 22:48:07</publishTime>
@@ -50,7 +50,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:09</publishTime>
     </File>
     <File Include="Content/Blog.css">
-      <publishTime>04/19/2014 15:30:53</publishTime>
+      <publishTime>04/25/2014 01:28:20</publishTime>
+    </File>
+    <File Include="Content/Fonts/BMITRA.TTF">
+      <publishTime>04/20/2014 02:29:44</publishTime>
+    </File>
+    <File Include="Content/Fonts/danstevis.otf">
+      <publishTime>04/19/2014 21:26:50</publishTime>
     </File>
     <File Include="Content/Images/Background.png">
       <publishTime>04/07/2014 01:09:20</publishTime>
@@ -93,6 +99,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Images/shirt.jpg">
       <publishTime>04/14/2014 20:57:57</publishTime>
+    </File>
+    <File Include="Content/Images/tag.png">
+      <publishTime>04/25/2014 01:19:28</publishTime>
     </File>
     <File Include="Content/Images/Title.png">
       <publishTime>04/06/2014 15:41:10</publishTime>
@@ -446,31 +455,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/15/2014 17:28:08</publishTime>
     </File>
     <File Include="Views/Posts/CreateComment.cshtml">
-      <publishTime>04/19/2014 15:28:00</publishTime>
+      <publishTime>04/23/2014 22:25:22</publishTime>
+    </File>
+    <File Include="Views/Posts/CreatePost.cshtml">
+      <publishTime>04/24/2014 03:41:56</publishTime>
     </File>
     <File Include="Views/Posts/Details.cshtml">
-      <publishTime>04/19/2014 16:36:21</publishTime>
+      <publishTime>04/23/2014 17:08:11</publishTime>
     </File>
     <File Include="Views/Posts/Edit.cshtml">
       <publishTime>04/17/2014 00:50:39</publishTime>
     </File>
     <File Include="Views/Posts/Index.cshtml">
-      <publishTime>04/17/2014 01:08:57</publishTime>
+      <publishTime>04/20/2014 02:41:13</publishTime>
     </File>
     <File Include="Views/Posts/NotAdmin.cshtml">
-      <publishTime>04/16/2014 00:52:01</publishTime>
+      <publishTime>04/25/2014 01:32:10</publishTime>
     </File>
     <File Include="Views/Posts/Tags.cshtml">
-      <publishTime>04/15/2014 00:36:29</publishTime>
+      <publishTime>04/25/2014 01:27:13</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>03/18/2014 22:48:06</publishTime>
     </File>
     <File Include="Views/Shared/PostPartial.cshtml">
-      <publishTime>04/19/2014 17:57:32</publishTime>
+      <publishTime>04/25/2014 01:15:17</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/17/2014 15:23:33</publishTime>
+      <publishTime>04/23/2014 22:30:58</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>03/18/2014 22:48:06</publishTime>
@@ -479,7 +491,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/19/2014 18:48:52</publishTime>
+      <publishTime>04/25/2014 01:33:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

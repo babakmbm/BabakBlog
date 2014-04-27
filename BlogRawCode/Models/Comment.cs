@@ -19,18 +19,18 @@ namespace Blog.Models
         public int PostID { get; set; }
         public System.DateTime DateTime { get; set; }
         
-        [AllowHtml]
         [Required(ErrorMessage = "لطفا نام کامل خود را وارد کنید")]
         [DisplayName("نام و نام خانوادگی")]
         public string Name { get; set; }
         
-        [AllowHtml]
         [Required(ErrorMessage = "لطفا ایمیل خود را وارد کنید")]
-        [DisplayName("پست الکترونیکی")]
+        [DisplayName("پست الکترونیکی (پنهان خواهد شد)")]
         [EmailAddress(ErrorMessage="لطفا از یک ایمیل واقعی استفاده کنید")]
         public string Email { get; set; }
 
-        [AllowHtml][Required(ErrorMessage = "لطفا متن پیام خود را وارد کنید")][DisplayName("متن اصلی")]
+        [AllowHtml]
+        [Required(ErrorMessage = "لطفا متن پیام خود را وارد کنید")]
+        [DisplayName("متن اصلی")]
         public string Body { get; set; }
         
         public virtual Post Post { get; set; }

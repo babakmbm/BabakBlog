@@ -1,4 +1,16 @@
-﻿body 
+﻿@font-face 
+{
+    font-family: DastNevis;
+    src: url('/Content/Fonts/danstevis.otf');
+}
+
+@font-face 
+{
+    font-family:Mitra;
+    src:url('/Content/Fonts/BMITRA.TTF');
+}
+
+body 
 {
     margin:0;
     padding:0;
@@ -93,9 +105,7 @@ img
     margin:auto;
     text-align:right;
     width:615px;
-    font-size:20px;
-    font-weight:bold;
-    font-family: 'Palatino Linotype', Palatino;
+    font: bold 170% DastNevis;
     padding-left:85px;
     padding-bottom:10px;
 }
@@ -133,6 +143,7 @@ img
     padding:5px;
     background:#303030;
     border-radius:3px;
+    font-family:Mitra;
 }
 
 .month 
@@ -149,6 +160,7 @@ img
     margin-top:20px;
     width:60px;
     padding:5px;
+    font:21px DastNevis;
     background:#217aa6;
     border-radius:3px;
 }
@@ -156,7 +168,7 @@ img
 .commentsTab img 
 {
     margin-right:5px;
-    vertical-align:middle;
+    vertical-align:bottom;
 }
 
 .commentsTab a:link, .commentsTab a:visited, .commentsTab a:active 
@@ -199,8 +211,12 @@ img
 
 .postBody 
 {
+    min-height:100px;
     text-align:justify;
     line-height:1.5em;
+    font-family:Mitra;
+    font-size:130%;
+
 }
 
 .tagList 
@@ -211,16 +227,25 @@ img
 
 .tag a, .tag a:visited 
 {
+    margin:0 5px;
+    padding:2px 10px;
+    background-color:#305E91;
     text-decoration:none;
-    color:#808080;
+    color:#fff;
     font-weight:600;
+    border-radius:3px;
 }
 
 .tag a:hover 
 {
-    color:#217aa6;
+    color:#303030;
 }
 
+.tag a img 
+{
+    vertical-align:middle; 
+    padding-right:3px;
+}
 .linkList 
 {
     text-align:left;
@@ -276,6 +301,25 @@ linkList a
     border: 4px groove;
 }
 
+#commentPrompt 
+{
+    font:bold 30px DastNevis;
+}
+
+#postEditor 
+{
+    text-align:right;
+    color:#000;
+    padding:15px;
+    background-color:#fff;
+    margin-bottom:30px;
+    border: 4px groove;
+}
+
+#postPrompt 
+{
+    font:bold 30px DastNevis;
+}
 
 #commentContainer 
 {
@@ -287,11 +331,14 @@ linkList a
 .commentName 
 {
     font-style:italic;
+    font:bold 1em DastNevis;
 }
 
 .commentBody 
 {
     margin:5px;
+    font-family:DastNevis;
+    text-indent:35px;
 }
 
 .commentTime 
@@ -305,12 +352,6 @@ linkList a
 {
 }
 
-#commentPrompt 
-{
-    font-size:20px;
-    font-weight:bold;
-    font-family:'Dast Nevis';
-}
 
 #sidebar 
 {
@@ -346,6 +387,7 @@ linkList a
 
 #main 
 {
+    min-height:600px;
     margin:5px 5% 20px 0;
     float:right;
 }
@@ -390,9 +432,10 @@ linkList a
     text-align:left;
 }
 
-.editor-label 
+.editor-label
 {
-    font-family:'Dast Nevis';
+    font-family: DastNevis;
+    font-size:18px;
     padding-bottom:10px;
 }
 
@@ -400,7 +443,6 @@ linkList a
 {
     padding-right:20px;
     color:red;
-    font-weight:bold;
 }
 
 #submitButton 
@@ -412,4 +454,24 @@ linkList a
 {
     padding:5px 25px;
     cursor:pointer;
+}
+
+#CustomTextBox-1 
+{
+    width:500px;
+    height:25px;
+}
+
+.CustomTextBox-2
+{
+    width:400px;
+    height:25px;
+}
+
+#CustomTextBox-3
+{
+    direction:ltr;
+    width:400px;
+    height:25px;
+    text-align:left;
 }

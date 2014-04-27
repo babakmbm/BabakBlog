@@ -3,13 +3,13 @@
 @{
     bool isAdmin = ViewBag.IsAdmin ?? false;
     bool showComments = ViewBag.ShowComments ?? true;
+    Layout = null;
 }
 <div class="postTitle">@Html.DisplayFor(model => model.Title)</div>
 <div class="postContainer">
     <div class="postTabs">
         <div class="dateTab">
-            <div class="month">@Html.DisplayFor(model=> model.DateTime.Month)</div>
-            <div class="day">@Html.DisplayFor(model => model.DateTime.Day)</div>
+            <div class="month">@Html.DisplayFor(model=> model.DateTime)</div>
         </div>  
         <div class="commentsTab">
             <a href="@Href("~/Posts/Details/" + Model.ID + "#comments")">
@@ -24,10 +24,9 @@
             تگ :
             @foreach(Tag tag in Model.Tags)
             {
-                <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name</a></span>    
+                <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<img src="@Url.Content("/Content/Images/tag.png")" /> </a></span>  
             }
-        </div>
-
+        </div>  
         <div class="linkList">
             @{ string url="http://techlist.ir/posts/details/" + Model.ID;}
             <a href="http://www.reddit.com/submit" target="_blank" onclick="window.location = 'http://www.reddit.com/submit?url=@url'; return false"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
@@ -53,15 +52,22 @@
             {
              <div class="comment">
                  <div class="commentName">
-                     @if(!string.IsNullOrWhiteSpace(comment.Email))
+                     @if (isAdmin && !string.IsNullOrWhiteSpace(comment.Email))
                      {
-                      <a href="mailto:@comment.Email">@comment.Name</a>
-                         @:می گوید:   
+                         @comment.Name <br />
+                         <a href="mailto:@comment.Email">@comment.Email</a> <br />
+                         @:می گوید:
+                     }
+                     else if (isAdmin && string.IsNullOrWhiteSpace(comment.Email))
+                     {
+                         @comment.Name <br />
+                         @:[NO EMAIL] <br />
+                         @:می گوید:
                      }
                      else
                      {
-                      @comment.Name
-                        @:می گوید:   
+                         @comment.Name
+                         @:می گوید:
                      }
                  </div>
                  

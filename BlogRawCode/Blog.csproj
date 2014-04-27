@@ -153,6 +153,7 @@
     <Content Include="Content\Images\portrait.jpg" />
     <Content Include="Content\Images\separator.png" />
     <Content Include="Content\Images\shirt.jpg" />
+    <Content Include="Content\Images\tag.png" />
     <Content Include="Content\Images\Title.png" />
     <Content Include="Content\Images\TitlePer.png" />
     <Content Include="Global.asax" />
@@ -307,9 +308,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Posts\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +320,8 @@
     <Content Include="Views\Accounts\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Fonts\danstevis.otf" />
+    <Content Include="Content\Fonts\BMITRA.TTF" />
     <None Include="Properties\PublishProfiles\BabakBlogProfile.pubxml" />
     <Content Include="Views\Posts\Tags.cshtml" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
@@ -350,6 +350,7 @@
     <Content Include="Scripts\tinymce\plugins\pre\langs\.svn\text-base\en_dlg.js.svn-base" />
     <Content Include="Views\Shared\PostPartial.cshtml" />
     <Content Include="Views\Posts\CreateComment.cshtml" />
+    <Content Include="Views\Posts\CreatePost.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
