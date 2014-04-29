@@ -46,6 +46,7 @@
     <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="DateTime" Type="datetime" Nullable="false" />
     <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
   </EntityType>
   <EntityType Name="PostsTags">
     <Key>

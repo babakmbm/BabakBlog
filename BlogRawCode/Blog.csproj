@@ -242,6 +242,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="TODO.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -351,6 +352,7 @@
     <Content Include="Views\Shared\PostPartial.cshtml" />
     <Content Include="Views\Posts\CreateComment.cshtml" />
     <Content Include="Views\Posts\CreatePost.cshtml" />
+    <Content Include="Views\Posts\EditPost.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Blog.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Blog.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BlogModelStoreContainer">
           <EntitySet Name="Administrators" EntityType="Blog.Model.Store.Administrators" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Comments" EntityType="Blog.Model.Store.Comments" store:Type="Tables" Schema="dbo" />
@@ -51,6 +51,7 @@
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" />
         </EntityType>
         <EntityType Name="PostsTags">
           <Key>
@@ -109,8 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Blog.Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -158,6 +158,7 @@
           <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Comments" Relationship="Blog.Model.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
           <NavigationProperty Name="Tags" Relationship="Blog.Model.PostsTags" FromRole="Posts" ToRole="Tags" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -215,6 +216,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="Blog.Model.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />

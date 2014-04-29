@@ -167,6 +167,69 @@ namespace Blog.Controllers
                 return RedirectToAction("NotAdmin");
             }
         }
+
+
+        [HttpGet]
+        public ActionResult EditPost(int id)
+        {
+            if(IsAdmin){
+            Post post = model.Posts.Find(id);
+            ViewBag.IsAdmin = IsAdmin;
+            post.DateModified = DateTime.Now;
+            StringBuilder tagList = new StringBuilder();
+            foreach (Tag tag in post.Tags)
+            {
+                tagList.AppendFormat("{0} ", tag.Name);
+            }
+
+            ViewBag.TagsList = tagList.ToString();
+
+            return View(post);
+            }
+            else
+            {
+                return RedirectToAction("NotAdmin");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditPost(Post post, string t) /*TODO: FIX THIS SHIT->TAGS UPDATE*/
+        {
+
+            if (IsAdmin)
+            {
+                if (!string.IsNullOrEmpty(t))
+                {
+                    ViewBag.tagsFlag = true;
+                    ViewBag.TTags = t;
+                    var tags = t ?? string.Empty;
+                    string[] tagNames = tags.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string tagName in tagNames)
+                    {
+                        post.Tags.Add(GetTag(tagName));
+                    }
+                    if (ModelState.IsValid)
+                    {
+                        model.Entry(post).State = EntityState.Modified;
+                        model.SaveChanges();
+                        return RedirectToAction("Details/" + post.ID);
+                    }
+
+                    return View(post);
+                }
+                else
+                {
+                    ViewBag.tagsFlag = false;
+                    ViewBag.NoTags = "حداقل یک تگ وارد کنید";
+                    return View(post);
+                }
+            }
+            else
+            {
+                return RedirectToAction("NotAdmin");
+            }
+
+        }
         
         
         /*
