@@ -149,6 +149,7 @@
     <Content Include="Content\Images\ListChick.png" />
     <Content Include="Content\Images\ListChickBlack.png" />
     <Content Include="Content\Images\ListChickBlack01.png" />
+    <Content Include="Content\Images\p.png" />
     <Content Include="Content\Images\pass.jpg" />
     <Content Include="Content\Images\portrait.jpg" />
     <Content Include="Content\Images\separator.png" />

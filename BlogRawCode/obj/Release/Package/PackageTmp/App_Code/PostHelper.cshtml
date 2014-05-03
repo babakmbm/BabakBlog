@@ -8,7 +8,17 @@
             <div class="dateTab">
                 <div class="month">@post.DateTime.ToString("MMM").ToUpper()</div>
                 <div class="day">@post.DateTime.ToString("dd").ToUpper()</div>
+                
+                @if(post.DateModified > post.DateTime && IsAdmin)
+                    {  
+                        <div>@post.DateTime.ToString("HH:mm:ss")</div>
+                    <br />                  
+                        <div> اصلاح در:</div>
+                        <div>@post.DateModified.ToString("yy")/@post.DateModified.ToString("MM")/@post.DateModified.ToString("dd")</div>
+                        <div>@post.DateTime.ToString("HH:mm:ss")</div>
+                    }
             </div>
+            
             <div class="commentsTab">
                 <a href="@Href("~/Posts/Details/" + post.ID + "#comments")">
                     <div class="commentsIcon">.</div> @post.Comments.Count()

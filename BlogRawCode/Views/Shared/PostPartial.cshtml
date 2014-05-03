@@ -9,7 +9,18 @@
 <div class="postContainer">
     <div class="postTabs">
         <div class="dateTab">
-            <div class="month">@Html.DisplayFor(model=> model.DateTime)</div>
+                <div class="month">@Model.DateTime.ToString("MMM").ToUpper()</div>
+                <div class="day">@Model.DateTime.ToString("dd").ToUpper()</div>
+                
+                
+                @if(Model.DateModified > Model.DateTime && ViewBag.IsAdmin)
+                    {          
+                        <div>@Model.DateTime.ToString("HH:mm:ss")</div>
+                        <br />          
+                        <div> اصلاح در:</div>
+                        <div>@Model.DateModified.ToString("yy")/@Model.DateModified.ToString("MM")/@Model.DateModified.ToString("dd")</div>
+                        <div>@Model.DateTime.ToString("HH:mm:ss")</div>    
+                    }
         </div>  
         <div class="commentsTab">
             <a href="@Href("~/Posts/Details/" + Model.ID + "#comments")">

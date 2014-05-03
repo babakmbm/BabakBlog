@@ -28,6 +28,7 @@ namespace Blog.Models
         [Required]
         public System.DateTime DateTime { get; set; }
 
+        [Required]
         public System.DateTime DateModified { get; set; } /* THE PROBLEM SOLVED IN: http://stackoverflow.com/questions/5502872/efcode-first-property-null-problem */
 
         [Required(ErrorMessage="عنوان پست را وارد کنید")]
@@ -40,7 +41,6 @@ namespace Blog.Models
         public string Body { get; set; }
         
         public virtual ICollection<Comment> Comments { get; set; }
-        
         public virtual ICollection<Tag> Tags { get; set; }
     }
 }

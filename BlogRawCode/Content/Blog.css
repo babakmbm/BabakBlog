@@ -211,14 +211,17 @@ img
 
 .postBody 
 {
-    min-height:100px;
+    min-height:200px;
     text-align:justify;
     line-height:1.5em;
     font-family:Mitra;
     font-size:130%;
 
 }
-
+.tag 
+{
+    padding:5px;
+}
 .tagList 
 {
     float:right;
@@ -381,8 +384,8 @@ linkList a
 
 #portrait 
 {
-        width:50%;
-        border:6px groove;
+        width:65%;
+
 }
 
 #main 
@@ -468,7 +471,7 @@ linkList a
     height:25px;
 }
 
-#CustomTextBox-3
+.CustomTextBox-3
 {
     direction:ltr;
     width:400px;

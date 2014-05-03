@@ -11,10 +11,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Code/PostHelper.cshtml">
-      <publishTime>04/28/2014 00:40:25</publishTime>
+      <publishTime>04/29/2014 20:52:31</publishTime>
     </File>
     <File Include="bin/Blog.dll">
-      <publishTime>04/29/2014 16:28:06</publishTime>
+      <publishTime>05/01/2014 22:14:16</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/18/2014 22:48:07</publishTime>
@@ -50,7 +50,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:09</publishTime>
     </File>
     <File Include="Content/Blog.css">
-      <publishTime>04/25/2014 01:28:20</publishTime>
+      <publishTime>05/01/2014 16:21:27</publishTime>
     </File>
     <File Include="Content/Fonts/BMITRA.TTF">
       <publishTime>04/20/2014 02:29:44</publishTime>
@@ -88,6 +88,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Images/ListChickBlack01.png">
       <publishTime>04/16/2014 21:53:15</publishTime>
     </File>
+    <File Include="Content/Images/p.png">
+      <publishTime>04/30/2014 16:30:25</publishTime>
+    </File>
     <File Include="Content/Images/pass.jpg">
       <publishTime>04/17/2014 15:46:23</publishTime>
     </File>
@@ -119,7 +122,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2014 21:13:21</publishTime>
     </File>
     <File Include="Models/BlogModel.edmx.diagram">
-      <publishTime>03/26/2014 19:52:17</publishTime>
+      <publishTime>04/30/2014 00:44:02</publishTime>
     </File>
     <File Include="Models/BlogModel.tt">
       <publishTime>03/25/2014 21:13:22</publishTime>
@@ -452,7 +455,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/15/2014 16:02:32</publishTime>
     </File>
     <File Include="TODO.txt">
-      <publishTime>04/28/2014 02:00:00</publishTime>
+      <publishTime>05/01/2014 22:15:02</publishTime>
     </File>
     <File Include="Views/Accounts/Login.cshtml">
       <publishTime>04/15/2014 17:28:08</publishTime>
@@ -461,7 +464,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2014 22:25:22</publishTime>
     </File>
     <File Include="Views/Posts/CreatePost.cshtml">
-      <publishTime>04/28/2014 01:15:30</publishTime>
+      <publishTime>04/29/2014 23:32:44</publishTime>
     </File>
     <File Include="Views/Posts/Details.cshtml">
       <publishTime>04/23/2014 17:08:11</publishTime>
@@ -470,10 +473,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/17/2014 00:50:39</publishTime>
     </File>
     <File Include="Views/Posts/EditPost.cshtml">
-      <publishTime>04/28/2014 01:38:37</publishTime>
+      <publishTime>05/01/2014 15:29:45</publishTime>
     </File>
     <File Include="Views/Posts/Index.cshtml">
-      <publishTime>04/20/2014 02:41:13</publishTime>
+      <publishTime>04/30/2014 17:43:04</publishTime>
     </File>
     <File Include="Views/Posts/NotAdmin.cshtml">
       <publishTime>04/25/2014 01:32:10</publishTime>
@@ -485,7 +488,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:06</publishTime>
     </File>
     <File Include="Views/Shared/PostPartial.cshtml">
-      <publishTime>04/28/2014 00:40:50</publishTime>
+      <publishTime>04/29/2014 20:54:21</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>04/23/2014 22:30:58</publishTime>
@@ -497,7 +500,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2014 22:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/29/2014 16:28:09</publishTime>
+      <publishTime>05/03/2014 15:38:45</publishTime>
     </File>
   </ItemGroup>
 </Project>

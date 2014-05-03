@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Blog.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.ServiceModel.Syndication;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Blog.Models;
-using System.Text;
-using System.ServiceModel.Syndication;
-using System.Data;
 
 namespace Blog.Controllers
 {
@@ -123,6 +123,7 @@ namespace Blog.Controllers
             {
                 Post post = new Post();
                 post.DateTime = DateTime.Now;
+                post.DateModified = DateTime.Now;
                 return View(post);
             }
             else
@@ -144,7 +145,7 @@ namespace Blog.Controllers
                     string[] tagNames = tags.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string tagName in tagNames)
                     {
-                        post.Tags.Add(GetTag(tagName));
+                        post.Tags.Add(new Tag {Name=tagName});
                     }
                     if (ModelState.IsValid)
                     {
@@ -172,19 +173,14 @@ namespace Blog.Controllers
         [HttpGet]
         public ActionResult EditPost(int id)
         {
-            if(IsAdmin){
-            Post post = model.Posts.Find(id);
-            ViewBag.IsAdmin = IsAdmin;
-            post.DateModified = DateTime.Now;
-            StringBuilder tagList = new StringBuilder();
-            foreach (Tag tag in post.Tags)
+            if (IsAdmin)
             {
-                tagList.AppendFormat("{0} ", tag.Name);
-            }
-
-            ViewBag.TagsList = tagList.ToString();
-
-            return View(post);
+                
+                Post post = model.Posts.Find(id);
+                ViewBag.d1 = post.Tags.Count();
+                ViewBag.IsAdmin = IsAdmin;
+                post.DateModified = DateTime.Now;
+                return View(post);
             }
             else
             {
@@ -193,36 +189,38 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditPost(Post post, string t) /*TODO: FIX THIS SHIT->TAGS UPDATE*/
+        public ActionResult EditPost(Post post, string t, int id) /*TODO: FIX THIS SHIT->TAGS Wont UPDATE????????Fuck*/
         {
-
             if (IsAdmin)
             {
+                var v = model.Posts.Find(id); //Fixed IT
                 if (!string.IsNullOrEmpty(t))
                 {
-                    ViewBag.tagsFlag = true;
-                    ViewBag.TTags = t;
+                    post.Tags.Clear();
                     var tags = t ?? string.Empty;
                     string[] tagNames = tags.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string tagName in tagNames)
                     {
-                        post.Tags.Add(GetTag(tagName));
+                        if (!v.Tags.Contains(new Tag {Name = tagName}))
+                        {
+                            v.Tags.Add(new Tag { Name = tagName });
+                        }
+                        else
+                        {
+                            ViewBag.err1 = string.Format("{0} alerdy exist", tagName);
+                        }
                     }
-                    if (ModelState.IsValid)
-                    {
-                        model.Entry(post).State = EntityState.Modified;
-                        model.SaveChanges();
-                        return RedirectToAction("Details/" + post.ID);
-                    }
-
-                    return View(post);
+                    ViewBag.d = v.Tags.Count();
                 }
-                else
+                if (ModelState.IsValid)
                 {
-                    ViewBag.tagsFlag = false;
-                    ViewBag.NoTags = "حداقل یک تگ وارد کنید";
-                    return View(post);
+                    model.Entry(v).CurrentValues.SetValues(post); //Fixed IT
+                    model.SaveChanges();
+                    return RedirectToAction("Details/" + post.ID);
                 }
+
+                return View(post);
+
             }
             else
             {
