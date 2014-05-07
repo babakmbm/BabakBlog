@@ -27,21 +27,21 @@
         </div>
         <div class="postContent">
             <div class="postBody">@html.Raw(post.Body)</div>
-            
+            <div style="padding:5px; font-weight:bold;">تگ ها :</div>
             <div class="tagList">
-                تگ :
+                
                 @foreach(Tag tag in post.Tags)
                 {
                     <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<img src="/Content/Images/tag.png" /></a></span>    
                 }
             </div>
 
-            <div class="linkList">
+            @*<div class="linkList">
                 @{ string url="http://techlist.ir/posts/details/" + post.ID;}
                 <a href="http://www.reddit.com/submit" target="_blank" onclick="window.location = 'http://www.reddit.com/submit?url=@url'; return false"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="@url" data-text="Check out =>">Tweet</a>
                     <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-            </div>
+            </div>*@
 
         </div>
         

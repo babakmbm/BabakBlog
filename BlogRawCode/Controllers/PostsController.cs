@@ -189,7 +189,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditPost(Post post, string t, int id) /*TODO: FIX THIS SHIT->TAGS Wont UPDATE????????Fuck*/
+        public ActionResult EditPost(Post post, string t, int id) /*TODO: FIX THIS: TAGS Wont UPDATE*/
         {
             if (IsAdmin)
             {
