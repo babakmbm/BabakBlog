@@ -375,6 +375,8 @@
     <Content Include="Views\Posts\CreateComment.cshtml" />
     <Content Include="Views\Posts\CreatePost.cshtml" />
     <Content Include="Views\Posts\EditPost.cshtml" />
+    <Content Include="Views\Posts\Search.cshtml" />
+    <Content Include="Views\Posts\NoResult.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Blog.Models.Post>
+
+@{
+    ViewBag.Title = "نتایج جستجو";
+    bool isAdmin = ViewBag.IsAdmin ?? false;
+}
+<br />
+<h3 style="color:#fff; text-align:right; font-family:DastNevis">نتایج جستجوی شما برای <span style="color:#D25A3F; padding:0 10px;">@ViewBag.sq</span>:</h3>
+<br />
+<table class="table table-striped table-hover">
+    <tr>
+        <th>#</th>
+        <th>عنوان پست</th>
+        <th>تاریخ ایجاد</th>
+        <th>تاریخ اصلاح</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem=>item.ID)</td>
+        <td>
+            @Html.ActionLink(item.Title,"Details", new { id = item.ID })
+        </td>
+        
+        <td>@Html.DisplayFor(modelItem => item.DateTime)</td>
+        
+        <td>@Html.DisplayFor(modelItem => item.DateModified)</td>
+        <td>@Html.DisplayFor(modelItem => item.DateModified)</td>
+    </tr>
+}
+
+</table>

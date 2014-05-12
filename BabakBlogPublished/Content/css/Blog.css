@@ -553,3 +553,25 @@ linkList a
     height:25px;
     text-align:left;
 }
+
+.table {
+    background-color:#fff;
+    font-family:DastNevis;
+    font-weight:bold;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+}
+
+.table tr {
+    text-align:right;
+}
+.table h2 {
+    background-color:#fff;
+}
+
+.table tr td {
+    padding:15px;
+}
+.table a {
+    color:#D25A3F;
+}

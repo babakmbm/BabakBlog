@@ -15,7 +15,22 @@ namespace Blog.Controllers
         private BlogModel model = new BlogModel();
         private const int PostsPerPage = 4;
         private const int PostPerFeed = 25;
-        
+
+        public ActionResult Search(string sq)
+        {
+            ViewBag.IsAdmin = IsAdmin;
+            ViewBag.sq = sq;
+            var nist = "NoResult";
+            var posts = model.Posts
+                             .Where(a => a.Title.Contains(sq))
+                             .Take(10);
+            if (posts.Any())
+            {
+                return View(posts);
+            }
+            else return View(nist);
+        }
+
         public ActionResult Index(int? id)
         {
             int pageNumber = id ?? 0;
@@ -119,6 +134,7 @@ namespace Blog.Controllers
         [HttpGet]
         public ActionResult CreatePost()
         {
+            ViewBag.IsAdmin = IsAdmin;
             if (IsAdmin)
             {
                 Post post = new Post();
