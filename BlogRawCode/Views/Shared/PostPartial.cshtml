@@ -5,7 +5,7 @@
     bool showComments = ViewBag.ShowComments ?? true;
     Layout = null;
 }
-<div class="postTitle">@Html.DisplayFor(model => model.Title)</div>
+<div class="postTitle"><span class="glyphicon glyphicon-pencil"></span> @Html.DisplayFor(model => model.Title)</div>
 <div class="postContainer">
     <div class="postTabs">
         <div class="dateTab">
@@ -33,9 +33,9 @@
         <div style="padding:5px; font-weight:bold;">تگها :</div>    
         <div class="tagList">
             @foreach(Tag tag in Model.Tags)
-            {
-                <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<img src="@Url.Content("/Content/Images/tag.png")" /> </a></span>  
-            }
+                {
+                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
+                }
         </div>  
         @*<div class="linkList">
             @{ string url="http://techlist.ir/posts/details/" + Model.ID;}
@@ -47,8 +47,8 @@
     @if(isAdmin)
         {
             <div class="PostControlPanel">
-                <a href="@Href("~/Posts/Delete/" + Model.ID)">Delete</a>
-                <a href="@Href("~/Posts/EditPost/" + Model.ID)">Edit</a>
+                <a class="btn btn-default" href="@Href("~/Posts/Delete/" + Model.ID)">حذف پست <span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-default" href="@Href("~/Posts/EditPost/" + Model.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
             </div>
         }
 </div>

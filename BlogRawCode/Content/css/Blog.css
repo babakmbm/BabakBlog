@@ -1,0 +1,555 @@
+﻿@font-face 
+{
+    font-family: DastNevis;
+    src: url('/Content/Fonts/danstevis.otf');
+}
+
+@font-face 
+{
+    font-family:Mitra;
+    src:url('/Content/Fonts/BMITRA.TTF');
+}
+
+body 
+{
+    margin:0;
+    padding:0;
+    width:100%;
+    color: #303030;
+    text-align: center;
+    font-family:Verdana, Tahoma, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    background-color:#D25A3F;
+    /*background-image: url('/Content/Images/DarkBackground.png');*/
+}
+
+.navbar {
+    border:none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+}
+
+.navbar-inverse {
+    background-color:#2D3236;
+    font-family:DastNevis;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position:relative;
+    z-index:1;
+}
+
+.navbar-nav {
+    margin:auto 5px;
+    font-weight:bold;
+    
+}
+.navbar-inverse .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color:#D25A3F;
+    -webkit-text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #D25A3F;
+    text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #D25A3F;
+    background-color: transparent;
+}
+
+#searchBox input {
+    color: #D25A3F;
+    border: 1px solid #D25A3F;
+    border-radius: 25px;
+}
+
+#searchBox input:focus {
+  border-color: #217AA6;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+}
+
+#searchBox button {
+    border: 1px solid #D25A3F;
+    width:100px;
+    border-radius:50px;
+}
+
+#searchBox button:hover {
+    border-color: #217AA6;
+    background-color:#fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+}
+
+#headerLogo
+{
+    padding:10px 55px 10px 55px;
+    text-align:right;
+}
+
+#forkme 
+{
+  display: block;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: url(/Content/Images/forkme.png) no-repeat;
+  width: 149px;
+  height: 149px;
+  text-indent: -1000px;
+  overflow: hidden;
+}
+
+.titleImage-1 
+{
+    width:11%;
+}
+
+.titleImage-2 
+{
+    width:44%;
+}
+
+#footer 
+{
+    padding:20px 0 15px 0;
+    color: #ffffff;
+}
+
+#footer a 
+{
+    text-decoration:none;
+    margin:5px 5px;
+    color:#132726;
+}
+
+#topSeparator
+{
+    clear:both;
+    height:44px;
+    background-image:url('/Content/Images/StrokeBottom.png');
+}
+
+
+#bottomSeparator
+{
+    clear:both;
+    height:43px;
+    background-image:url('/Content/Images/StrokeTop.png');
+}
+
+.Lastseparator 
+{
+    clear:both;
+    height:10px;
+    background-image:url('/Content/Images/Lastseparator.png');
+}
+
+#topSeparator 
+{
+    margin-bottom:20px;
+}
+
+#bottomSeparator 
+{
+    margin-top:20px;
+}
+
+#content 
+{
+    background: url('/Content/Images/bg.jpg') repeat fixed;
+}
+
+img 
+{
+    border:0;
+}
+
+.postTitle
+{
+    margin:auto;
+    text-align:right;
+    width:615px;
+    color:#ffffff;
+    font: bold 170% DastNevis;
+    padding-left:85px;
+    padding-bottom:10px;
+    -webkit-text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+}
+
+.postTitle a:link, .postTitle a:visited, .postTitle a:active
+{
+    text-decoration:none;
+    color:#ffffff;
+}
+
+.postTitle a:hover 
+{
+    color:#D25A3F;
+    -webkit-text-shadow:  none;
+    text-shadow:  none;
+}
+
+.postContainer 
+{
+    width:628px;
+    margin:0 auto 50px auto;
+    z-index:2;
+}
+
+.postTabs 
+{
+    color:#ffffff;
+    float:left;
+    font-size:12px;
+}
+
+.dateTab 
+{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    margin-top:20px;
+    width:60px;
+    padding:5px;
+    background:#303030;
+    border-radius:3px;
+    font-family:Mitra;
+}
+
+.month 
+{
+}
+
+.day 
+{
+    font-size:2em;
+}
+
+.commentsTab 
+{
+    margin-top:20px;
+    width:60px;
+    padding:5px;
+    font:21px DastNevis;
+    background:#217aa6;
+    border-radius:3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+}
+
+.commentsTab img 
+{
+    margin-right:5px;
+    vertical-align:bottom;
+}
+
+.commentsTab a:link, .commentsTab a:visited, .commentsTab a:active 
+{
+    color:#ffffff;
+    text-decoration:none;
+}
+
+.commentsTab a:hover 
+{
+    color:#404040;
+}
+
+.commentsIcon 
+{
+    color:transparent;
+    width:20px;
+    margin-left:10px;
+    float:left;
+    background:url('/Content/Images/Comments.png') no-repeat;
+    -webkit-transition:all ease-in 0.4s;
+}
+.commentsIcon:hover
+{
+    background:url('/Content/Images/CommentHover.png') no-repeat;
+}
+
+.postContent 
+{
+    direction:rtl;
+    text-align:right;
+    padding:15px 15px 10% 50px;
+    width:600px;
+    margin-left:35px;
+    color:#000000;
+    background-color:#ffffff;
+    -webkit-border-image:url('/Content/Images/separator.png') 30 30;
+    border-style:inset;
+}
+
+.postBody 
+{
+    min-height:200px;
+    text-align:justify;
+    line-height:1.5em;
+    font-family:Mitra;
+    font-size:130%;
+
+}
+.tag 
+{
+    padding:5px;
+}
+.tagList 
+{
+    float:right;
+    text-decoration:none;
+    line-height:2em;
+}
+
+.tag a, .tag a:visited 
+{
+    margin:0 5px;
+    padding:2px 3px;
+    color:#303030;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.tag a:hover 
+{
+    color:#428BCA;
+    text-decoration:none;
+}
+
+.tag a img 
+{
+    vertical-align:middle; 
+    padding-right:3px;
+}
+.linkList 
+{
+    text-align:left;
+}
+
+linkList a 
+{
+    text-decoration:none;
+}
+
+.PostControlPanel 
+{
+    width:635px;
+    margin:20px auto;
+    font-family:DastNevis;
+}
+
+.PostControlPanel a 
+{
+    margin: 0 100px;
+    color: #D25A3F;
+    font-weight:bold;
+}
+
+.PostControlPanel a:hover 
+{
+    background-color:#fff;
+}
+
+.comment 
+{
+    text-align:right;
+    color:#000;
+    padding:15px;
+    background-color:#fff;
+    margin-bottom:30px;
+    border:4px groove;
+    border-radius:5px;
+}
+
+#commentEditor 
+{
+    text-align:right;
+    color:#000;
+    padding:15px;
+    background-color:#fff;
+    margin-bottom:30px;
+    border: 4px groove;
+}
+
+#commentPrompt 
+{
+    font:bold 30px DastNevis;
+}
+
+#postEditor 
+{
+    text-align:right;
+    color:#000;
+    padding:15px;
+    background-color:#fff;
+    margin-bottom:30px;
+    border: 4px groove;
+}
+
+#postPrompt 
+{
+    font:bold 30px DastNevis;
+}
+
+#commentContainer 
+{
+    text-align:right;
+    width:570px;
+    margin:auto;
+}
+
+.commentName 
+{
+    font-style:italic;
+    font:bold 1em DastNevis;
+}
+
+.commentBody 
+{
+    margin:5px;
+    font-family:DastNevis;
+    text-indent:35px;
+}
+
+.commentTime 
+{
+    font-style:italic;
+    text-align:left;
+    font-size:10px;
+}
+
+.CommentControlPanel 
+{
+}
+
+#sidebar 
+{
+    float:right;
+    width:15%;
+    margin:80px 30px 0 20px;
+    padding:10px 10px 10px 10px;
+    z-index:1;
+    font-family:DastNevis;
+    font-size:1.2em;
+}
+
+#sidebar a 
+{
+    text-decoration: none;
+    font-weight: bolder;
+    color: #ffffff;
+    -webkit-text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+}
+
+#sidebar a:hover 
+{
+    color:#D25A3F;
+    -webkit-text-shadow:  none;
+    text-shadow:  none;
+}
+
+#portrait, #twitterHeader, #FeedList, #facebookHeader, #GithubLink
+{
+    margin:10% 0 10px 0;
+}
+
+#portrait 
+{
+        width:65%;
+
+}
+
+#main 
+{
+    min-height:600px;
+    margin:5px 5% 20px 0;
+    float:right;
+}
+
+
+.pagingLinks 
+{
+    text-decoration:none;
+    color:#303030;
+    font-weight:bold;
+    font-family:DastNevis;
+}
+
+.pagingLinks:hover 
+{
+    color:#D25A3F;
+}
+
+
+.message 
+{
+    direction:rtl;
+    padding:15px 15px 15px 50px;
+    width:600px;
+    text-align:right;
+    margin-left:35px;
+    margin-bottom:80px;
+    color:#000000;
+    background-color:#ffffff;
+    border:4px groove; 
+    border-radius:5px;
+}
+
+#LoginContainer 
+{
+    background-color:#fff;
+    padding:50px 120px 50px 30px;
+    text-align:left;
+    border:4px groove;
+}
+.commentSubmitInput 
+{
+    text-align:left;
+}
+
+.editor-label
+{
+    font-family: DastNevis;
+    font-size:18px;
+    padding-bottom:10px;
+}
+
+.validationMessage 
+{
+    padding-right:20px;
+    color:red;
+}
+
+#submitButton 
+{
+    text-align:left;
+}
+
+#submitButton input 
+{
+    padding:5px 25px;
+    cursor:pointer;
+}
+
+#CustomTextBox-1 
+{
+    width:500px;
+    height:25px;
+}
+
+.CustomTextBox-2
+{
+    width:400px;
+    height:25px;
+}
+
+.CustomTextBox-3
+{
+    direction:ltr;
+    width:400px;
+    height:25px;
+    text-align:left;
+}

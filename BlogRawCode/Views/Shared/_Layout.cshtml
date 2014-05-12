@@ -3,22 +3,62 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/Content/Blog.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/bootstrap-rtl.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/Blog.css")" rel="stylesheet" type="text/css" />
+    <!-- Scripts -->
     <script src="@Url.Content("~/Scripts/jQuery.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Other.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-rtl.js")" type="text/javascript"></script>
     @RenderSection("ExtraHeaders", false)
-    
 </head>
-
 <body>
-    <div class="Lastseparator"></div>
-    <div id="header">
-        <a href="@Href("~/")"><img class="titleImage-1" src="@Href("~/Content/Images/ListChick.png")" /><img class="titleImage-2" src="@Href("~/Content/Images/Titleper.png")" /></a>
-        <a id="forkme" href="https://github.com/babakmbm/BabakBlog" target="_blank"></a>
+    @*<a id="forkme" href="https://github.com/babakmbm/BabakBlog" target="_blank"></a>*@
+	<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li><a href="@Href("~/")"><span class="glyphicon glyphicon-home"></span> خانه</a></li>
+					<li><a href="contactMe.html"><span class="glyphicon glyphicon-earphone"></span> تماس با من</a></li>
+					<li><a href="aboutMe.html"><span class="glyphicon glyphicon-user"></span> درباره من</a></li>
+                        @if (ViewBag.IsAdmin ?? false)
+                            {
+                            <li>
+                                <a href="@Href("~/Posts/CreatePost")"><span class="glyphicon glyphicon-pencil"></span> پست جدید</a>
+                            </li>
+                            <li>
+                                <a href="@Href("~/Accounts/Logout")"><span class="glyphicon glyphicon-remove"></span> خروج</a>
+                            </li>
+                            }
+                            else
+                            {
+                            <li>
+                               <a href="@Href("~/Accounts/Login")"><span class="glyphicon glyphicon-open"></span> ورود</a>
+                            </li>    
+                            }
+				</ul>
+                <form class="navbar-form navbar-left" id="searchBox" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="جستجو">
+					</div>
+					<button type="submit" class="btn btn-default btn-sm">جستجو</button>
+				</form>
+			</nav>
+	</header>
+    <div id="headerLogo">
+        <a href="@Href("~/")">
+            <img class="titleImage-1" src="@Href("~/Content/Images/ListChick.png")" />
+            <img class="titleImage-2" src="@Href("~/Content/Images/Titleper.png")" />
+        </a>
     </div>
     <div id="content">
         <div id="topSeparator"></div>
-        
         <div id="main">
             @RenderBody()
         </div>
@@ -28,20 +68,7 @@
         <div id="bottomSeparator"></div>
     </div>
     <div id="footer">
-        <div id="copyright">Copyright &copy; 2014 Babak Hosseini Nezhad</div>
-        @if (ViewBag.IsAdmin ?? false)
-        {
-            <div class="controlpanel">
-                <a href="@Href("~/Posts/CreatePost")">New Post</a>
-                <a href="@Href("~/Accounts/Logout")">Logout</a>
-            </div>
-        }
-        else
-        {
-            <div class="controlpanel">
-                <a href="@Href("~/Accounts/Login")">Login Here</a>
-            </div>    
-        }
+        <small>Copyright &copy; 2014 Babak Hosseini Nezhad</small>
     </div>
     <div class="Lastseparator"></div>
 </body>

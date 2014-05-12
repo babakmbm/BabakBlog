@@ -1,4 +1,5 @@
 ﻿FIX THE TAGS PROBLEM IN EDITPOST --> FIXED
+Tags should be a finite number and present like a Dropdown menu.
 VALIDATION IN LOGIN.
 Change the Login System.
 GET BACK TO SAME PAGE AFTER LOGIN.

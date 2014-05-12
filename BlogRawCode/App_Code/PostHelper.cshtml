@@ -2,7 +2,7 @@
 
 @helper Render(Post post, System.Web.Mvc.HtmlHelper html, bool IsAdmin, bool showComments)
 {
-    <div class="postTitle"><a href="@Href("~/Posts/Details/" + post.ID)">@post.Title</a></div>
+    <div class="postTitle"> <a href="@Href("~/Posts/Details/" + post.ID)"><span class="glyphicon glyphicon-pencil"></span> @post.Title</a></div>
     <div class="postContainer">
         <div class="postTabs">
             <div class="dateTab">
@@ -29,10 +29,9 @@
             <div class="postBody">@html.Raw(post.Body)</div>
             <div style="padding:5px; font-weight:bold;">تگ ها :</div>
             <div class="tagList">
-                
                 @foreach(Tag tag in post.Tags)
                 {
-                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<img src="/Content/Images/tag.png" /></a></span>    
+                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
                 }
             </div>
 
@@ -48,8 +47,8 @@
         @if(IsAdmin)
         {
             <div class="PostControlPanel">
-                <a href="@Href("~/Posts/Delete/" + post.ID)">Delete</a>
-                <a href="@Href("~/Posts/EditPost/" + post.ID)">Edit</a>
+                <a class="btn btn-default" href="@Href("~/Posts/Delete/" + post.ID)">حذف پست <span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-default" href="@Href("~/Posts/EditPost/" + post.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
             </div>
         }
     </div>

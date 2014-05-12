@@ -138,16 +138,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Blog.css" />
-    <Content Include="Content\Images\background2.jpg" />
+    <Content Include="Content\css\Blog.css" />
+    <Content Include="Content\css\bootstrap-rtl.css" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\Background.png" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\commentHover.png" />
     <Content Include="Content\Images\Comments.png" />
-    <Content Include="Content\Images\cw4.jpg" />
-    <Content Include="Content\Images\cw3.jpg" />
-    <Content Include="Content\Images\cw2.jpg" />
-    <Content Include="Content\Images\cw1.jpg" />
     <Content Include="Content\Images\DarkBackground.png" />
     <Content Include="Content\Images\forkme.png" />
     <Content Include="Content\Images\frame.png" />
@@ -159,23 +156,28 @@
     <Content Include="Content\Images\p.png" />
     <Content Include="Content\Images\pass.jpg" />
     <Content Include="Content\Images\portrait-f.png" />
-    <Content Include="Content\Images\portrait.jpg" />
     <Content Include="Content\Images\separator.png" />
-    <Content Include="Content\Images\shirt.jpg" />
     <Content Include="Content\Images\StrokeBottom.png" />
     <Content Include="Content\Images\StrokeTop.png" />
-    <Content Include="Content\Images\StrokeTop2.png" />
     <Content Include="Content\Images\tag.png" />
     <Content Include="Content\Images\Title.png" />
     <Content Include="Content\Images\TitlePer.png" />
-    <Content Include="Content\Images\wt1.jpg" />
-    <Content Include="Content\Images\wt3.jpg" />
-    <Content Include="Content\Images\wt2.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\affix.js" />
+    <Content Include="Scripts\alert.js" />
+    <Content Include="Scripts\bootstrap-rtl.js" />
+    <Content Include="Scripts\button.js" />
+    <Content Include="Scripts\carousel-rtl.js" />
+    <Content Include="Scripts\collapse.js" />
+    <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\jQuery.js" />
     <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\modal.js" />
     <Content Include="Scripts\Other.js" />
+    <Content Include="Scripts\popover.js" />
+    <Content Include="Scripts\scrollspy.js" />
     <Content Include="Scripts\SHA256.js" />
+    <Content Include="Scripts\tab.js" />
     <Content Include="Scripts\tinymce\langs\fa.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.min.js" />
@@ -257,6 +259,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\tooltip.js" />
+    <Content Include="Scripts\transition.js" />
     <Content Include="TODO.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -338,6 +342,9 @@
   <ItemGroup>
     <Content Include="Content\Fonts\danstevis.otf" />
     <Content Include="Content\Fonts\BMITRA.TTF" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\BabakBlogProfile.pubxml" />
     <Content Include="Views\Posts\Tags.cshtml" />
     <Content Include="Scripts\tinymce\langs\readme.md" />

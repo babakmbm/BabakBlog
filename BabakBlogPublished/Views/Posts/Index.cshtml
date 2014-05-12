@@ -18,7 +18,6 @@
         <div id="FeedList"><a href="@Href("~/Posts/RSS")" target="_blank">فید آر اس اس</a></div>
         <div id="facebookHeader"><a href="http://facebook.com/babakmbm" target="_blank">روی فیس بوک</a></div>
         <div id="twitterHeader"><a href="http://twitter.com/babakmbm" target="_blank">روی توییتر</a></div>
-        
     </div>
 }
 
@@ -26,17 +25,19 @@
 {
     @PostHelper.Render(post, Html, isAdmin, false)
 }
-@if (isNextLinkVisible)
-{
-    <a class="pagingLinks" id="nextLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber + 1 ))">&lt;صفحه بعدی</a>
-}
+<ul class="pager">
+    @if (isNextLinkVisible)
+    {
+        <li><a class="pagingLinks" id="nextLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber + 1 ))">&rarr; قدیمی تر ها</a></li>
+    }
 
-@if(ViewBag.PageNumber != 0)
-{
-    <a class="pagingLinks" id="firstLink" href="@Href("~/Posts/Index/" + 0)">خانه</a>
-}
+    @if(ViewBag.PageNumber != 0)
+    {
+        <li><a class="pagingLinks" id="firstLink" href="@Href("~/Posts/Index/" + 0)">خانه</a></li>
+    }
 
-@if (isPreviousLinkVisible)
-{
-    <a class="pagingLinks" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">صفحه قبلی&gt;</a>
-}
+    @if (isPreviousLinkVisible)
+    {
+        <li><a class="pagingLinks" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">جدید تر ها &larr;</a></li>
+    }
+</ul>
