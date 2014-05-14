@@ -1,21 +1,26 @@
 ﻿@using Blog.Models;
+@using System.Globalization;
+
 
 @helper Render(Post post, System.Web.Mvc.HtmlHelper html, bool IsAdmin, bool showComments)
 {
+    PersianCalendar pc = new PersianCalendar();
+    DateTime thisDate = DateTime.Now;
+    persiand pdc = new persiand();
+    
     <div class="postTitle"> <a href="@Href("~/Posts/Details/" + post.ID)"><span class="glyphicon glyphicon-pencil"></span> @post.Title</a></div>
     <div class="postContainer">
         <div class="postTabs">
             <div class="dateTab">
-                <div class="month">@post.DateTime.ToString("MMM").ToUpper()</div>
-                <div class="day">@post.DateTime.ToString("dd").ToUpper()</div>
-                
-                @if(post.DateModified > post.DateTime && IsAdmin)
+                <div class="month">@pdc.pdc(pc.GetMonth(post.DateTime))</div>
+                <div class="day">@pc.GetDayOfMonth(post.DateTime)</div>
+                @if(IsAdmin)
                     {  
                         <div>@post.DateTime.ToString("HH:mm:ss")</div>
-                    <br />                  
+                        <hr />          
                         <div> اصلاح در:</div>
-                        <div>@post.DateModified.ToString("yy")/@post.DateModified.ToString("MM")/@post.DateModified.ToString("dd")</div>
-                        <div>@post.DateTime.ToString("HH:mm:ss")</div>
+                        <div>@pc.GetYear(post.DateModified)/@pc.GetMonth(post.DateModified)/@pc.GetDayOfMonth(post.DateModified)</div>
+                        <div>@post.DateModified.ToString("HH:mm:ss")</div>
                     }
             </div>
             

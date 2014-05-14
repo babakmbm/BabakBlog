@@ -129,6 +129,7 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\persiand.cs" />
     <Compile Include="Models\Post.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>

@@ -17,6 +17,7 @@ namespace Blog.Models
     
     public partial class Post
     {
+        
         public Post()
         {
             this.Comments = new HashSet<Comment>();

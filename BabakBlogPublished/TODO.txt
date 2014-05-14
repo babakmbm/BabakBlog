@@ -4,6 +4,6 @@ VALIDATION IN LOGIN.
 Change the Login System.
 GET BACK TO SAME PAGE AFTER LOGIN.
 CODE FORMATTING (PRETTY CODE) IN TINYMCE.
-USING PERSIAN DATETIME --- SHAMSI DATETIME.
+USING PERSIAN DATETIME --- SHAMSI DATETIME. ---> Fixed
 Use Captcha for Comments.
 Address the validation error for long tags when creating a post.

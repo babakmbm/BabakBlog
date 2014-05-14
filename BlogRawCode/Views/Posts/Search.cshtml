@@ -1,4 +1,11 @@
 ﻿@model IEnumerable<Blog.Models.Post>
+@using Blog.Models;
+@using System.Globalization;
+@{
+    PersianCalendar pc = new PersianCalendar();
+    DateTime thisDate = DateTime.Now;
+    persiand pdc = new persiand();
+}
 
 @{
     ViewBag.Title = "نتایج جستجو";
@@ -10,9 +17,10 @@
 <table class="table table-striped table-hover">
     <tr>
         <th>#</th>
-        <th>عنوان پست</th>
-        <th>تاریخ ایجاد</th>
-        <th>تاریخ اصلاح</th>
+        <th><span class="glyphicon glyphicon-pencil"></span> عنوان پست</th>
+        <th><span class="glyphicon glyphicon-time"></span> تاریخ ایجاد</th>
+        <th><span class="glyphicon glyphicon-time"></span> تاریخ اصلاح</th>
+        <th><span class="glyphicon glyphicon-tags"></span> تگ های مربوط به پست</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -22,10 +30,16 @@
             @Html.ActionLink(item.Title,"Details", new { id = item.ID })
         </td>
         
-        <td>@Html.DisplayFor(modelItem => item.DateTime)</td>
+        <td>@pc.GetYear(item.DateTime)/@pc.GetMonth(item.DateTime)/@pc.GetDayOfMonth(item.DateTime) - @item.DateTime.ToString("HH:mm:ss")</td>
         
-        <td>@Html.DisplayFor(modelItem => item.DateModified)</td>
-        <td>@Html.DisplayFor(modelItem => item.DateModified)</td>
+        <td>@pc.GetYear(item.DateModified)/@pc.GetMonth(item.DateModified)/@pc.GetDayOfMonth(item.DateModified) - @item.DateTime.ToString("HH:mm:ss")</td>
+
+        <td>
+            @foreach(Tag tag in item.Tags)
+                {
+                    <a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name </a>  
+                }
+        </td>
     </tr>
 }
 

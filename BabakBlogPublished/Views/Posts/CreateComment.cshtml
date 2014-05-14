@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "ارسال نظرات";
+    bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
 @section ExtraHeaders
@@ -69,6 +70,4 @@
     }
 </div>
 
-<div>
-    @Html.ActionLink("بازگشت به پست", "Details/" +  Model.PostID)
-</div>
+<a class="btn btn-primary" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>

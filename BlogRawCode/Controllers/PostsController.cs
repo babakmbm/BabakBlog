@@ -7,6 +7,7 @@ using System.ServiceModel.Syndication;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Globalization;
 
 namespace Blog.Controllers
 {
@@ -15,22 +16,7 @@ namespace Blog.Controllers
         private BlogModel model = new BlogModel();
         private const int PostsPerPage = 4;
         private const int PostPerFeed = 25;
-
-        public ActionResult Search(string sq)
-        {
-            ViewBag.IsAdmin = IsAdmin;
-            ViewBag.sq = sq;
-            var nist = "NoResult";
-            var posts = model.Posts
-                             .Where(a => a.Title.Contains(sq))
-                             .Take(10);
-            if (posts.Any())
-            {
-                return View(posts);
-            }
-            else return View(nist);
-        }
-
+        
         public ActionResult Index(int? id)
         {
             int pageNumber = id ?? 0;
@@ -75,6 +61,7 @@ namespace Blog.Controllers
         public ActionResult CreateComment(int id)
         {
             Comment comment = new Comment();
+            ViewBag.IsAdmin = IsAdmin;
             comment.PostID = id;
             comment.DateTime = DateTime.Now;
             return View(comment);
@@ -85,6 +72,7 @@ namespace Blog.Controllers
         [ValidateInput(false)]
         public ActionResult CreateComment(Comment comment)
         {
+            ViewBag.IsAdmin = IsAdmin;
             if (ModelState.IsValid)
             {
                 model.Comments.Add(comment);
@@ -151,6 +139,7 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult CreatePost(Post post, string t)
         {
+            ViewBag.IsAdmin = IsAdmin;
             if (IsAdmin)
             {
                 if (!string.IsNullOrEmpty(t))
@@ -244,58 +233,25 @@ namespace Blog.Controllers
             }
 
         }
-        
-        
-        /*
-        [ValidateInput(false)]
-        public ActionResult Update(int? id, string title, string body, DateTime dateTime, string tags)
-        {
-            if (!IsAdmin)
-            {
-                return RedirectToAction("Index");
-            }
-            Post post = GetPost(id);
-            post.Title = title;
-            post.Body = body;
-            post.DateTime = dateTime;
-            post.Tags.Clear();
-
-            tags = tags ?? string.Empty;
-            string[] tagNames = tags.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string tagName in tagNames)
-            {
-                post.Tags.Add(GetTag(tagName));
-            }
-
-            if (!id.HasValue)
-            {
-                model.Posts.Add(post);
-            }
-            model.SaveChanges();
-            return RedirectToAction("Details", new { id = post.ID });
-
-        }
-
-        [ValidateInput(false)]
-        public ActionResult Edit(int? id)
-        {
-            ViewBag.IsAdmin = IsAdmin;
-            Post post = GetPost(id);
-            StringBuilder tagList = new StringBuilder();
-            foreach( Tag tag in post.Tags)
-            {
-                tagList.AppendFormat("{0} ", tag.Name);
-            }
-
-            ViewBag.Tags = tagList.ToString();
-            return View(post);
-        }
-        */
 
         public ActionResult NotAdmin()
         {
             return View();
+        }
+
+        public ActionResult Search(string sq)
+        {
+            ViewBag.IsAdmin = IsAdmin;
+            ViewBag.sq = sq;
+            var nist = "NoResult";
+            var posts = model.Posts
+                             .Where(a => a.Title.Contains(sq))
+                             .Take(10);
+            if (posts.Any())
+            {
+                return View(posts);
+            }
+            else return View(nist);
         }
 
         private Tag GetTag(string tagName)

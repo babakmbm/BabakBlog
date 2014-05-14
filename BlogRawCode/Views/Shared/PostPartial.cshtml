@@ -1,5 +1,12 @@
 ﻿@model Blog.Models.Post
 @using Blog.Models;
+@using System.Globalization;
+@{
+    PersianCalendar pc = new PersianCalendar();
+    DateTime thisDate = DateTime.Now;
+    persiand pdc = new persiand();
+}
+
 @{
     bool isAdmin = ViewBag.IsAdmin ?? false;
     bool showComments = ViewBag.ShowComments ?? true;
@@ -9,17 +16,17 @@
 <div class="postContainer">
     <div class="postTabs">
         <div class="dateTab">
-                <div class="month">@Model.DateTime.ToString("MMM").ToUpper()</div>
-                <div class="day">@Model.DateTime.ToString("dd").ToUpper()</div>
+                <div class="month">@pdc.pdc(pc.GetMonth(Model.DateTime))</div>
+                <div class="day">@pc.GetDayOfMonth(Model.DateTime)</div>
                 
                 
-                @if(Model.DateModified > Model.DateTime && ViewBag.IsAdmin)
+                @if(ViewBag.IsAdmin)
                     {          
                         <div>@Model.DateTime.ToString("HH:mm:ss")</div>
-                        <br />          
+                        <hr />          
                         <div> اصلاح در:</div>
-                        <div>@Model.DateModified.ToString("yy")/@Model.DateModified.ToString("MM")/@Model.DateModified.ToString("dd")</div>
-                        <div>@Model.DateTime.ToString("HH:mm:ss")</div>    
+                        <div>@pc.GetYear(Model.DateModified)/@pc.GetMonth(Model.DateModified)/@pc.GetDayOfMonth(Model.DateModified)</div>
+                        <div>@Model.DateModified.ToString("HH:mm:ss")</div>    
                     }
         </div>  
         <div class="commentsTab">
