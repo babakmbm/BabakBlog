@@ -9,11 +9,3 @@ The RAW and Published codes are included in the repository.
 they're under development i will update them every chance i get.  
 
 also you can see the end results at this address: http://www.techlist.ir
-
-29/04/2014
-TODO:
-	FIX THE TAGS PROBLEM IN EDITPOST --> Fixed 01/05/2014
-	USING PERSIAN DATETIME --> Fixed 14/05/2014
-	VALIDATION IN LOGIN.
-	GET BACK TO SAME PAGE AFTER LOGIN.
-	CODE FORMATTING (PRETTY CODE) IN TINYMCE.
