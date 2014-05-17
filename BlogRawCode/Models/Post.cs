@@ -35,6 +35,10 @@ namespace Blog.Models
         [Required(ErrorMessage="عنوان پست را وارد کنید")]
         [Display(Name="عنوان")]
         public string Title { get; set; }
+
+        [Required(ErrorMessage="نام نویسنده را وارد کنید")]
+        [Display(Name="نویسنده")]
+        public string Author { get; set; }
         
         [AllowHtml]
         [Required(ErrorMessage = "متن پست را وارد کنید")]

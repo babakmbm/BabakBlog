@@ -129,10 +129,11 @@
     <Compile Include="Models\Comment.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\persiand.cs" />
+    <Compile Include="Models\PMonthString.cs" />
     <Compile Include="Models\Post.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PWDString.cs" />
     <Compile Include="Models\Tag.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>
@@ -378,6 +379,7 @@
     <Content Include="Views\Posts\EditPost.cshtml" />
     <Content Include="Views\Posts\Search.cshtml" />
     <Content Include="Views\Posts\NoResult.cshtml" />
+    <Content Include="Views\Shared\_SideBar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,8 +3,7 @@
 @using System.Globalization;
 @{
     PersianCalendar pc = new PersianCalendar();
-    DateTime thisDate = DateTime.Now;
-    persiand pdc = new persiand();
+    PMonthString pdc = new PMonthString();
 }
 
 @{
@@ -18,8 +17,14 @@
     <tr>
         <th>#</th>
         <th><span class="glyphicon glyphicon-pencil"></span> عنوان پست</th>
+        <th><span class="glyphicon glyphicon-user"></span> نویسنده</th>
+        <th><span class="glyphicon glyphicon-comment"></span> تعداد کامنت ها</th>
         <th><span class="glyphicon glyphicon-time"></span> تاریخ ایجاد</th>
-        <th><span class="glyphicon glyphicon-time"></span> تاریخ اصلاح</th>
+        @if(isAdmin){
+        <th>
+            <span class="glyphicon glyphicon-time"></span> تاریخ اصلاح
+        </th>
+        }
         <th><span class="glyphicon glyphicon-tags"></span> تگ های مربوط به پست</th>
     </tr>
 
@@ -29,17 +34,41 @@
         <td>
             @Html.ActionLink(item.Title,"Details", new { id = item.ID })
         </td>
-        
-        <td>@pc.GetYear(item.DateTime)/@pc.GetMonth(item.DateTime)/@pc.GetDayOfMonth(item.DateTime) - @item.DateTime.ToString("HH:mm:ss")</td>
-        
-        <td>@pc.GetYear(item.DateModified)/@pc.GetMonth(item.DateModified)/@pc.GetDayOfMonth(item.DateModified) - @item.DateTime.ToString("HH:mm:ss")</td>
-
         <td>
-            @foreach(Tag tag in item.Tags)
-                {
-                    <a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name </a>  
-                }
+            @item.Author
         </td>
+        <td>
+            @item.Comments.Count()
+        </td>
+        
+        <td>
+            @pc.GetYear(item.DateTime)/
+            @pc.GetMonth(item.DateTime)/
+            @pc.GetDayOfMonth(item.DateTime) - 
+            @item.DateTime.ToString("HH:mm:ss")
+        </td>
+        @if(isAdmin){
+        <td>
+            @pc.GetYear(item.DateModified)/
+            @pc.GetMonth(item.DateModified)/
+            @pc.GetDayOfMonth(item.DateModified) - 
+            @item.DateModified.ToString("HH:mm:ss")
+        </td>
+        }
+        <td>
+        @foreach(Tag tag in item.Tags)
+            {
+                <a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name </a>  
+            }
+        </td>
+        @if(isAdmin){
+        <td>
+            <a href="@Url.Content("~/Posts/EditPost/" + item.ID)"> <span class="glyphicon glyphicon-edit"></span> </a>
+        </td>
+        <td>
+            <a href="@Url.Content("~/Posts/Delete/" + item.ID)"> <span class="glyphicon glyphicon-trash"></span> </a>
+        </td>
+        }
     </tr>
 }
 

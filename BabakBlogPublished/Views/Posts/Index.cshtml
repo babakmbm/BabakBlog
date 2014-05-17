@@ -12,29 +12,7 @@
 <h1 style="color:#fff;">@ViewBag.pdate</h1>
 @section SideBar
 {
-    <div id="sidebar">
-        <div class="tile-1">
-            <div><img id="portrait" src="@Href("/Content/Images/portrait-f.png")" alt="portrait" /></div>
-            <div id="GithubLink"><a href="https://github.com/babakmbm/BabakBlog" target="_blank">کد روی گیت هاب</a></div>
-            <div id="FeedList"><a href="@Href("~/Posts/RSS")" target="_blank">فید آر اس اس</a></div>
-            <div id="facebookHeader"><a href="http://facebook.com/babakmbm" target="_blank">روی فیس بوک</a></div>
-            <div id="twitterHeader"><a href="http://twitter.com/babakmbm" target="_blank">روی توییتر</a></div>
-        </div>
-        <br />
-        <br />
-        <div class="panel panel-primary">
-            <div class="panel-heading">آخرین پست ها</div>
-            <div class="panel-body">
-                @foreach(Post p in Model)
-                {
-                   <div><a href="@Url.Content("~/Posts/Details/" + p.ID)">@p.Title</a></div>  
-                }
-            </div>
-            @*<div class="panel-body">
-                   <ol>@foreach(Post p in Model){<li><a href="@Url.Content("~/Posts/Details/" + p.ID)">@p.Title</a></li>}</ol>  
-            </div>*@
-        </div>
-    </div>
+    @Html.Partial("_SideBar");
 }
 
 @foreach (Post post in Model)

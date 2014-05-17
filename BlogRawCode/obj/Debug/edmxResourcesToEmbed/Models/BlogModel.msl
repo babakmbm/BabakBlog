@@ -25,6 +25,7 @@
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="Blog.Model.Post">
         <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="Author" ColumnName="Author" />
           <ScalarProperty Name="DateModified" ColumnName="DateModified" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Title" ColumnName="Title" />

@@ -54,11 +54,18 @@
             @Html.TextBoxFor(model => model.Title, new { id = "CustomTextBox-1" })
         </div>
         <br />
-    
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateTime)
+        <div class="editor-label">
+            *@Html.LabelFor(model => model.Author)
+            <span class="validationMessage">@Html.ValidationMessageFor(model => model.Author)</span>
         </div>
         <div class="editor-field">
+            @Html.TextBoxFor(model => model.Author, new { id = "CustomTextBox-4" })
+        </div>
+        <br />
+        <div class="editor-field" hidden="hidden">
+            @Html.EditorFor(model => model.DateTime)
+        </div>
+        <div class="editor-field" hidden="hidden">
             @Html.EditorFor(model => model.DateModified)
         </div>
         <!------------------tags------------------>

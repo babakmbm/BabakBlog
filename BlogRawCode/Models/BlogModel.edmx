@@ -52,6 +52,7 @@
           <Property Name="DateTime" Type="datetime" Nullable="false" />
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateModified" Type="datetime" />
+          <Property Name="Author" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="PostsTags">
           <Key>
@@ -159,6 +160,7 @@
           <NavigationProperty Name="Comments" Relationship="Blog.Model.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
           <NavigationProperty Name="Tags" Relationship="Blog.Model.PostsTags" FromRole="Posts" ToRole="Tags" />
           <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="String" Name="Author" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -216,6 +218,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="Blog.Model.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="DateModified" ColumnName="DateModified" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

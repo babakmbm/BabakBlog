@@ -3,8 +3,7 @@
 @using System.Globalization;
 @{
     PersianCalendar pc = new PersianCalendar();
-    DateTime thisDate = DateTime.Now;
-    persiand pdc = new persiand();
+    PMonthString pdc = new PMonthString();
 }
 
 @{
@@ -37,6 +36,7 @@
     </div>
     <div class="postContent">
         <div class="postBody">@(new System.Web.HtmlString(Model.Body))</div>
+        <div style="padding:5px; font-weight:bold; float:left">نویسنده : @Model.Author</div>
         <div style="padding:5px; font-weight:bold;">تگها :</div>    
         <div class="tagList">
             @foreach(Tag tag in Model.Tags)

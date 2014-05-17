@@ -64,7 +64,15 @@
             @Html.TextBoxFor(model => model.Title, new { id = "CustomTextBox-1" })
         </div>
         <br />
-        
+    
+        <div class="editor-label">
+            *@Html.LabelFor(model => model.Author)
+            <span class="validationMessage">@Html.ValidationMessageFor(model => model.Author)</span>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Author, new { id = "CustomTextBox-4" })
+        </div>
+        <br />
         <!------------------tags------------------>
         <div class="editor-label">
             تگ ها(جداسازی با یک فاصله)

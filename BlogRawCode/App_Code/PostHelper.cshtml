@@ -6,7 +6,7 @@
 {
     PersianCalendar pc = new PersianCalendar();
     DateTime thisDate = DateTime.Now;
-    persiand pdc = new persiand();
+    PMonthString pdc = new PMonthString();
     
     <div class="postTitle"> <a href="@Href("~/Posts/Details/" + post.ID)"><span class="glyphicon glyphicon-pencil"></span> @post.Title</a></div>
     <div class="postContainer">
@@ -32,6 +32,8 @@
         </div>
         <div class="postContent">
             <div class="postBody">@html.Raw(post.Body)</div>
+            <div style="padding:5px; font-weight:bold; float:left">نویسنده : @post.Author</div>
+
             <div style="padding:5px; font-weight:bold;">تگ ها :</div>
             <div class="tagList">
                 @foreach(Tag tag in post.Tags)

@@ -45,6 +45,7 @@
     <NavigationProperty Name="Comments" Relationship="Blog.Model.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
     <NavigationProperty Name="Tags" Relationship="Blog.Model.PostsTags" FromRole="Posts" ToRole="Tags" />
     <Property Type="DateTime" Name="DateModified" Precision="3" />
+    <Property Type="String" Name="Author" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>

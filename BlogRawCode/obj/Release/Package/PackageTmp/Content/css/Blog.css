@@ -113,15 +113,11 @@ body
 
 #footer 
 {
-    padding:20px 0 15px 0;
+    direction:ltr;
+    font-family:'Times New Roman';
+    margin-top:70px;
     color: #ffffff;
-}
-
-#footer a 
-{
-    text-decoration:none;
-    margin:5px 5px;
-    color:#132726;
+    background-color:#2B3336;
 }
 
 #topSeparator
@@ -427,41 +423,17 @@ linkList a
 #sidebar 
 {
     float:right;
-    width:15%;
     margin:80px 30px 0 20px;
-    padding:10px 10px 10px 10px;
     z-index:1;
     font-family:DastNevis;
     font-size:1.2em;
-
+    margin-right:80px;
 }
 
-#sidebar .tile-1 a 
-{
-    text-decoration: none;
-    font-weight: bolder;
-    color: #ffffff;
-    -webkit-text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
-    text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
-}
 
-#sidebar .tile-1 a:hover 
-{
-    color:#D25A3F;
-    -webkit-text-shadow:  none;
-    text-shadow:  none;
-}
-
-#portrait, #twitterHeader, #FeedList, #facebookHeader, #GithubLink
+#twitterHeader, #FeedList, #facebookHeader, #GithubLink
 {
     margin:10% 0 10px 0;
-}
-
-#portrait 
-{
-    width:65%;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
 }
 
 .panel {
@@ -470,17 +442,36 @@ linkList a
     border-radius:0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    background:0;
+    padding: 20px;
 }
 
 .panel-primary > .panel-heading {
     border-radius:0;
-    background-color:#303030;
+    background:0;
     color:#fff;
+    border-bottom:5px solid #217AA6;
+    font-weight:bold;
+    -webkit-text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
 }
 
 .panel-body {
-    background-color:#fff;
+    background-color:0;
     font-weight:bold;
+}
+
+.panel-body a, .panel-body p {
+    color:#fff;
+    -webkit-text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    text-shadow:  0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+    text-decoration:none;
+}
+
+.panel-body a:hover {
+    color:#D25A3F;
+    -webkit-text-shadow:  none;
+    text-shadow:  none;
 }
 
 #main 
@@ -557,7 +548,7 @@ linkList a
 
 #CustomTextBox-1 
 {
-    width:500px;
+    width:600px;
     height:25px;
 }
 
@@ -569,11 +560,20 @@ linkList a
 
 .CustomTextBox-3
 {
-    direction:ltr;
+    direction:rtl;
     width:400px;
     height:25px;
-    text-align:left;
+    text-align:right;
 }
+
+#CustomTextBox-4
+{
+    direction:rtl;
+    width:500px;
+    height:25px;
+    text-align:right;
+}
+
 
 .table {
     background-color:#fff;
