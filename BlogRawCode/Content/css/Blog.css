@@ -499,8 +499,10 @@ linkList a
 .message 
 {
     direction:rtl;
+    font-family:DastNevis;
     padding:15px 15px 15px 50px;
-    width:600px;
+    width:100%;
+    line-height:1.5em;
     text-align:right;
     margin-left:35px;
     margin-bottom:80px;
@@ -529,6 +531,20 @@ linkList a
     padding-bottom:10px;
 }
 
+.display-label 
+{
+    font-family: DastNevis;
+    font-size:18px;
+    padding-bottom:10px;
+}
+
+.display-field 
+{
+    padding:10px;
+    text-align:justify;
+    font-weight:bold;
+}
+
 .validationMessage 
 {
     padding-right:20px;
@@ -548,7 +564,8 @@ linkList a
 
 #CustomTextBox-1 
 {
-    width:600px;
+    direction:ltr;
+    width:500px;
     height:25px;
 }
 
@@ -569,9 +586,16 @@ linkList a
 #CustomTextBox-4
 {
     direction:rtl;
-    width:500px;
+    width:550px;
     height:25px;
     text-align:right;
+}
+
+#CustomTextBox-5 
+{
+    direction:rtl;
+    width:300px;
+    height:25px;
 }
 
 
@@ -597,3 +621,7 @@ linkList a
     color:#D25A3F;
 }
 
+.table a:hover {
+    color:#217AA6;
+    text-decoration:none;
+}

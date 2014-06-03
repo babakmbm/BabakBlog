@@ -14,6 +14,7 @@ namespace Blog.Controllers
     public class PostsController : Controller
     {
         private BlogModel model = new BlogModel();
+        public bool IsAdmin { get { return Session["IsAdmin"] != null && (bool)Session["IsAdmin"]; } }
         private const int PostsPerPage = 4;
         private const int PostPerFeed = 25;
         
@@ -194,7 +195,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditPost(Post post, string t, int id) /*TODO: FIX THIS: TAGS Wont UPDATE*/
+        public ActionResult EditPost(Post post, string t, int id) /*FIXED: TAGS Wont UPDATE*/
         {
             if (IsAdmin)
             {
@@ -272,6 +273,5 @@ namespace Blog.Controllers
             }
         }
 
-        public bool IsAdmin { get {return Session["IsAdmin"] != null && (bool)Session["IsAdmin"]; } }
     }
 }

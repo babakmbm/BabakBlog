@@ -1,0 +1,43 @@
+﻿@model Blog.Models.ContactMe
+
+@{
+    bool isAdmin = ViewBag.IsAdmin;
+    ViewBag.Title = "ContactDetails";
+}
+<div class="postContainer">
+    <div class="postContent">
+        <div class="display-label">فرستنده:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <hr />
+        <div class="display-label">موضوع:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Subject)
+        </div>
+
+        <hr />
+        <div class="display-label">پست الکترونیکی:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+
+        <hr />
+        <div class="display-label">تاریخ:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateTime)
+        </div>
+
+        <hr />
+        <div class="display-label">متن پیام:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Body)
+        </div>
+        <br />
+        <p style="text-align:left">
+            <a class="btn btn-primary">پاسخ به فرستنده</a>
+        </p>
+    </div>
+</div>
+

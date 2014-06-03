@@ -4,22 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Blog.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="BlogModelStoreContainer">
-          <EntitySet Name="Administrators" EntityType="Blog.Model.Store.Administrators" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Comments" EntityType="Blog.Model.Store.Comments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Posts" EntityType="Blog.Model.Store.Posts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PostsTags" EntityType="Blog.Model.Store.PostsTags" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Tags" EntityType="Blog.Model.Store.Tags" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Comments_Posts" Association="Blog.Model.Store.FK_Comments_Posts">
+      <Schema Namespace="Blog.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BlogModelsStoreContainer">
+          <EntitySet Name="Administrators" EntityType="Blog.Models.Store.Administrators" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comments" EntityType="Blog.Models.Store.Comments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactMe" EntityType="Blog.Models.Store.ContactMe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Posts" EntityType="Blog.Models.Store.Posts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PostsTags" EntityType="Blog.Models.Store.PostsTags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tags" EntityType="Blog.Models.Store.Tags" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Comments_Posts" Association="Blog.Models.Store.FK_Comments_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK_PostsTags_Posts" Association="Blog.Model.Store.FK_PostsTags_Posts">
+          <AssociationSet Name="FK_PostsTags_Posts" Association="Blog.Models.Store.FK_PostsTags_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="PostsTags" EntitySet="PostsTags" />
           </AssociationSet>
-          <AssociationSet Name="FK_PostsTags_Tags" Association="Blog.Model.Store.FK_PostsTags_Tags">
+          <AssociationSet Name="FK_PostsTags_Tags" Association="Blog.Models.Store.FK_PostsTags_Tags">
             <End Role="Tags" EntitySet="Tags" />
             <End Role="PostsTags" EntitySet="PostsTags" />
           </AssociationSet>
@@ -42,6 +43,17 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Body" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ContactMe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="128" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
@@ -70,10 +82,10 @@
           <Property Name="Name" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_Comments_Posts">
-          <End Role="Posts" Type="Blog.Model.Store.Posts" Multiplicity="1">
+          <End Role="Posts" Type="Blog.Models.Store.Posts" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Comments" Type="Blog.Model.Store.Comments" Multiplicity="*" />
+          <End Role="Comments" Type="Blog.Models.Store.Comments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Posts">
               <PropertyRef Name="ID" />
@@ -84,10 +96,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PostsTags_Posts">
-          <End Role="Posts" Type="Blog.Model.Store.Posts" Multiplicity="1">
+          <End Role="Posts" Type="Blog.Models.Store.Posts" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="PostsTags" Type="Blog.Model.Store.PostsTags" Multiplicity="*" />
+          <End Role="PostsTags" Type="Blog.Models.Store.PostsTags" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Posts">
               <PropertyRef Name="ID" />
@@ -98,10 +110,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PostsTags_Tags">
-          <End Role="Tags" Type="Blog.Model.Store.Tags" Multiplicity="1">
+          <End Role="Tags" Type="Blog.Models.Store.Tags" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="PostsTags" Type="Blog.Model.Store.PostsTags" Multiplicity="*" />
+          <End Role="PostsTags" Type="Blog.Models.Store.PostsTags" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tags">
               <PropertyRef Name="ID" />
@@ -111,20 +123,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Blog.Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Blog.Models" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BlogModel" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Administrators" EntityType="Blog.Model.Administrator" />
-          <EntitySet Name="Comments" EntityType="Blog.Model.Comment" />
-          <EntitySet Name="Posts" EntityType="Blog.Model.Post" />
-          <EntitySet Name="Tags" EntityType="Blog.Model.Tag" />
-          <AssociationSet Name="FK_Comments_Posts" Association="Blog.Model.FK_Comments_Posts">
+          <EntitySet Name="Administrators" EntityType="Blog.Models.Administrator" />
+          <EntitySet Name="Comments" EntityType="Blog.Models.Comment" />
+          <EntitySet Name="ContactMes" EntityType="Blog.Models.ContactMe" />
+          <EntitySet Name="Posts" EntityType="Blog.Models.Post" />
+          <EntitySet Name="Tags" EntityType="Blog.Models.Tag" />
+          <AssociationSet Name="FK_Comments_Posts" Association="Blog.Models.FK_Comments_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="PostsTags" Association="Blog.Model.PostsTags">
+          <AssociationSet Name="PostsTags" Association="Blog.Models.PostsTags">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Tags" EntitySet="Tags" />
           </AssociationSet>
@@ -147,7 +161,18 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="Body" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Post" Relationship="Blog.Model.FK_Comments_Posts" FromRole="Comments" ToRole="Posts" />
+          <NavigationProperty Name="Post" Relationship="Blog.Models.FK_Comments_Posts" FromRole="Comments" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="ContactMe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Subject" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -157,10 +182,10 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Comments" Relationship="Blog.Model.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
-          <NavigationProperty Name="Tags" Relationship="Blog.Model.PostsTags" FromRole="Posts" ToRole="Tags" />
-          <Property Type="DateTime" Name="DateModified" Precision="3" />
-          <Property Type="String" Name="Author" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="Author" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Comments" Relationship="Blog.Models.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
+          <NavigationProperty Name="Tags" Relationship="Blog.Models.PostsTags" FromRole="Posts" ToRole="Tags" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -168,13 +193,13 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <NavigationProperty Name="Posts" Relationship="Blog.Model.PostsTags" FromRole="Tags" ToRole="Posts" />
+          <NavigationProperty Name="Posts" Relationship="Blog.Models.PostsTags" FromRole="Tags" ToRole="Posts" />
         </EntityType>
         <Association Name="FK_Comments_Posts">
-          <End Role="Posts" Type="Blog.Model.Post" Multiplicity="1">
+          <End Role="Posts" Type="Blog.Models.Post" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Comments" Type="Blog.Model.Comment" Multiplicity="*" />
+          <End Role="Comments" Type="Blog.Models.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Posts">
               <PropertyRef Name="ID" />
@@ -185,17 +210,17 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PostsTags">
-          <End Role="Posts" Type="Blog.Model.Post" Multiplicity="*" />
-          <End Role="Tags" Type="Blog.Model.Tag" Multiplicity="*" />
+          <End Role="Posts" Type="Blog.Models.Post" Multiplicity="*" />
+          <End Role="Tags" Type="Blog.Models.Tag" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BlogModelStoreContainer" CdmEntityContainer="BlogModel">
+        <EntityContainerMapping StorageEntityContainer="BlogModelsStoreContainer" CdmEntityContainer="BlogModel">
           <EntitySetMapping Name="Administrators">
-            <EntityTypeMapping TypeName="Blog.Model.Administrator">
+            <EntityTypeMapping TypeName="Blog.Models.Administrator">
               <MappingFragment StoreEntitySet="Administrators">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -204,7 +229,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="Blog.Model.Comment">
+            <EntityTypeMapping TypeName="Blog.Models.Comment">
               <MappingFragment StoreEntitySet="Comments">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PostID" ColumnName="PostID" />
@@ -215,27 +240,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
-            <EntityTypeMapping TypeName="Blog.Model.Post">
-              <MappingFragment StoreEntitySet="Posts">
-                <ScalarProperty Name="Author" ColumnName="Author" />
-                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <EntitySetMapping Name="ContactMes">
+            <EntityTypeMapping TypeName="Blog.Models.ContactMe">
+              <MappingFragment StoreEntitySet="ContactMe">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="Blog.Models.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tags">
-            <EntityTypeMapping TypeName="Blog.Model.Tag">
+            <EntityTypeMapping TypeName="Blog.Models.Tag">
               <MappingFragment StoreEntitySet="Tags">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="PostsTags" TypeName="Blog.Model.PostsTags" StoreEntitySet="PostsTags">
+          <AssociationSetMapping Name="PostsTags" TypeName="Blog.Models.PostsTags" StoreEntitySet="PostsTags">
             <EndProperty Name="Posts">
               <ScalarProperty Name="ID" ColumnName="PostID" />
             </EndProperty>

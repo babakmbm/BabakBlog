@@ -1,9 +1,9 @@
-﻿FIX THE TAGS PROBLEM IN EDITPOST --> FIXED
+﻿FIX THE TAGS PROBLEM IN EDITPOST--> FIXED
+USING PERSIAN DATETIME---SHAMSI DATETIME---> Fixed
+Address the validation error for long tags when creating a post---> Fixed
 Tags should be a finite number and present like a Dropdown menu.
 VALIDATION IN LOGIN.
 Change the Login System.
 GET BACK TO SAME PAGE AFTER LOGIN.
 CODE FORMATTING (PRETTY CODE) IN TINYMCE.
-USING PERSIAN DATETIME --- SHAMSI DATETIME. ---> Fixed
 Use Captcha for Comments.
-Address the validation error for long tags when creating a post.

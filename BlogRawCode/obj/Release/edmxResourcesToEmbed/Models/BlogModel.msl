@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BlogModelStoreContainer" CdmEntityContainer="BlogModel">
+  <EntityContainerMapping StorageEntityContainer="BlogModelsStoreContainer" CdmEntityContainer="BlogModel">
     <EntitySetMapping Name="Administrators">
-      <EntityTypeMapping TypeName="Blog.Model.Administrator">
+      <EntityTypeMapping TypeName="Blog.Models.Administrator">
         <MappingFragment StoreEntitySet="Administrators">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Comments">
-      <EntityTypeMapping TypeName="Blog.Model.Comment">
+      <EntityTypeMapping TypeName="Blog.Models.Comment">
         <MappingFragment StoreEntitySet="Comments">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PostID" ColumnName="PostID" />
@@ -22,27 +22,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Posts">
-      <EntityTypeMapping TypeName="Blog.Model.Post">
-        <MappingFragment StoreEntitySet="Posts">
-          <ScalarProperty Name="Author" ColumnName="Author" />
-          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+    <EntitySetMapping Name="ContactMes">
+      <EntityTypeMapping TypeName="Blog.Models.ContactMe">
+        <MappingFragment StoreEntitySet="ContactMe">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
           <ScalarProperty Name="Body" ColumnName="Body" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="Blog.Models.Post">
+        <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Tags">
-      <EntityTypeMapping TypeName="Blog.Model.Tag">
+      <EntityTypeMapping TypeName="Blog.Models.Tag">
         <MappingFragment StoreEntitySet="Tags">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PostsTags" TypeName="Blog.Model.PostsTags" StoreEntitySet="PostsTags">
+    <AssociationSetMapping Name="PostsTags" TypeName="Blog.Models.PostsTags" StoreEntitySet="PostsTags">
       <EndProperty Name="Posts">
         <ScalarProperty Name="ID" ColumnName="PostID" />
       </EndProperty>
