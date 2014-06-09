@@ -7,13 +7,17 @@
     <script src="@Url.Content("~/Scripts/Login.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/SHA256.js")" type="text/javascript"></script>
 }
-
-<div id="LoginContainer">
+<br /><br />
+<div id="LoginContainer" style="width:500px; font-weight:bold;">
     <form action="@Href("~/Accounts/Login")" method="post" id="loginForm">
-        Name <br /><input type="text" name="name" id="name" /><br />
-        Password <br /><input type="password" name="password" id="password" /><br />
+        <div style="font-size:1.6em;">برای ورود از فرم زیر استفاده کنید:</div><br /><br />
+        *نام کاربری <br /><br /><input type="text" name="name" id="name" style="text-align:left; width:450px; border-radius:5px;" /><br /><br /><br />
+        *کلمه عبور <br /><br /><input type="password" name="password" id="password" style="text-align:left; width:450px; border-radius:5px;" /><br />
         <input type="hidden" name="nonce" id="nonce" value="@Model" />
         <input type="hidden" name="hash" id="hash" value="hash" />
-        <input type="button" onclick="getPasswordHash('password', 'nonce', 'hash'); $('#loginForm').submit();" value="ورود" />
+        <br /><br /><br />
+        <p id="submitButton" style="margin-left:18px;">
+            <input type="button" class="btn btn-primary btn-block" onclick="getPasswordHash('password', 'nonce', 'hash'); $('#loginForm').submit();" value="ورود به حساب کاربری" />
+        </p>
     </form>
 </div>

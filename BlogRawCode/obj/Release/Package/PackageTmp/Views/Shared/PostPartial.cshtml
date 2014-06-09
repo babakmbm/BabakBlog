@@ -18,46 +18,63 @@
                 <div class="month">@pdc.pdc(pc.GetMonth(Model.DateTime))</div>
                 <div class="day">@pc.GetDayOfMonth(Model.DateTime)</div>
                 
-                
                 @if(ViewBag.IsAdmin)
-                    {          
+                {   
+                    <div class="tabOpener" data-toggle="tooltip" data-placement="left" title="برای مشاهده اطلاعات این پست کلیک کنید"><span class="glyphicon glyphicon-chevron-down"></span></div> 
+                    <div class="editTab">
+                        <div>ساعت:</div>      
                         <div>@Model.DateTime.ToString("HH:mm:ss")</div>
-                        <hr />          
+                        <span class="glyphicon glyphicon-arrow-down"></span>         
                         <div> اصلاح در:</div>
-                        <div>@pc.GetYear(Model.DateModified)/@pc.GetMonth(Model.DateModified)/@pc.GetDayOfMonth(Model.DateModified)</div>
-                        <div>@Model.DateModified.ToString("HH:mm:ss")</div>    
-                    }
+                        <div>
+                            @pc.GetYear(Model.DateModified)/
+                            @pc.GetMonth(Model.DateModified)/
+                            @pc.GetDayOfMonth(Model.DateModified)
+                        </div>
+                        <div>@Model.DateModified.ToString("HH:mm:ss")</div>
+                    </div>    
+                }
         </div>  
         <div class="commentsTab">
             <a href="@Href("~/Posts/Details/" + Model.ID + "#comments")">
                 <div class="commentsIcon">.</div> @Model.Comments.Count()
             </a>
         </div>
+        
     </div>
     <div class="postContent">
-        <div class="postBody">@(new System.Web.HtmlString(Model.Body))</div>
-        <div style="padding:5px; font-weight:bold; float:left">نویسنده : @Model.Author</div>
-        <div style="padding:5px; font-weight:bold;">تگها :</div>    
-        <div class="tagList">
-            @foreach(Tag tag in Model.Tags)
-                {
-                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
-                }
-        </div>  
-        @*<div class="linkList">
-            @{ string url="http://techlist.ir/posts/details/" + Model.ID;}
-            <a href="http://www.reddit.com/submit" target="_blank" onclick="window.location = 'http://www.reddit.com/submit?url=@url'; return false"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="@url" data-text="Check out =>">Tweet</a>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-        </div>*@
-    </div>
-    @if(isAdmin)
-        {
-            <div class="PostControlPanel">
-                <a class="btn btn-default" href="@Href("~/Posts/Delete/" + Model.ID)">حذف پست <span class="glyphicon glyphicon-trash"></span></a>
-                <a class="btn btn-default" href="@Href("~/Posts/EditPost/" + Model.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
+            <div class="postPanel-2">
+                <div style="font-weight:bold;">نویسنده : @Model.Author 
+                    <div style="float:left;">
+                        <a href="#"><span class="fa fa-print"></span></a>
+                        <a href="#"><span class="fa fa-envelope-o"></span></a>
+                        <a href="#"><span class="fa fa-twitter-square"></span></a>
+                        <a href="#"><span class="fa fa-facebook-square"></span></a>
+                        <a href="#"><span class="fa fa-linkedin-square"></span></a>
+                    </div>
+                </div>
             </div>
-        }
+            <div class="postBody">@(new System.Web.HtmlString(Model.Body))</div>
+            <div class="postPanel">
+                <div style="padding:5px; font-weight:bold;">تگ ها :</div>
+                <div class="tagList">
+                    @foreach (Tag tag in Model.Tags)
+                    {
+                        <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
+                    }
+                </div>
+            </div>
+        </div>
+    @if(isAdmin)
+    {
+        <div class="PostControlPanel">
+            <a class="btn btn-default delete-btn" href="@Href("~/Posts/Delete/" + Model.ID)">حذف پست <span class="glyphicon glyphicon-trash"></span></a>
+            <a class="btn btn-default edit-btn" href="@Href("~/Posts/EditPost/" + Model.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
+        </div>
+    }
+    <div id="showComment" class="btn btn-primary btn-block">
+         نظرات (@Model.Comments.Count()) <span class="glyphicon glyphicon-circle-arrow-down"></span>
+    </div>
 </div>
 
 <!-- -------------Comments----------------- -->
@@ -71,19 +88,19 @@
                  <div class="commentName">
                      @if (isAdmin && !string.IsNullOrWhiteSpace(comment.Email))
                      {
-                         @comment.Name <br />
-                         <a href="mailto:@comment.Email">@comment.Email</a> <br />
+                         <span class="glyphicon glyphicon-user"></span> @comment.Name <br />
+                         <span class="glyphicon glyphicon-envelope"></span> <a class="emailLink" href="mailto:@comment.Email">@comment.Email</a> <br />
                          @:می گوید:
                      }
                      else if (isAdmin && string.IsNullOrWhiteSpace(comment.Email))
                      {
-                         @comment.Name <br />
-                         @:[NO EMAIL] <br />
+                         <span class="glyphicon glyphicon-user"></span> @comment.Name <br />
+                         <span class="glyphicon glyphicon-envelope"></span> @:[ایمیل وارد نشده] <br />
                          @:می گوید:
                      }
                      else
                      {
-                         @comment.Name
+                         <span class="glyphicon glyphicon-user"></span> @comment.Name
                          @:می گوید:
                      }
                  </div>
@@ -92,30 +109,18 @@
                       @(new System.Web.HtmlString(comment.Body))
                  </div>
                  <div class="commentTime">
-                     at: @comment.DateTime.ToString("HH:mm") on @comment.DateTime.ToString("yyyy/MM/dd")
+                     @comment.DateTime.ToString("HH:mm:ss") - @pc.GetYear(comment.DateTime)/@pc.GetMonth(comment.DateTime)/@pc.GetDayOfMonth(comment.DateTime) <span class="glyphicon glyphicon-calendar"></span>
                  </div>
                  @if (isAdmin)
                  {
                     <div class="CommentControlPanel">
-                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)">حذف</a>
+                        <br />
+                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> حذف این نظر</a>
                     </div>
                  }
              </div> 
             }
-            <!--
-            <div id="commentEditor">
-                <div id="commentPrompt">نظرات</div><br />
-                <form action="@Href("~/Posts/Comment/")" method="post">
-                    <input type="hidden" name="ID" />
-                    <input type="hidden" name="PostID" />
-                    <input type="hidden" name="DateTime" />
-                    نام<br /><input type="text" id="commentNamePrompt" name="Name" />  <br />
-                    پست الکترونیکی<br /><input type="text" id="commentEmailPrompt" name="Email" />  <br />
-                    متن نظر<br /><textarea id="elm1" name="Body"></textarea><br />
-                    <input type="submit" class="commentSubmitInput" name="submit" value="Submit!" /><br />
-                </form>
-            </div>
-                -->
+            <a class="btn btn-primary btn-block" href="@Url.Content("~/Posts/CreateComment/"+ Model.ID)">نظر خود را وارد کنید</a>
         </div>    
     }
         

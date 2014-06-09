@@ -51,12 +51,12 @@
         <span class="validationMessage">@Html.ValidationMessageFor(model => model.Body)</span>
     </div>
     <div class="editor-field">
-        @Html.TextAreaFor(model => model.Body, new {cols="80", rows="10" })
+        @Html.TextAreaFor(model => model.Body, new {cols="70", rows="10" })
     </div>
     <br />
     <p id="submitButton">
-        <input class="btn btn-primary btn-lg" type="submit" value="ارسال" />
+        <input class="btn btn-primary" type="submit" value="ارسال" />
     </p>
 }
 </div>
-<a class="btn btn-primary" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>
+<a class="btn btn-primary btn-block" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Blog.Models;
 using System.Security.Cryptography;
 using System.Text;
+
 namespace Blog.Controllers
 {
     public class AccountsController : Controller

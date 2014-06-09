@@ -8,19 +8,31 @@
     DateTime thisDate = DateTime.Now;
     PMonthString pdc = new PMonthString();
     
-    <div class="postTitle"> <a href="@Href("~/Posts/Details/" + post.ID)"><span class="glyphicon glyphicon-pencil"></span> @post.Title</a></div>
+    <div class="postTitle"> 
+        <a href="@Href("~/Posts/Details/" + post.ID)"><span class="glyphicon glyphicon-pencil"></span> @post.Title</a>
+    </div>
     <div class="postContainer">
         <div class="postTabs">
             <div class="dateTab">
-                <div class="month">@pdc.pdc(pc.GetMonth(post.DateTime))</div>
-                <div class="day">@pc.GetDayOfMonth(post.DateTime)</div>
+                <div class="month">
+                    @pdc.pdc(pc.GetMonth(post.DateTime))
+                </div>
+                <div class="day">
+                    @pc.GetDayOfMonth(post.DateTime)
+                </div>
                 @if(IsAdmin)
                     {  
-                        <div>@post.DateTime.ToString("HH:mm:ss")</div>
-                        <hr />          
-                        <div> اصلاح در:</div>
-                        <div>@pc.GetYear(post.DateModified)/@pc.GetMonth(post.DateModified)/@pc.GetDayOfMonth(post.DateModified)</div>
-                        <div>@post.DateModified.ToString("HH:mm:ss")</div>
+                    <div class="tabOpener" data-toggle="tooltip" data-placement="left" title="برای مشاهده اطلاعات این پست کلیک کنید">
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </div> 
+                        <div class="editTab">
+                            <div>ساعت:</div>
+                            <div>@post.DateTime.ToString("HH:mm:ss")</div>
+                            <span class="glyphicon glyphicon-arrow-down"></span>
+                            <div> اصلاح در:</div>
+                            <div>@pc.GetYear(post.DateModified)/@pc.GetMonth(post.DateModified)/@pc.GetDayOfMonth(post.DateModified)</div>
+                            <div>@post.DateModified.ToString("HH:mm:ss")</div>
+                        </div>
                     }
             </div>
             
@@ -31,81 +43,35 @@
             </div>
         </div>
         <div class="postContent">
-            <div class="postBody">@html.Raw(post.Body)</div>
-            <div style="padding:5px; font-weight:bold; float:left">نویسنده : @post.Author</div>
-
-            <div style="padding:5px; font-weight:bold;">تگ ها :</div>
-            <div class="tagList">
-                @foreach(Tag tag in post.Tags)
-                {
-                    <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
-                }
+            <div class="postPanel-2">
+                <div style="font-weight:bold;">نویسنده : @post.Author 
+                    <div style="float:left;">
+                        <a href="#"><span class="fa fa-print"></span></a>
+                        <a href="#"><span class="fa fa-envelope-o"></span></a>
+                        <a href="#"><span class="fa fa-twitter-square"></span></a>
+                        <a href="#"><span class="fa fa-facebook-square"></span></a>
+                        <a href="#"><span class="fa fa-linkedin-square"></span></a>
+                    </div>
+                </div>
             </div>
-
-            @*<div class="linkList">
-                @{ string url="http://techlist.ir/posts/details/" + post.ID;}
-                <a href="http://www.reddit.com/submit" target="_blank" onclick="window.location = 'http://www.reddit.com/submit?url=@url'; return false"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="@url" data-text="Check out =>">Tweet</a>
-                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
-            </div>*@
-
+            <div class="postBody">@html.Raw(post.Body)</div>
+            <div class="postPanel">
+                <div style="padding:5px; font-weight:bold;">تگ ها :</div>
+                <div class="tagList">
+                    @foreach(Tag tag in post.Tags)
+                    {
+                        <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
+                    }
+                </div>
+            </div>
         </div>
         
         @if(IsAdmin)
         {
             <div class="PostControlPanel">
-                <a class="btn btn-default" href="@Href("~/Posts/Delete/" + post.ID)">حذف پست <span class="glyphicon glyphicon-trash"></span></a>
-                <a class="btn btn-default" href="@Href("~/Posts/EditPost/" + post.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
+                <a class="btn btn-default delete-btn" href="@Href("~/Posts/Delete/" + post.ID)">حذف پست <span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-default edit-btn" href="@Href("~/Posts/EditPost/" + post.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
             </div>
         }
     </div>
-    
-    <!-- -------------Comments----------------- -->
-    
-    if(showComments == true){
-        <div id="commentContainer">
-            <a id="comments"></a>
-            @foreach(Comment comment in post.Comments.OrderByDescending(x => x.DateTime))
-            {
-             <div class="comment">
-                 <div class="commentName">
-                     @if(!string.IsNullOrWhiteSpace(comment.Email))
-                     {
-                      <a href="mailto:@comment.Email">@comment.Name</a>
-                         @:می گوید:   
-                     }
-                     else
-                     {
-                      @comment.Name
-                        @:می گوید:   
-                     }
-                 </div>
-                 
-                 <div class="commentBody">
-                     @html.Raw(comment.Body)
-                 </div>
-                 <div class="commentTime">
-                     at: @comment.DateTime.ToString("HH:mm") on @comment.DateTime.ToString("yyyy/MM/dd")
-                 </div>
-                 @if (IsAdmin)
-                 {
-                    <div class="CommentControlPanel">
-                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)">حذف</a>
-                    </div>
-                 }
-             </div> 
-            }
-            <!-- 
-                <div id="commentEditor">
-                    <div id="commentPrompt">نظرات</div><br />
-                    <form action="@Href("~/Posts/Comment/" + post.ID)" method="post">
-                        نام<br /><input type="text" id="commentNamePrompt" name="name" />  <br />
-                        پست الکترونیکی<br /><input type="text" id="commentEmailPrompt" name="email" />  <br />
-                        متن نظر<br /><textarea id="elm1" name="body"></textarea><br />
-                        <input type="submit" class="commentSubmitInput" name="submit" value="Submit!" /><br />
-                    </form>
-                </div>
-             -->
-        </div>    
-    }
 }

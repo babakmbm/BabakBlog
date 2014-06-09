@@ -2,8 +2,8 @@
 USING PERSIAN DATETIME---SHAMSI DATETIME---> Fixed
 Address the validation error for long tags when creating a post---> Fixed
 Tags should be a finite number and present like a Dropdown menu.
+
 VALIDATION IN LOGIN.
-Change the Login System.
-GET BACK TO SAME PAGE AFTER LOGIN.
+Change the Login System. --- The Asp.net Mvc Membership is good
 CODE FORMATTING (PRETTY CODE) IN TINYMCE.
 Use Captcha for Comments.

@@ -23,16 +23,16 @@
 <ul class="pager">
     @if (isNextLinkVisible)
     {
-        <li><a class="pagingLinks" id="nextLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber + 1 ))">&rarr; قدیمی تر ها</a></li>
+        <li><a class="btn btn-primary" id="nextLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber + 1 ))"><span class="glyphicon glyphicon-hand-right"></span> قدیمی تر ها</a></li>
     }
 
     @if(ViewBag.PageNumber != 0)
     {
-        <li><a class="pagingLinks" id="firstLink" href="@Href("~/Posts/Index/" + 0)">خانه</a></li>
+        <li><a class="btn btn-primary" id="firstLink" href="@Href("~/Posts/Index/" + 0)"><span class="glyphicon glyphicon-home"></span></a></li>
     }
 
     @if (isPreviousLinkVisible)
     {
-        <li><a class="pagingLinks" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">جدید تر ها &larr;</a></li>
+        <li><a class="btn btn-primary" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">جدید تر ها <span class="glyphicon glyphicon-hand-left"></span></a></li>
     }
 </ul>

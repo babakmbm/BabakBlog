@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ContactMeController.cs" />
     <Compile Include="Controllers\FeedResult.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Administrator.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>
@@ -147,9 +149,14 @@
   <ItemGroup>
     <Content Include="Content\css\Blog.css" />
     <Content Include="Content\css\bootstrap-rtl.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\93.jpg" />
     <Content Include="Content\Images\Background.png" />
     <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\College-List-2.png" />
     <Content Include="Content\Images\commentHover.png" />
     <Content Include="Content\Images\Comments.png" />
     <Content Include="Content\Images\DarkBackground.png" />
@@ -163,6 +170,7 @@
     <Content Include="Content\Images\p.png" />
     <Content Include="Content\Images\pass.jpg" />
     <Content Include="Content\Images\portrait-f.png" />
+    <Content Include="Content\Images\searchicon.png" />
     <Content Include="Content\Images\separator.png" />
     <Content Include="Content\Images\StrokeBottom.png" />
     <Content Include="Content\Images\StrokeTop.png" />
@@ -348,6 +356,37 @@
       <DependentUpon>BlogModel.edmx</DependentUpon>
       <LastGenOutput>BlogModel.cs</LastGenOutput>
     </Content>
+    <Content Include="ClassDiagram.cd" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\spinning.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\BabakBlogProfile.pubxml" />
     <Content Include="Views\Posts\Tags.cshtml" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
@@ -387,6 +426,10 @@
     <Content Include="Views\ContactMe\ContactIndex.cshtml" />
     <Content Include="Views\ContactMe\ContactDetails.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

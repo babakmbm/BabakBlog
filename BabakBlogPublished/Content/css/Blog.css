@@ -9,7 +9,9 @@
     font-family:Mitra;
     src:url('/Content/Fonts/BMITRA.TTF');
 }
-
+html {
+    min-width:675px;
+}
 body 
 {
     margin:0;
@@ -27,6 +29,16 @@ body
     border:none;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+}
+
+.navbar-toggle {
+    border:0;
+    cursor:pointer;
+}
+
+.navbar-toggle .glyphicon {
+    color:#fff;
+    font-size:25px;
 }
 
 .navbar-inverse {
@@ -56,9 +68,9 @@ body
 }
 
 #searchBox input {
+    display:none;
     color: #D25A3F;
     border: 1px solid #D25A3F;
-    border-radius: 25px;
 }
 
 #searchBox input:focus {
@@ -67,17 +79,17 @@ body
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
 }
 
-#searchBox button {
-    border: 1px solid #D25A3F;
-    width:100px;
-    border-radius:50px;
+#SearchIcon {
+  display: inline-block;
+  font-size: 1.5em;
+  vertical-align: middle;
+  cursor: pointer;
+  color:#fff;
 }
 
-#searchBox button:hover {
-    border-color: #217AA6;
-    background-color:#fff;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #217AA6;
+#SearchIcon .glyphicon {
+    top:7px;
+    padding-right:8px;
 }
 
 #headerLogo
@@ -86,19 +98,8 @@ body
     text-align:right;
 }
 
-#forkme 
-{
-  display: block;
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  border: 0;
-  background: url(/Content/Images/forkme.png) no-repeat;
-  width: 149px;
-  height: 149px;
-  text-indent: -1000px;
-  overflow: hidden;
+#headerLogo a:hover {
+    text-decoration:none;
 }
 
 .titleImage-1 
@@ -150,6 +151,13 @@ body
 #bottomSeparator 
 {
     margin-top:20px;
+}
+
+#main 
+{
+    min-height:600px;
+    margin:5px 5% 20px 0;
+    float:right;
 }
 
 #content 
@@ -214,6 +222,41 @@ img
     font-family:Mitra;
 }
 
+.tabOpener 
+{
+    cursor:pointer;
+}
+
+.tabOpener:hover 
+{
+    color:#D9534F;
+}
+
+.editTab 
+{
+    display:none;
+}
+
+#showComment 
+{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    background:#303030;
+    width:600px;
+    margin-top:10px;
+    text-align:right;
+    padding: 10px 27px;
+    border-radius:3px;
+    font-size:1.3em;
+    font-weight:bold;
+}
+
+#showComment span
+{
+    vertical-align:middle;
+    margin-right:445px;
+}
+
 .month 
 {
 }
@@ -275,8 +318,28 @@ img
     margin-left:35px;
     color:#000000;
     background-color:#ffffff;
+    border:1px solid #357ebd;
+    border-radius:3px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+}
+
+.postPanel 
+{
+    background-color:whitesmoke; 
+    padding:10px 20px 50px 20px; 
+    margin-bottom:20px; 
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.postPanel-2 
+{
+    background-color:whitesmoke; 
+    padding:10px 20px 10px 20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-radius:5px;
 }
 
 .postBody 
@@ -331,14 +394,21 @@ linkList a
 
 .PostControlPanel 
 {
-    width:635px;
-    margin:20px auto;
+    margin-top:10px;
     font-family:DastNevis;
+    font-size:1.3em;
+    font-weight:bold;
+    background:#D9534F;
+    width:600px;
+    padding: 10px 20px;
+    border: 1px solid #D2322D;
+    border-radius:3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
 }
 
 .PostControlPanel a 
 {
-    margin: 0 100px;
     color: #D25A3F;
     font-weight:bold;
 }
@@ -348,6 +418,16 @@ linkList a
     background-color:#fff;
 }
 
+.PostControlPanel .delete-btn 
+{
+    margin-left:290px;
+}
+
+.PostControlPanel .edit-btn 
+{
+    margin-right:30px;
+}
+
 .comment 
 {
     text-align:right;
@@ -355,7 +435,6 @@ linkList a
     padding:15px;
     background-color:#fff;
     margin-bottom:30px;
-    border:4px groove;
     border-radius:5px;
 }
 
@@ -381,7 +460,9 @@ linkList a
     padding:15px;
     background-color:#fff;
     margin-bottom:30px;
-    border: 4px groove;
+    max-width:675px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
 }
 
 #postPrompt 
@@ -391,9 +472,11 @@ linkList a
 
 #commentContainer 
 {
+    display:none;
     text-align:right;
     width:570px;
     margin:auto;
+    margin-left:45px;
 }
 
 .commentName 
@@ -401,23 +484,32 @@ linkList a
     font-style:italic;
     font:bold 1em DastNevis;
 }
+.emailLink 
+{
+    font-family:'Times New Roman';
+    color:#D25A3F;
+    direction:ltr;
+    text-align:left;
+    text-transform:lowercase;
+}
 
 .commentBody 
 {
     margin:5px;
     font-family:DastNevis;
-    text-indent:35px;
+    text-align:justify;
 }
 
 .commentTime 
 {
     font-style:italic;
     text-align:left;
-    font-size:10px;
+    font-size:1.1em;
 }
 
 .CommentControlPanel 
 {
+    text-align:right;
 }
 
 #sidebar 
@@ -428,6 +520,10 @@ linkList a
     font-family:DastNevis;
     font-size:1.2em;
     margin-right:80px;
+}
+
+#sidebar #panels {
+    
 }
 
 
@@ -474,28 +570,6 @@ linkList a
     text-shadow:  none;
 }
 
-#main 
-{
-    min-height:600px;
-    margin:5px 5% 20px 0;
-    float:right;
-}
-
-
-.pagingLinks 
-{
-    text-decoration:none;
-    color:#303030;
-    font-weight:bold;
-    font-family:DastNevis;
-}
-
-.pagingLinks:hover 
-{
-    color:#D25A3F;
-}
-
-
 .message 
 {
     direction:rtl;
@@ -514,10 +588,14 @@ linkList a
 
 #LoginContainer 
 {
+    text-align:right;
+    color:#000;
+    padding:15px;
     background-color:#fff;
-    padding:50px 120px 50px 30px;
-    text-align:left;
-    border:4px groove;
+    margin-bottom:30px;
+    max-width:675px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1F2427;
 }
 .commentSubmitInput 
 {
@@ -624,4 +702,25 @@ linkList a
 .table a:hover {
     color:#217AA6;
     text-decoration:none;
+}
+
+.scrollToTop 
+{
+    display:none;
+    position:fixed;
+    bottom:25px;
+    left:10px;
+    color:#D25A3F;
+    background-color:whitesmoke;
+    border:none;
+}
+
+.scrollToBottom
+{
+    position:fixed;
+    bottom:25px;
+    left:10px;
+    color:#D25A3F;
+    background-color:whitesmoke;
+    border:none;
 }

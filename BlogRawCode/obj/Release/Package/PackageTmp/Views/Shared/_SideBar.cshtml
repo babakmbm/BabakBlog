@@ -4,6 +4,7 @@
 @{
     const int maxlength = 20;
     
+    //PersianDateTime
     PersianCalendar pc = new PersianCalendar();
     DateTime thisDate = DateTime.Now;
     PMonthString pdc = new PMonthString();
@@ -11,33 +12,36 @@
 }
 
 <div id="sidebar">
-    <div class="panel panel-primary" style="padding:0;">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-calendar"></span>&nbsp تاریخ امروز </div>
-        <div class="panel-body">
-            <p>@pwd.pwd(pc.GetDayOfWeek(thisDate)) - @pc.GetDayOfMonth(thisDate) @pdc.pdc(pc.GetMonth(thisDate)) @pc.GetYear(thisDate)</p> 
+    <div id="panels">
+        <div class="panel panel-primary" >
+            <div class="panel-heading"> <span class="glyphicon glyphicon-user"></span>&nbsp بابک حسینی نژاد </div>
+            <br />
+            <div class="panel-body" style="text-align:right;">
+                <div><img class="img-responsive" src="@Href("/Content/Images/portrait-f.png")" alt="portrait" style="margin:0 auto"/></div>
+                <div id="GithubLink"><a href="https://github.com/babakmbm/BabakBlog" target="_blank"><span class="fa fa-github"></span> کد روی گیت هاب</a></div>
+                <div id="FeedList"><a href="@Href("~/Posts/RSS")" target="_blank"> <span class="fa fa-rss"></span> فید آر اس اس</a></div>
+                <div id="facebookHeader"><a href="http://facebook.com/babakmbm" target="_blank"><span class="fa fa-facebook"></span> روی فیس بوک</a></div>
+                <div id="twitterHeader"><a href="http://twitter.com/babakmbm" target="_blank"><span class="fa fa-twitter"></span> روی توییتر</a></div>
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="panel panel-primary" >
-        <div class="panel-heading"> <span class="glyphicon glyphicon-user"></span>&nbsp بابک حسینی نژاد </div>
         <br />
-        <div class="panel-body" style="text-align:center;">
-            <div><img class="img-responsive" src="@Href("/Content/Images/portrait-f.png")" alt="portrait" style="margin:0 auto"  /></div>
-            <div id="GithubLink"><a href="https://github.com/babakmbm/BabakBlog" target="_blank">کد روی گیت هاب</a></div>
-            <div id="FeedList"><a href="@Href("~/Posts/RSS")" target="_blank">فید آر اس اس</a></div>
-            <div id="facebookHeader"><a href="http://facebook.com/babakmbm" target="_blank">روی فیس بوک</a></div>
-            <div id="twitterHeader"><a href="http://twitter.com/babakmbm" target="_blank">روی توییتر</a></div>
+        <div class="panel panel-primary" style="padding:0;">
+            <div class="panel-heading"> <span class="glyphicon glyphicon-calendar"></span>&nbsp تاریخ امروز </div>
+            <div class="panel-body">
+                <p>@pwd.pwd(pc.GetDayOfWeek(thisDate)) - @pc.GetDayOfMonth(thisDate) @pdc.pdc(pc.GetMonth(thisDate)) @pc.GetYear(thisDate)</p> 
+            </div>
+        </div>
+        <br />
+        <div class="panel panel-primary" style="padding:0;">
+            <div class="panel-heading"> <span class="glyphicon glyphicon-edit"></span>&nbsp آخرین پست ها </div>
+            <div class="panel-body">
+                @foreach(Post p in Model)
+                {
+                    <div data-toggle="tooltip" data-placement="right" title="@p.Title">
+                        <a href="@Url.Content("~/Posts/Details/" + p.ID)"><span class="glyphicon glyphicon-pencil"></span>@if(p.Title.Length > maxlength ){<span>@p.Title.Substring(0,maxlength)...</span>}else{@p.Title} </a>
+                    </div>  
+                }
+            </div>
         </div>
     </div>
-    <br />
-    <div class="panel panel-primary" style="padding:0;">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-edit"></span>&nbsp آخرین پست ها </div>
-        <div class="panel-body">
-            @foreach(Post p in Model)
-            {
-                <div data-toggle="tooltip" data-placement="right" title="@p.Title"><a href="@Url.Content("~/Posts/Details/" + p.ID)"><span class="glyphicon glyphicon-pencil"></span>@if(p.Title.Length > maxlength ){<span>@p.Title.Substring(0,maxlength)...</span>}else{@p.Title} </a></div>  
-            }
-        </div>
-    </div>
-    
 </div>

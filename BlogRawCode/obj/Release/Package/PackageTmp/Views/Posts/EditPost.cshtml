@@ -13,7 +13,7 @@
             language: 'fa',
             selector: "textarea#elm1",
             theme: "modern",
-            width: 800,
+            width: 600,
             height: 200,
             plugins: [
                  "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
@@ -101,11 +101,12 @@
         <div class="editor-field">
             @Html.TextAreaFor(model => model.Body, new { id = "elm1" })
         </div>
-
-        <p>
-            <input type="submit" value="آپدیت" />
+        
+        <br />
+        <p id="submitButton">
+            <input class="btn btn-primary" type="submit" value="آپدیت" />
         </p>
 }
 </div>
-<a class="btn btn-primary" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>
+<a class="btn btn-primary btn-block" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>
 

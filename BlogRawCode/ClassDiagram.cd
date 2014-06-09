@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Blog.Controllers.AboutController" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AboutController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Controllers.AccountsController" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAIAAA=</HashCode>
+      <FileName>Controllers\AccountsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Controllers.ContactMeController" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAIAAACAAAACAAAAAAAAAAAAAIIAAA=</HashCode>
+      <FileName>Controllers\ContactMeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Controllers.FeedResult" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Controllers\FeedResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Controllers.PostsController" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YBAAgAAABAABAAAACAAAAAEACIEAAEAAAAECAAAoQAA=</HashCode>
+      <FileName>Controllers\PostsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.MvcApplication" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAIQAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.BlogModel" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAIAAAAABAAAAAAAEAAAAEAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\BlogModel.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.Administrator" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.Comment" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAEAAAABAAQACAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.ContactMe" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAAAIABAAQAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ContactMe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.Post" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgEAAgAABAAQAAAAAAEQAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Post.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.Tag" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Tag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.PMonthString" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\PMonthString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blog.Models.PWDString" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PWDString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

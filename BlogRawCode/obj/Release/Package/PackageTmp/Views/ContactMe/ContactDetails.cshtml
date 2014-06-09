@@ -1,42 +1,48 @@
 ﻿@model Blog.Models.ContactMe
-
+@using Blog.Models;
+@using System.Globalization;
 @{
+    PersianCalendar pc = new PersianCalendar();
+    PMonthString pdc = new PMonthString();
     bool isAdmin = ViewBag.IsAdmin;
     ViewBag.Title = "ContactDetails";
 }
 <div class="postContainer">
     <div class="postContent">
-        <div class="display-label">فرستنده:</div>
+        <div class="display-label"><span class="glyphicon glyphicon-user"></span> فرستنده:</div>
         <div class="display-field">
             @Html.DisplayFor(model => model.Name)
         </div>
 
         <hr />
-        <div class="display-label">موضوع:</div>
+        <div class="display-label"><span class="glyphicon glyphicon-pencil"></span> موضوع:</div>
         <div class="display-field">
             @Html.DisplayFor(model => model.Subject)
         </div>
 
         <hr />
-        <div class="display-label">پست الکترونیکی:</div>
-        <div class="display-field">
+        <div class="display-label"><span class="glyphicon glyphicon-envelope"></span> پست الکترونیکی:</div>
+        <div class="display-field emailLink">
             @Html.DisplayFor(model => model.Email)
         </div>
 
         <hr />
-        <div class="display-label">تاریخ:</div>
+        <div class="display-label"><span class="glyphicon glyphicon-calendar"></span> تاریخ:</div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.DateTime)
+            @pc.GetYear(Model.DateTime)/
+            @pc.GetMonth(Model.DateTime)/
+            @pc.GetDayOfMonth(Model.DateTime) - 
+            @Model.DateTime.ToString("HH:mm:ss")
         </div>
 
         <hr />
-        <div class="display-label">متن پیام:</div>
-        <div class="display-field">
+        <div class="display-label"><span class="glyphicon glyphicon-bullhorn"></span> متن پیام:</div>
+        <div class="display-field"><span class="glyphicon glyphicon-hand-left"></span>
             @Html.DisplayFor(model => model.Body)
         </div>
         <br />
-        <p style="text-align:left">
-            <a class="btn btn-primary">پاسخ به فرستنده</a>
+        <p>
+            <a class="btn btn-primary btn-block" style="margin-right:15px;">پاسخ به فرستنده</a>
         </p>
     </div>
 </div>

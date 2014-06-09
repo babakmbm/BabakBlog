@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<Blog.Models.ContactMe>
+@using Blog.Models;
+@using System.Globalization;
 
 @{
     bool isAdmin = ViewBag.IsAdmin;
     ViewBag.Title = "لیست پیام های ارسالی";
+    PersianCalendar pc = new PersianCalendar();
+    PMonthString pdc = new PMonthString();
 }
 
 
@@ -26,7 +30,7 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderByDescending(x=> x.DateTime)) {
     <tr>
         <td>@Html.DisplayFor(modelItem => item.ID)</td>
         <td>
@@ -35,11 +39,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Subject)
         </td>
-        <td>
+        <td class="emailLink">
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateTime)
+            @pc.GetYear(item.DateTime)/
+            @pc.GetMonth(item.DateTime)/
+            @pc.GetDayOfMonth(item.DateTime) - 
+            @item.DateTime.ToString("HH:mm:ss")
         </td>
         <td>
             <a href="@Href("~/ContactMe/ContactDetails/" + item.ID)"><span class="glyphicon glyphicon-envelope"></span> </a> -
