@@ -20,19 +20,43 @@
                 
                 @if(ViewBag.IsAdmin)
                 {   
-                    <div class="tabOpener" data-toggle="tooltip" data-placement="left" title="برای مشاهده اطلاعات این پست کلیک کنید"><span class="glyphicon glyphicon-chevron-down"></span></div> 
-                    <div class="editTab">
-                        <div>ساعت:</div>      
-                        <div>@Model.DateTime.ToString("HH:mm:ss")</div>
-                        <span class="glyphicon glyphicon-arrow-down"></span>         
-                        <div> اصلاح در:</div>
-                        <div>
-                            @pc.GetYear(Model.DateModified)/
-                            @pc.GetMonth(Model.DateModified)/
-                            @pc.GetDayOfMonth(Model.DateModified)
+                    <div class="modal fade postInfoModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">اطلاعات پست</h4>
+                          </div>
+                          <div class="modal-body" style="text-align:right; color:#000;">
+                              <table class="table">
+                                  <tr>
+                                    <th>#</th>
+                                    <th><i class="fa fa-calendar"></i> زمان ایجاد</th>
+                                    <th><i class="fa fa-calendar"></i> زمان اصلاح</th>
+                                    <th><i class="fa fa-user"></i> نویسنده</th>
+                                  </tr>
+                                  <tr>
+                                      <td>@Model.ID</td>
+                                      <td>
+                                        @pc.GetYear(Model.DateTime)/
+                                        @pdc.pdc(pc.GetMonth(Model.DateTime))/
+                                        @pc.GetDayOfMonth(Model.DateTime) <br /> @Model.DateTime.ToString("HH:mm:ss")
+                                      </td>
+                                      <td>
+                                        @pc.GetYear(Model.DateModified)/
+                                        @pdc.pdc(pc.GetMonth(Model.DateModified))/
+                                        @pc.GetDayOfMonth(Model.DateModified) <br /> @Model.DateModified.ToString("HH:mm:ss")
+                                      </td>
+                                      <td>@Model.Author</td>
+                                  </tr>
+                              </table>
+                          </div>
                         </div>
-                        <div>@Model.DateModified.ToString("HH:mm:ss")</div>
-                    </div>    
+                      </div>
+                    </div>
+                    <div data-toggle="modal" data-target=".postInfoModal" style="cursor:pointer; color:#fff;">
+                        <i class="fa fa-wrench fa-lg"></i>
+                    </div>
                 }
         </div>  
         <div class="commentsTab">
@@ -45,22 +69,27 @@
     <div class="postContent">
             <div class="postPanel-2">
                 <div style="font-weight:bold;">نویسنده : @Model.Author 
+                    <a class="shareButton">
+                        <span class="fa fa-share-square fa-lg"></span>
+                    </a>
                     <div style="float:left;">
-                        <a href="#"><span class="fa fa-print"></span></a>
-                        <a href="#"><span class="fa fa-envelope-o"></span></a>
-                        <a href="#"><span class="fa fa-twitter-square"></span></a>
-                        <a href="#"><span class="fa fa-facebook-square"></span></a>
-                        <a href="#"><span class="fa fa-linkedin-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-print"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-envelope-o"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-twitter-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-facebook-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-linkedin-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-file-pdf-o"></span></a>
                     </div>
                 </div>
             </div>
             <div class="postBody">@(new System.Web.HtmlString(Model.Body))</div>
             <div class="postPanel">
-                <div style="padding:5px; font-weight:bold;">تگ ها :</div>
+                <span class="glyphicon glyphicon-tags"></span><span style="padding:5px; font-weight:bold;">تگ ها :</span>
+                <br />
                 <div class="tagList">
                     @foreach (Tag tag in Model.Tags)
                     {
-                        <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
+                        <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name</a></span>    
                     }
                 </div>
             </div>
@@ -72,55 +101,85 @@
             <a class="btn btn-default edit-btn" href="@Href("~/Posts/EditPost/" + Model.ID)">ویرایش پست <span class="glyphicon glyphicon-edit"></span></a>
         </div>
     }
-    <div id="showComment" class="btn btn-primary btn-block">
-         نظرات (@Model.Comments.Count()) <span class="glyphicon glyphicon-circle-arrow-down"></span>
+    <div id="showComment" class="btn btn-primary btn-block clearfix">
+         <div style="float:right;"><i class="fa fa-comments"></i> نظرات (@Model.Comments.Count())</div> 
+         <div class="glyphicon glyphicon-circle-arrow-down" style="float:left;"></div>
     </div>
 </div>
 
 <!-- -------------Comments----------------- -->
     
-    @if(showComments == true){
-        <div id="commentContainer">
-            <a id="comments"></a>
-            @foreach(Comment comment in Model.Comments.OrderByDescending(x => x.DateTime))
-            {
-             <div class="comment">
-                 <div class="commentName">
-                     @if (isAdmin && !string.IsNullOrWhiteSpace(comment.Email))
-                     {
-                         <span class="glyphicon glyphicon-user"></span> @comment.Name <br />
-                         <span class="glyphicon glyphicon-envelope"></span> <a class="emailLink" href="mailto:@comment.Email">@comment.Email</a> <br />
-                         @:می گوید:
-                     }
-                     else if (isAdmin && string.IsNullOrWhiteSpace(comment.Email))
-                     {
-                         <span class="glyphicon glyphicon-user"></span> @comment.Name <br />
-                         <span class="glyphicon glyphicon-envelope"></span> @:[ایمیل وارد نشده] <br />
-                         @:می گوید:
-                     }
-                     else
-                     {
-                         <span class="glyphicon glyphicon-user"></span> @comment.Name
-                         @:می گوید:
-                     }
-                 </div>
+@if(showComments == true){
+    <div id="commentContainer">
+        <a id="comments"></a>
+        @foreach(Comment comment in Model.Comments.OrderByDescending(x => x.DateTime))
+        {
+            <div class="comment">
+                <div class="commentName">
+                    @if (isAdmin && !string.IsNullOrWhiteSpace(comment.Email))
+                    {
+                        <span class="glyphicon glyphicon-user"></span> @comment.Name <br />
+                        <span class="glyphicon glyphicon-envelope"></span> <a class="emailLink" href="mailto:@comment.Email">@comment.Email</a> <br />
+                        @:می گوید:
+                    }
+                    else if (isAdmin && string.IsNullOrWhiteSpace(comment.Email))
+                    {
+                        <span class="glyphicon glyphicon-user"></span> @comment.Name <br />
+                        <span class="glyphicon glyphicon-envelope"></span> @:[ایمیل وارد نشده] <br />
+                        @:می گوید:
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-user"></span> @comment.Name
+                        @:می گوید:
+                    }
+                </div>
                  
-                 <div class="commentBody">
-                      @(new System.Web.HtmlString(comment.Body))
-                 </div>
-                 <div class="commentTime">
-                     @comment.DateTime.ToString("HH:mm:ss") - @pc.GetYear(comment.DateTime)/@pc.GetMonth(comment.DateTime)/@pc.GetDayOfMonth(comment.DateTime) <span class="glyphicon glyphicon-calendar"></span>
-                 </div>
-                 @if (isAdmin)
-                 {
-                    <div class="CommentControlPanel">
-                        <br />
-                        <a href="@Href("~/Posts/DeleteComment/" + comment.ID)" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> حذف این نظر</a>
-                    </div>
-                 }
-             </div> 
-            }
-            <a class="btn btn-primary btn-block" href="@Url.Content("~/Posts/CreateComment/"+ Model.ID)">نظر خود را وارد کنید</a>
-        </div>    
-    }
-        
+                <div class="commentBody">
+                    @(new System.Web.HtmlString(comment.Body))
+                </div>
+                <div class="commentTime">
+                    @comment.DateTime.ToString("HH:mm:ss") - @pc.GetYear(comment.DateTime)/@pc.GetMonth(comment.DateTime)/@pc.GetDayOfMonth(comment.DateTime) <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+                @if (isAdmin)
+                {
+                <div class="CommentControlPanel">
+                    <br />
+                    <a href="@Href("~/Posts/DeleteComment/" + comment.ID)" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> حذف این نظر</a>
+                </div>
+                }
+            </div> 
+        }
+        <!---------- Comment Modal Button ------------->
+        <div class="btn btn-default btn-block" data-toggle="modal" data-target=".CommentModal" style="color:#D25A3F; font-weight:bold; border:1px solid #D25A3F; width:96.5%;">نظر خود را وارد کنید</div>
+
+    </div>    
+}
+
+<!--------- Comment Modal -------------->
+<div class="modal fade CommentModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">نظر خود را وارد کنید:</h4>
+        </div>
+        <div class="modal-body" style="text-align:right;">
+        <form method="post" action="@Href("~/Posts/CommentModal")">
+            <input type="text" hidden="hidden" name="id" value="@Model.ID" />
+            <span>نام و نام خانوادگی:</span><br /><br />
+            <input type="text" class="CustomInput-6" name="name" />
+            <br /><br />
+            <span>پست الکترونیکی:</span><br /><br />
+            <input type="email" class="CustomInput-5" name="email" />
+            <br /><br />
+            <span>متن اصلی:</span><br /><br />
+            <textarea class="CustomTextArea-1" cols="77" rows="10" name="body"></textarea>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-default" style="color:#D25A3F; font-weight:bold; border:1px solid #D25A3F; width:200px;" value="ارسال" />
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+</div>        

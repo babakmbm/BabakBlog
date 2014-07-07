@@ -38,7 +38,7 @@
         <hr />
         <div class="display-label"><span class="glyphicon glyphicon-bullhorn"></span> متن پیام:</div>
         <div class="display-field"><span class="glyphicon glyphicon-hand-left"></span>
-            @Html.DisplayFor(model => model.Body)
+            @(new System.Web.HtmlString(Model.Body))
         </div>
         <br />
         <p>

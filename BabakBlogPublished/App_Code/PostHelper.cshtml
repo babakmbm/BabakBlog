@@ -7,7 +7,6 @@
     PersianCalendar pc = new PersianCalendar();
     DateTime thisDate = DateTime.Now;
     PMonthString pdc = new PMonthString();
-    
     <div class="postTitle"> 
         <a href="@Href("~/Posts/Details/" + post.ID)"><span class="glyphicon glyphicon-pencil"></span> @post.Title</a>
     </div>
@@ -45,22 +44,27 @@
         <div class="postContent">
             <div class="postPanel-2">
                 <div style="font-weight:bold;">نویسنده : @post.Author 
+                    <a class="shareButton">
+                        <span class="fa fa-share-square fa-lg"></span>
+                    </a>
                     <div style="float:left;">
-                        <a href="#"><span class="fa fa-print"></span></a>
-                        <a href="#"><span class="fa fa-envelope-o"></span></a>
-                        <a href="#"><span class="fa fa-twitter-square"></span></a>
-                        <a href="#"><span class="fa fa-facebook-square"></span></a>
-                        <a href="#"><span class="fa fa-linkedin-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-print"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-envelope-o"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-twitter-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-facebook-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-linkedin-square"></span></a>
+                        <a href="#" class="shareIcons"><span class="fa fa-file-pdf-o"></span></a>
                     </div>
                 </div>
             </div>
             <div class="postBody">@html.Raw(post.Body)</div>
             <div class="postPanel">
-                <div style="padding:5px; font-weight:bold;">تگ ها :</div>
+                <span class="glyphicon glyphicon-tags"></span><span style="padding:5px; font-weight:bold;"> تگ ها :</span>
+                <br />
                 <div class="tagList">
                     @foreach(Tag tag in post.Tags)
                     {
-                        <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name<span class="glyphicon glyphicon-tag"></span></a></span>    
+                        <span class="tag"><a href="@Href("~/Posts/Tags/" + tag.Name)">@tag.Name</a></span>   
                     }
                 </div>
             </div>
@@ -74,4 +78,5 @@
             </div>
         }
     </div>
+    <br />
 }

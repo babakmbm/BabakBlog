@@ -3,17 +3,112 @@
 
 
 @{
-    ViewBag.Title = "وبلاگ برنامه نویسی بابک";
+    ViewBag.Title = "وبلاگ برنامه نویسی تک لیست";
     bool isPreviousLinkVisible = ViewBag.IsPreviousLinkVisible ?? false;
     bool isNextLinkVisible = ViewBag.isNextLinkVisible ?? false;
     bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
-<h1 style="color:#fff;">@ViewBag.pdate</h1>
-
-@section SideBar
+@section Sec1
 {
-    @Html.Partial("_SideBar");
+    <div class="fishEye">
+        <div class="subtitle fishHead"><span>کتابهای مهم</span></div>
+        <ul class="fishBody" id="sortable">
+            <li><a href="http://cdn3.filepi.com/g/XZjsG2T/1402481640/c55b510e32875e2f6e7f614084a507b4"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/1.png")" /></a></li>
+            <li><a href="http://cdn3.filepi.com/g/1HFHgnh/1402481259/4e1da08a954463d2ed3b142645392f62"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/2.png")" /></a></li>
+            <li><a href="http://cdn3.filepi.com/g/byPQW0s/1402481634/1320722d71fa695b72a4d2fac2f93480"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/3.png")" /></a></li>
+            <li><a href="http://cdn3.filepi.com/g/M2s86ek/1402481521/ede51232512919416c38c52f4e248ea2"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/4.png")" /></a></li>
+            <li><a href="http://cdn2.filepi.com/g/OiHxzeN/1402481922/4254d27faf32e01737f341430608809c"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/5.png")" /></a></li>
+            <li><a href="http://cdn2.filepi.com/g/YWsSNtq/1402481820/35ae097fca63b22cdef2cea14862b4af"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/6.png")" /></a></li>
+            <li><a href="http://cdn3.filepi.com/g/M2s86ek/1402481521/ede51232512919416c38c52f4e248ea2"><img class="img-rounded fimg" src="@Url.Content("~/content/images/fisheye/7.png")" /></a></li>
+        </ul>
+        <div class="fishTail"></div>
+    </div>
+}
+
+@section Sec2
+{
+    <div id="carousel2" class="carousel slide" data-ride="carousel">
+	    <!-- Wrapper for slides -->
+	    <div class="carousel-inner">
+        
+            <!-- Slide 1 -->
+	        <div class="item active">
+		        <div style="padding:10px 25px 25px 25px; text-align:right;">
+                    <div class="sliderDescription">
+                        <h3>یادگیری تکنولوژی <span class="englishFont">Asp.net-MVC</span></h3>
+                        <h4>چگونه یک وبلاگ بسازیم</h4>
+                        <div style="text-align:justify; font-weight:bold;" class="emph">
+                            روش های زیادی برای یادگیری یک تکنولوژی وجود داره، مثلا می تونیم کتاب بخونیم، تو یه کنفرانس شرکت کنیم، از
+                            مثال های مختلف استفاده کنیم و... ولی از نظر من بهترین راه برای یادگیری یک تکنولوژی جدید اینه که باهاش یه چیز بدرد
+                            بخور بسازیم. یکی از چیزهای بدرد بخوری که می تونیم با asp.net mvc درست کنیم یه وبلاگ دست سازه.
+                            توی این سری چند قسمتی از مقالات بصورت گام به گام با همدیگه یه وبلاگ ساده رو کد نویسی می کنیم.
+                        <br />
+                        <a class="btn btn-info btn-xs" href="#" style="float:left;">
+                            ادامه مقاله
+                        </a>
+                        </div>
+                    </div>
+                    <div class="sliderImage">
+                        <img src="/Content/Images/001.png" alt="image">
+                    </div>
+                </div>
+	        </div>
+
+            <!-- Slide 2 -->
+	        <div class="item">
+		        <div style="padding:10px 25px 25px 25px; text-align:right;">
+                    <div class="sliderDescription">
+                        <h3>یادگیری تکنولوژی <span class="englishFont">Asp.net-MVC</span></h3>
+                        <h4>چگونه یک وبلاگ بسازیم</h4>
+                        <div style="text-align:justify; font-weight:bold;" class="emph">
+                            روش های زیادی برای یادگیری یک تکنولوژی وجود داره، مثلا می تونیم کتاب بخونیم، تو یه کنفرانس شرکت کنیم، از
+                            مثال های مختلف استفاده کنیم و... ولی از نظر من بهترین راه برای یادگیری یک تکنولوژی جدید اینه که باهاش یه چیز بدرد
+                            بخور بسازیم. یکی از چیزهای بدرد بخوری که می تونیم با asp.net mvc درست کنیم یه وبلاگ دست سازه.
+                            توی این سری چند قسمتی از مقالات بصورت گام به گام با همدیگه یه وبلاگ ساده رو کد نویسی می کنیم.
+                        <br />
+                        <a class="btn btn-danger btn-xs" href="#" style="float:left;">
+                            ادامه مقاله
+                        </a>
+                        </div>
+                    </div>
+                    <div class="sliderImage">
+                        <img src="/Content/Images/001.png" alt="image">
+                    </div>
+                </div>
+	        </div>
+
+            <!-- Slide 3 -->
+	        <div class="item">
+		        <div style="padding:10px 25px 25px 25px; text-align:right;">
+                    <div class="sliderDescription">
+                        <h3>یادگیری تکنولوژی <span class="englishFont">Asp.net-MVC</span></h3>
+                        <h4>چگونه یک وبلاگ بسازیم</h4>
+                        <div style="text-align:justify; font-weight:bold;" class="emph">
+                            روش های زیادی برای یادگیری یک تکنولوژی وجود داره، مثلا می تونیم کتاب بخونیم، تو یه کنفرانس شرکت کنیم، از
+                            مثال های مختلف استفاده کنیم و... ولی از نظر من بهترین راه برای یادگیری یک تکنولوژی جدید اینه که باهاش یه چیز بدرد
+                            بخور بسازیم. یکی از چیزهای بدرد بخوری که می تونیم با asp.net mvc درست کنیم یه وبلاگ دست سازه.
+                            توی این سری چند قسمتی از مقالات بصورت گام به گام با همدیگه یه وبلاگ ساده رو کد نویسی می کنیم.
+                        <br />
+                        <a class="btn btn-success btn-xs" href="#" style="float:left;">
+                            ادامه مقاله
+                        </a>
+                        </div>
+                    </div>
+                    <div class="sliderImage">
+                        <img src="/Content/Images/001.png" alt="image">
+                    </div>
+                </div>
+	        </div>
+	    </div>
+        <!-- Controls -->
+	    <a class="left carousel-control" href="#carousel2" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left"></span>
+	    </a>
+	    <a class="right carousel-control" href="#carousel2" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right"></span>
+	    </a>
+    </div>
 }
 
 @foreach (Post post in Model)
@@ -36,3 +131,65 @@
         <li><a class="btn btn-primary" id="previousLink" href="@Href("~/Posts/Index/" + (ViewBag.PageNumber - 1 ))">جدید تر ها <span class="glyphicon glyphicon-hand-left"></span></a></li>
     }
 </ul>
+
+@section Sec3{
+    <div class="container" id="panels">
+        <div class="row" style="width:85%; margin:0 auto; background:url(/Content/Images/FishEye/title.png) repeat;">
+            <div class="col-md-4">
+                <div class="panel panel-primary" style="padding:0 15px;">
+                    <div class="panel-heading"> <span class="fa fa-edit"></span>&nbsp آخرین پست ها </div>
+                    <div class="panel-body">
+                        @foreach(Post p in Model)
+                        {
+                            <div data-toggle="tooltip" data-placement="right" title="@p.Title">
+                                <a href="@Url.Content("~/Posts/Details/" + p.ID)">
+                                    <span class="glyphicon glyphicon-pencil"></span> @p.Title
+                                </a>
+                            </div>  
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-primary" style="padding:0 15px;">
+                    <div class="panel-heading"> <span class="fa fa-users"></span>&nbsp نویسندگان </div>
+                    <div class="panel-body">
+                        @foreach(Post p in Model)
+                        {
+                            <div>
+                                <a><span class="glyphicon glyphicon-user"></span> @p.Author</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-primary" style="padding:0 15px;">
+                    <div class="panel-heading"> <span class="fa fa-tags"></span>&nbsp تگ ها </div>
+                    <div class="panel-body">
+                        @foreach(Post p in Model)
+                        {
+                            <div data-toggle="tooltip" data-placement="right" title="@p.Title">
+                                <a href="@Url.Content("~/Posts/Details/" + p.ID)">
+                                    <span class="glyphicon glyphicon-pencil"></span> @p.Title
+                                </a>
+                            </div>  
+                        }
+                        @*@foreach(Post p in Model)
+                        {
+                            <div>
+                                <a>@p.Tags.ToList()</a>
+                            </div>
+                        }*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="fa fa-book fa-2x" id="fishButton"></div>
+
+<!------------------------------>
+<div class="blackOverlay"></div>
+<img class="menuArrow" src="@Href("~/Content/Images/menuArrow1.png")"/>

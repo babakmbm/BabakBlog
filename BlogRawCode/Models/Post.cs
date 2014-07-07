@@ -14,10 +14,9 @@ namespace Blog.Models
     using System.Web.Mvc;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel;
-
+    
     public partial class Post
     {
-
         public Post()
         {
             this.Comments = new HashSet<Comment>();
@@ -44,7 +43,7 @@ namespace Blog.Models
         [Required(ErrorMessage = "متن پست را وارد کنید")]
         [DisplayName("متن پست")]
         public string Body { get; set; }
-
+    
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
     }

@@ -1,0 +1,175 @@
+﻿@{
+    bool IsAdmin = ViewBag.IsAdmin;
+    ViewBag.Title = "Folder Explorer";
+}
+
+@{Uri uri = Request.Url;}
+<div id="explorerEditor">
+    @* Header Table *@
+    <table class="table" style="text-align:right; color:#303030; margin-bottom:5px;">
+        <tbody>
+            <tr>
+                <td style="direction:ltr">
+                    @Url.Content("../Content"+ (uri.AbsolutePath.Substring(9))) :مسیر فولدر
+                </td>
+                <td style="text-align:left;">
+                    <a href="@Url.Content("~/Upload/UploadFiles")">
+                        <span class="fa fa-upload"></span> آپلود فایل
+                    </a>
+                    @if (uri.AbsolutePath.ToLower() != "/explorer/")
+                    {
+                        @*-----Level Up-----*@
+                        <a title="Parent" href="@uri.AbsoluteUri.Remove(uri.AbsoluteUri.Length - uri.Segments.Last().Length)">
+                            <span class="fa fa-level-up"></span> بازگشت
+                        </a>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    @*If we were in root folder then don't show the up one level image. *@
+    <table class="table table-striped table-hover" style="text-align:right; color:#303030; margin-bottom:5px;">
+        <tbody>
+            <tr>
+                <th><i class="fa fa-header"></i> نام فایل / فولدر</th>
+                <th style="text-align:center;"><i class="fa fa-database"></i> حجم</th>
+                <th style="direction:ltr; text-align:center;"> دسترسی <i class="fa fa-calendar"></i></th>
+                <th></th>
+                <th>دانلود</th>
+            </tr>
+            @*-----Directory Listing-----*@
+            @foreach (Blog.Models.FileExplorer.DirectoryModel dir in Model.DirectoryModelList)
+            {
+                <tr>
+                    <td>
+                        <span class="fa fa-folder fa-2x"></span>
+                        <a href="@dir.DirectoryName/" title="@dir.DirectoryName">@dir.DirectoryName</a>
+                    </td> 
+                    <td style="text-align:center; direction:ltr;">...</td>
+                    <td style="text-align:center; direction:ltr;">@dir.directoyAccessed</td>
+                    <td></td>
+                    <td>...</td>
+                </tr>
+            }
+
+            @*-----File Listing-----*@
+            @foreach (Blog.Models.FileExplorer.FileModel file in Model.FileModelList)
+            {
+                <tr>
+                    <td style=" direction:ltr;">
+                        <a href="@Url.Content("~/Content"+ (uri.AbsolutePath.Substring(9) + file.FileName))" title="@file.FileName" target="_blank">@file.FileName</a>
+                        @{
+                          if (file.FileExtension == ".jpg"
+                            || file.FileExtension == ".jpeg"
+                            || file.FileExtension == ".png"
+                            || file.FileExtension == ".gif")
+                          {
+                            <i class="fa fa-file-image-o fa-2x"></i>
+                          }
+                          else if (file.FileExtension == ".pdf")
+                          {
+                            <i class="fa fa-file-pdf-o fa-2x"></i>  
+                          }
+                          else if (file.FileExtension == ".html"
+                                    || file.FileExtension == ".css"
+                                    || file.FileExtension == ".less"
+                                    || file.FileExtension == ".scss")
+                          {
+                            <i class="fa fa-file-code-o fa-2x"></i>  
+                          }
+                          else
+                          {
+                            <i class="fa fa-file fa-2x"></i>
+                          }
+                        }
+                    </td>
+                    <td style="text-align:center; direction:ltr;">@file.FileSize</td>
+                    <td style="text-align:center; direction:ltr;">@file.FileAccessed</td>
+                    @{
+                        if (file.FileExtension == ".jpg"
+                        || file.FileExtension == ".jpeg"
+                        || file.FileExtension == ".png"
+                        || file.FileExtension == ".gif")
+                        {
+                            @*---------- Photo Modal --------*@
+                            <div class="modal fade @file.modalFlag" id="explorerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" >
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body" style="text-align:center;">
+                                    <a href="@Url.Content("~/Content"+ (uri.AbsolutePath.Substring(9) + file.FileName))" target="_blank">
+                                        <img style="max-width:500px; border-radius:5px; cursor:-webkit-zoom-in;" src="@Url.Content("~/Content"+ (uri.AbsolutePath.Substring(9) + file.FileName))" />
+                                    </a>                         
+                                    </div>
+                                    <div class="modal-footer" >
+                                        <div>
+                                            <span>نام فایل:</span> <span style="direction:ltr;">@file.FileName</span><br />
+                                            <span>حجم فایل:</span> <span style="direction:ltr; text-align:right;">@file.FileSize</span><br />
+                                            <span>آخرین دسترسی به فایل:</span> <span style="direction:ltr;">@file.FileAccessed</span><br />
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        <td>
+                            <div class="ExplorerImages" data-toggle="modal" data-target=".@file.modalFlag">
+                                <img src="@Url.Content("~/Content"+ (uri.AbsolutePath.Substring(9) + file.FileName))" />
+                            </div>
+                        </td>
+                        }
+                        else
+                        {
+                        <td></td>
+                        }
+                    }
+                    <td><a href="@Url.Content("~/Content"+ (uri.AbsolutePath.Substring(9) + file.FileName))" download><i class="fa fa-download fa-lg"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+    @* Footer Table *@
+    <table class="table" id="TablePager" style="text-align:right; color:#303030; margin-bottom:5px;">
+        <tbody>
+            <tr>
+                <td  id="pager" style="direction:ltr;">
+                    @* Explorer Table Pagination *@
+                    <form>
+                        <select class="pageSize">
+                            <option selected="selected" value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">همه</option>
+                        </select>
+                        <a href="#"><i class="glyphicon glyphicon-step-backward first"></i></a>
+                        <a href="#"><i class="fa fa-backward prev"></i></a>
+                        <input type="text" class="pageToDisplay" />
+                        <a href="#"><i class="fa fa-forward next"></i></a>
+                        <a href="#"><i class="glyphicon glyphicon-step-forward last"></i></a>
+                    </form>
+                </td>
+                <td style="text-align:left; padding-top:13px;">
+                    <a href="@Url.Content("~/Upload/UploadFiles")">
+                        <span class="fa fa-upload"></span> آپلود فایل
+                    </a>
+                    @if (uri.AbsolutePath.ToLower() != "/explorer/")
+                    {
+                        @*-----Level Up-----*@
+                        <a title="Parent" href="@uri.AbsoluteUri.Remove(uri.AbsoluteUri.Length - uri.Segments.Last().Length)">
+                            <span class="fa fa-level-up"></span> بازگشت
+                        </a>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,10 +1,11 @@
 ﻿@{
     ViewBag.Title = "NotAdmin";
 }
-
-<h3 class="message" style="margin:0 auto;">
-    برای دسترسی به این بخش ابتدا باید وارد شوید
-    <br />
-    <br />
-    <a class="btn btn-primary btn-block" href="@Url.Content("~/Accounts/Login")">وارد شوید</a>
-</h3>
+<div id="postEditor">
+    <h3 style="color:#fff;font-weight:bold; font-family:DastNevis;">
+        <i class="fa fa-lock fa-lg" style="text-shadow: 1px 1px 1px #fff;"></i> برای دسترسی به این بخش ابتدا باید وارد شوید
+        <br />
+        <br />
+        <a class="btn btn-default btn-block" style="color:#D25A3F; font-weight:bolder; border:1px solid #D25A3F;" href="@Url.Content("~/Accounts/Login")">وارد شوید</a>
+    </h3>
+</div>

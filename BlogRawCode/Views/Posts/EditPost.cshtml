@@ -10,11 +10,11 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")"></script>
     <script>
         tinymce.init({
-            language: 'fa',
+            language: 'en',
             selector: "textarea#elm1",
             theme: "modern",
-            width: 600,
-            height: 200,
+            skin: "light",
+            height: 500,
             plugins: [
                  "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
                  "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -61,7 +61,7 @@
             <span class="validationMessage">@Html.ValidationMessageFor(model => model.Title)</span>
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Title, new { id = "CustomTextBox-1" })
+            @Html.TextBoxFor(model => model.Title, new { @class = "CustomInput-1" })
         </div>
         <br />
     
@@ -70,7 +70,7 @@
             <span class="validationMessage">@Html.ValidationMessageFor(model => model.Author)</span>
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Author, new { id = "CustomTextBox-4" })
+            @Html.TextBoxFor(model => model.Author, new { @class = "CustomInput-2" })
         </div>
         <br />
         <!------------------tags------------------>
@@ -89,7 +89,7 @@
         <br />
         @:اضافه کنید:
         <div class="editor-field">
-            <input type="text" name="t" class="CustomTextBox-3" />
+            <input type="text" name="t" class="CustomInput-2" />
         </div>
         <br />
         <!-------------------------------------------->
@@ -108,5 +108,5 @@
         </p>
 }
 </div>
-<a class="btn btn-primary btn-block" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>
+<a class="btn btn-primary btn-block" style="width:70%; margin:0 auto;" href="@Url.Content("~/Posts/PostList")">بازگشت به لیست پست ها</a>
 

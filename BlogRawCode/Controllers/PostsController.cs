@@ -15,7 +15,7 @@ namespace Blog.Controllers
     {
         private BlogModel model = new BlogModel();
         public bool IsAdmin { get { return Session["IsAdmin"] != null && (bool)Session["IsAdmin"]; } }
-        private const int PostsPerPage = 4;
+        private const int PostsPerPage = 2;
         private const int PostPerFeed = 25;
         
         public ActionResult Index(int? id)
@@ -31,6 +31,23 @@ namespace Blog.Controllers
             ViewBag.PageNumber = pageNumber;
             ViewBag.IsAdmin = IsAdmin;
             return View(posts.Take(PostsPerPage));
+        }
+
+        public ActionResult PostList()
+        {
+            if (IsAdmin)
+            {
+                ViewBag.IsAdmin = IsAdmin;
+                IEnumerable<Post> posts = (from p in model.Posts
+                                           orderby p.DateTime descending
+                                           select p).ToList();
+                return View(posts);
+            }
+            else
+            {
+                return View("NotAdmin");
+            }
+
         }
 
         public ActionResult RSS()
@@ -58,30 +75,44 @@ namespace Blog.Controllers
             return View(post);
         }
 
-        [HttpGet]
-        public ActionResult CreateComment(int id)
-        {
-            Comment comment = new Comment();
-            ViewBag.IsAdmin = IsAdmin;
-            comment.PostID = id;
-            comment.DateTime = DateTime.Now;
-            return View(comment);
-        }
-        
-        
         [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult CreateComment(Comment comment)
+        public ActionResult CommentModal(int id, string name, string email, string body )
         {
-            ViewBag.IsAdmin = IsAdmin;
-            if (ModelState.IsValid)
+            if (!id.Equals(null) 
+                || !string.IsNullOrWhiteSpace(name)
+                || !string.IsNullOrWhiteSpace(email)
+                || !string.IsNullOrWhiteSpace(body)
+               )
             {
-                model.Comments.Add(comment);
-                model.SaveChanges();
-                return RedirectToAction("Details", new { id = comment.PostID });
+                Comment comment = new Comment()
+                {
+                    PostID = id,
+                    DateTime = DateTime.Now,
+                    Name = name,
+                    Email = email,
+                    Body = body
+                };
+                try
+                {
+                    model.Comments.Add(comment);
+                    model.SaveChanges();
+                    ViewBag.Message = "نظر شما با موفقیت ثبت شد و پس از بررسی در وبسایت قرار خواهد گرفت:";
+                    ViewBag.backLink = "Details/" + comment.PostID;
+                    
+                    return View("Success");
+                }
+                catch
+                {
+                    ViewBag.Message = "متاسفانه مشکلی در انجام عملیات پیش آمده است. لطفا مجددا تلاش کنید.";
+                    return View("Error");
+                }
+
+            }
+            else
+            {
+                return View("Error");
             }
 
-            return View(comment);
         }
 
         public ActionResult Delete(int id)
@@ -195,7 +226,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditPost(Post post, string t, int id) /*FIXED: TAGS Wont UPDATE*/
+        public ActionResult EditPost(Post post, string t, int id)
         {
             if (IsAdmin)
             {
@@ -255,6 +286,22 @@ namespace Blog.Controllers
             else return View(nist);
         }
 
+        public ActionResult Comments()
+        {
+            ViewBag.IsAdmin = IsAdmin;
+            if (IsAdmin)
+            {
+                IEnumerable<Comment> comments = (from c in model.Comments
+                                                 orderby c.PostID descending
+                                                 select c).ToList();
+                return View(comments);
+            }
+            else
+            {
+                return RedirectToAction("NotAdmin");
+            }
+        }
+
         private Tag GetTag(string tagName)
         {
             return model.Tags.Where(x => x.Name == tagName).FirstOrDefault() ?? new Tag() { Name = tagName };
@@ -272,6 +319,32 @@ namespace Blog.Controllers
                 return new Post() {ID = -1 };
             }
         }
+
+        //[HttpGet]
+        //public ActionResult CreateComment(int id)
+        //{
+        //    Comment comment = new Comment();
+        //    ViewBag.IsAdmin = IsAdmin;
+        //    comment.PostID = id;
+        //    comment.DateTime = DateTime.Now;
+        //    return View(comment);
+        //}
+
+
+        //[HttpPost]
+        //[ValidateInput(false)]
+        //public ActionResult CreateComment(Comment comment)
+        //{
+        //    ViewBag.IsAdmin = IsAdmin;
+        //    if (ModelState.IsValid)
+        //    {
+        //        model.Comments.Add(comment);
+        //        model.SaveChanges();
+        //        return RedirectToAction("Details", new { id = comment.PostID });
+        //    }
+
+        //    return View(comment);
+        //}
 
     }
 }

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Blog.Models.Comment>
+@using Blog.Models;
+
+@{
+    ViewBag.Title = "Comments";
+    bool isAdmin = ViewBag.IsAdmin;
+}
+
+<div style="padding:40px 30px;">
+    <h3 style="color:#fff; padding-right:5px; text-align:right; font-family:DastNevis"> <i class="fa fa-comment fa-lg"></i> لیست کامنت ها برای هر پست </h3>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>پست</th>
+            <th>
+                <span class="glyphicon glyphicon-calendar"></span> تاریخ کامنت
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-user"></span> نام فرستنده
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-envelope"></span>ایمیل فرستنده
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-cog"></span> عملیات
+            </th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="@Href("/Posts/Details/" + item.PostID)">@item.Post.Title</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("حذف کامنت", "DeleteComment", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>

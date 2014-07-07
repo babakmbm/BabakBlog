@@ -7,7 +7,7 @@
     bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
-<h3 class="message">لیست پست های تگ شده با : <span class="tag"><a href="#">@ViewBag.tagname<img src="@Url.Content("/Content/Images/tag.png")" /></a></span></></h3>
+<h3 class="messageSucc"><span class="glyphicon glyphicon-tags"></span> پست های تگ شده با : <span class="tag"><a href="#">@ViewBag.tagname<img src="@Url.Content("/Content/Images/tag.png")" /></a></span></></h3>
 
 @foreach (Post post in Model)
 {

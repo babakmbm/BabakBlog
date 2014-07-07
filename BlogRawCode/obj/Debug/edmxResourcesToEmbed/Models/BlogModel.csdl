@@ -4,6 +4,7 @@
     <EntitySet Name="Administrators" EntityType="Blog.Models.Administrator" />
     <EntitySet Name="Comments" EntityType="Blog.Models.Comment" />
     <EntitySet Name="ContactMes" EntityType="Blog.Models.ContactMe" />
+    <EntitySet Name="EmailBanks" EntityType="Blog.Models.EmailBank" />
     <EntitySet Name="Posts" EntityType="Blog.Models.Post" />
     <EntitySet Name="Tags" EntityType="Blog.Models.Tag" />
     <AssociationSet Name="FK_Comments_Posts" Association="Blog.Models.FK_Comments_Posts">
@@ -45,6 +46,13 @@
     <Property Name="Email" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
     <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="EmailBank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="Post">
     <Key>

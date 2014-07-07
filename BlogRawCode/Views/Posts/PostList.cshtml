@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Blog.Models.Post>
+
+@{
+    ViewBag.Title = "لیست پست ها";
+    bool isAdmin = ViewBag.IsAdmin;
+}
+<div style="padding:40px 30px;">
+    <a href="@Href("/Posts/CreatePost")" class="btn btn-default" style="color:#D25A3F; font-weight:bold; border:1px solid #D25A3F; width:150px;"><i class="fa fa-plus-square" style="float:right; font-size:1.4em"></i> پست جدید</a>
+
+    <h3 style="color:#fff; padding-right:5px; text-align:right; font-family:DastNevis"> <i class="fa fa-edit fa-lg"></i> لیست پست های وبلاگ </h3>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>#</th>
+            <th>
+                <i class="fa fa-edit fa-lg"></i> عنوان پست
+            </th>
+            <th>
+                <i class="fa fa-calendar fa-lg"></i> تاریخ پست
+            </th>
+            <th>
+                <i class="fa fa-calendar fa-lg"></i> تاریخ اصلاح
+            </th>
+            <th>
+                <i class="fa fa-user fa-lg"></i> نویسنده
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                <a href="@Href("/Posts/Details/"+ item.ID)">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.ActionLink("ویرایش پست", "EditPost", new { id=item.ID }) |
+                @Html.ActionLink("حذف پست", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>

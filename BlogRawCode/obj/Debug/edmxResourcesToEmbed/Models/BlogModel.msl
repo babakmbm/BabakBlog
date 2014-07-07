@@ -34,6 +34,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EmailBanks">
+      <EntityTypeMapping TypeName="Blog.Models.EmailBank">
+        <MappingFragment StoreEntitySet="EmailBank">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="Blog.Models.Post">
         <MappingFragment StoreEntitySet="Posts">

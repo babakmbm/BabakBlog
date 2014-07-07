@@ -14,8 +14,8 @@
             language: 'fa',
             selector: "textarea#elm1",
             theme: "modern",
-            width: 600,
-            height: 200,
+            skin: "light",
+            height: 500,
             plugins: [
                  "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
                  "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -41,7 +41,7 @@
     <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 }
 <div id="postEditor">
-    <div id="postPrompt">مطلب جدید</div>
+    <div id="postPrompt">مطلب جدید</div><br />
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -51,7 +51,7 @@
             <span class="validationMessage">@Html.ValidationMessageFor(model => model.Title)</span>
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Title, new { id = "CustomTextBox-1" })
+            @Html.TextBoxFor(model => model.Title, new { @class = "CustomInput-1" })
         </div>
         <br />
         <div class="editor-label">
@@ -59,7 +59,7 @@
             <span class="validationMessage">@Html.ValidationMessageFor(model => model.Author)</span>
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Author, new { id = "CustomTextBox-4" })
+            @Html.TextBoxFor(model => model.Author, new { @class = "CustomInput-2" })
         </div>
         <br />
         <div class="editor-field" hidden="hidden">
@@ -79,11 +79,11 @@
         <div class="editor-field">
             @if (ViewBag.tagsFlag == false)
             {
-                <input type="text" name="t" class="CustomTextBox-2" />
+                <input type="text" name="t" class="CustomInput-1" />
             }
             else
             {
-                <input type="text" name="t" class="CustomTextBox-2" value="@ViewBag.tTags" />
+                <input type="text" name="t" class="CustomInput-1" value="@ViewBag.tTags" />
             }
         </div>
         <br />
@@ -98,8 +98,8 @@
         
         <br />
         <p id="submitButton">
-            <input class="btn btn-primary" type="submit" value="پست" />
+            <input class="btn btn-defualt" type="submit" value="پست" />
         </p>
 }
 </div>
-<a class="btn btn-primary btn-block" href="@Url.Content("~/Posts/Index")">بازگشت به صفحه اصلی</a>
+<a class="btn btn-primary btn-block" style="width:70%; margin:0 auto;" href="@Url.Content("~/Posts/PostList")">بازگشت به لیست پست ها</a>

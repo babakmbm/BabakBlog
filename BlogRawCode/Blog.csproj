@@ -102,12 +102,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ContactMeController.cs" />
     <Compile Include="Controllers\FeedResult.cs" />
+    <Compile Include="Controllers\ExplorerController.cs" />
+    <Compile Include="Controllers\NewsLetterController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,6 +137,13 @@
     <Compile Include="Models\ContactMe.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmailBank.cs">
+      <DependentUpon>BlogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FileExplorer\DirectoryModel.cs" />
+    <Compile Include="Models\FileExplorer\ExplorerModel.cs" />
+    <Compile Include="Models\FileExplorer\FileModel.cs" />
+    <Compile Include="Models\Files.cs" />
     <Compile Include="Models\PMonthString.cs" />
     <Compile Include="Models\Post.cs">
       <DependentUpon>BlogModel.tt</DependentUpon>
@@ -148,25 +156,41 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\Blog.css" />
+    <Content Include="Content\css\Blog1.css" />
     <Content Include="Content\css\bootstrap-rtl.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\001.png" />
     <Content Include="Content\Images\93.jpg" />
     <Content Include="Content\Images\Background.png" />
     <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\bg.png" />
     <Content Include="Content\Images\College-List-2.png" />
     <Content Include="Content\Images\commentHover.png" />
     <Content Include="Content\Images\Comments.png" />
     <Content Include="Content\Images\DarkBackground.png" />
+    <Content Include="Content\Images\FishEye\1.png" />
+    <Content Include="Content\Images\FishEye\2.png" />
+    <Content Include="Content\Images\FishEye\3.png" />
+    <Content Include="Content\Images\FishEye\4.png" />
+    <Content Include="Content\Images\FishEye\5.png" />
+    <Content Include="Content\Images\FishEye\6.png" />
+    <Content Include="Content\Images\FishEye\7.png" />
+    <Content Include="Content\Images\FishEye\glass.png" />
+    <Content Include="Content\Images\FishEye\title.png" />
     <Content Include="Content\Images\forkme.png" />
     <Content Include="Content\Images\frame.png" />
     <Content Include="Content\Images\Lastseparator.png" />
     <Content Include="Content\Images\ListChick.png" />
     <Content Include="Content\Images\ListChickBlack.png" />
     <Content Include="Content\Images\ListChickBlack01.png" />
+    <Content Include="Content\Images\menuArrow.png" />
+    <Content Include="Content\Images\menuArrow1.png" />
     <Content Include="Content\Images\noise.png" />
+    <Content Include="Content\Images\StrokeBottom1.png" />
+    <Content Include="Content\Images\tv.png" />
     <Content Include="Content\Images\p.png" />
     <Content Include="Content\Images\pass.jpg" />
     <Content Include="Content\Images\portrait-f.png" />
@@ -176,7 +200,33 @@
     <Content Include="Content\Images\StrokeTop.png" />
     <Content Include="Content\Images\tag.png" />
     <Content Include="Content\Images\Title.png" />
+    <Content Include="Content\Images\titleper-1.png" />
     <Content Include="Content\Images\TitlePer.png" />
+    <Content Include="Content\Images\tv.gif" />
+    <Content Include="Content\uploads\01189_brokenwaves_2560x1600.jpg" />
+    <Content Include="Content\uploads\01197_tiles_2560x1600.jpg" />
+    <Content Include="Content\uploads\065j91celzg67l3ypx.jpg" />
+    <Content Include="Content\uploads\2012-lamborghini-gallardo-1920-1200-7579.jpg" />
+    <Content Include="Content\uploads\2174400378ca190627eovl1.jpg" />
+    <Content Include="Content\uploads\231.jpg" />
+    <Content Include="Content\uploads\2in5a4egfxc3stku8nah.jpg" />
+    <Content Include="Content\uploads\85i2gz7urfj75f1w3z9c.jpg" />
+    <Content Include="Content\uploads\cherry-trees-1920-1200-7567.jpg" />
+    <Content Include="Content\uploads\crater-island-1920-1200-7624.jpg" />
+    <Content Include="Content\uploads\hg1hv80t3kkay5kwd6u.jpg" />
+    <Content Include="Content\uploads\km4fazcdpy8j5q2bxth.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_01.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_02.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_03.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_04.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_05.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_06.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_07.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_08.jpg" />
+    <Content Include="Content\uploads\Persian-Star.org_09.jpg" />
+    <Content Include="Content\uploads\pzypxi8qkde3qio92t.jpg" />
+    <Content Include="Content\uploads\viber image.jpg" />
+    <Content Include="Content\uploads\zd2xigt6thp8wnfvt7v5.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\affix.js" />
     <Content Include="Scripts\alert.js" />
@@ -185,6 +235,7 @@
     <Content Include="Scripts\carousel-rtl.js" />
     <Content Include="Scripts\collapse.js" />
     <Content Include="Scripts\dropdown.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jQuery.js" />
     <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\modal.js" />
@@ -272,6 +323,16 @@
     <Content Include="Scripts\tinymce\skins\lightgray\img\trans.gif" />
     <Content Include="Scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
     <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\tinymce\skins\light\content.inline.min.css" />
+    <Content Include="Scripts\tinymce\skins\light\content.min.css" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce.svg" />
+    <Content Include="Scripts\tinymce\skins\light\img\anchor.gif" />
+    <Content Include="Scripts\tinymce\skins\light\img\loader.gif" />
+    <Content Include="Scripts\tinymce\skins\light\img\object.gif" />
+    <Content Include="Scripts\tinymce\skins\light\img\trans.gif" />
+    <Content Include="Scripts\tinymce\skins\light\skin.ie7.min.css" />
+    <Content Include="Scripts\tinymce\skins\light\skin.min.css" />
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\tooltip.js" />
@@ -314,6 +375,7 @@
     <Folder Include="Scripts\tinymce\plugins\pre\langs\.svn\tmp\prop-base\" />
     <Folder Include="Scripts\tinymce\plugins\pre\langs\.svn\tmp\props\" />
     <Folder Include="Scripts\tinymce\plugins\pre\langs\.svn\tmp\text-base\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -339,23 +401,6 @@
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="Models\BlogModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BlogModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BlogModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BlogModel.edmx</DependentUpon>
-      <LastGenOutput>BlogModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\BlogModel.edmx.diagram">
-      <DependentUpon>BlogModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\BlogModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BlogModel.edmx</DependentUpon>
-      <LastGenOutput>BlogModel.cs</LastGenOutput>
-    </Content>
     <Content Include="ClassDiagram.cd" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -387,6 +432,27 @@
     <Content Include="Content\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\Fonts\PishNevis.ttf" />
+    <Content Include="Content\Fonts\danstevis.ttf" />
+    <EntityDeploy Include="Models\BlogModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BlogModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BlogModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BlogModel.edmx</DependentUpon>
+      <LastGenOutput>BlogModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BlogModel.edmx.diagram">
+      <DependentUpon>BlogModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BlogModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BlogModel.edmx</DependentUpon>
+      <LastGenOutput>BlogModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\pdfs\cv-last01.pdf" />
+    <Content Include="Content\pdfs\File Shredder Code Sample.pdf" />
     <None Include="Properties\PublishProfiles\BabakBlogProfile.pubxml" />
     <Content Include="Views\Posts\Tags.cshtml" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
@@ -414,22 +480,31 @@
     <Content Include="Scripts\tinymce\plugins\pre\langs\.svn\text-base\en.js.svn-base" />
     <Content Include="Scripts\tinymce\plugins\pre\langs\.svn\text-base\en_dlg.js.svn-base" />
     <Content Include="Views\Shared\PostPartial.cshtml" />
-    <Content Include="Views\Posts\CreateComment.cshtml" />
     <Content Include="Views\Posts\CreatePost.cshtml" />
     <Content Include="Views\Posts\EditPost.cshtml" />
     <Content Include="Views\Posts\Search.cshtml" />
     <Content Include="Views\Posts\NoResult.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\ContactMe\CreateContact.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Shared\ContactSummary.cshtml" />
     <Content Include="Views\ContactMe\ContactIndex.cshtml" />
     <Content Include="Views\ContactMe\ContactDetails.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce-small.json" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce.eot" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce.json" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tinymce\skins\light\fonts\tinymce.woff" />
+    <Content Include="Views\Shared\NewsLetterEmailSummery.cshtml" />
+    <Content Include="Views\NewsLetter\NewsLetterIndex.cshtml" />
+    <Content Include="Views\Posts\Comments.cshtml" />
+    <Content Include="Views\Posts\PostList.cshtml" />
+    <Content Include="Views\ContactMe\AboutMe.cshtml" />
+    <Content Include="Views\Upload\UploadFiles.cshtml" />
+    <Content Include="Views\Explorer\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -447,7 +522,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>2555</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:13754/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

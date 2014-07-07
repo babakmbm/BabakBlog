@@ -34,7 +34,7 @@ namespace Blog.Models
         [Required(ErrorMessage = "لطفا متن پیام خود را وارد کنید")]
         [DisplayName("متن اصلی")]
         public string Body { get; set; }
-    
+
         public virtual Post Post { get; set; }
     }
 }

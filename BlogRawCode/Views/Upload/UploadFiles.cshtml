@@ -1,0 +1,39 @@
+﻿@model Blog.Models.Files
+@{
+    ViewBag.Title = "آپلود فایلها";
+    bool IsAdmin = ViewBag.IsAdmin;
+}
+<div id="explorerEditor">
+    <h4>آپلود فایل ها:</h4>
+    <table class="table" style="color:#000;margin-bottom:10px;">
+        <tr>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @role="form" }))
+        {
+            <td style="text-align:left;">
+            <select name="pa" style="direction:ltr;">
+                <option selected disabled >مسیر دلخواه را از موارد زیر انتخاب کنید</option>
+                <option value="~/Content/uploads">../Content/uploads</option>
+                <option value="~/Content/Images">../Content/Images</option>
+                <option value="~/Content/pdfs">../Content/pdfs</option>
+                <option value="~/Content/Fonts">../Content/Fonts</option>
+            </select>
+            </td>
+            <td style="text-align:left; direction:ltr;">
+                <input type="file" name="Fs" multiple />
+            </td>
+            <td style="text-align:left;">
+                <input type="submit" name="submit" value="آپلود فایل ها" class="button-orange btn btn-default" />
+            </td>
+        }
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Content("~/Explorer")">
+                    <span class="fa fa-file"></span> بازگشت به فایل منیجر
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "خطا";
+    ViewBag.Title = "خطا در عملیات";
 }
 <!DOCTYPE html>
 <html>
@@ -7,8 +7,20 @@
     <title>Error</title>
 </head>
 <body>
-    <h2 class="message">
-        متاسفانه مشکلی در انجام این عملیات رخ داده است
-    </h2>
+    <div class="messageErr clearfix">
+       <i class="fa fa-exclamation-triangle fa-lg"></i> @ViewBag.Message
+        <br />
+        <div style="float:left; font-family:Verdana;">@ViewBag.extraInfo</div>
+        <div style="font-size:0.8em; color:red;">
+            <div>@ViewBag.Err1</div>
+            <div>@ViewBag.Err2</div>
+            <div>@ViewBag.Err3</div>
+            <div>@ViewBag.Err4</div>
+            <div>@ViewBag.Err5</div>
+            <div>@ViewBag.Err6</div>
+            <div>@ViewBag.Err7</div>
+            <div>@ViewBag.Err8</div>
+        </div>
+    </div>
 </body>
 </html>

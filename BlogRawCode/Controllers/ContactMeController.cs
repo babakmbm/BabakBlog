@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Blog.Models;
 using System.Net.Mail;
+using System.IO;
 
 namespace Blog.Controllers
 {
@@ -26,8 +27,8 @@ namespace Blog.Controllers
             ViewBag.IsAdmin = IsAdmin;
             if (IsAdmin)
             {
-                var contactMes = model.ContactMes.AsEnumerable();
-                return View(contactMes);
+                var contactMe = model.ContactMes.AsEnumerable();
+                return View(contactMe);
             }
             else
             {
@@ -68,8 +69,6 @@ namespace Blog.Controllers
                 try
                 {
                     MailMessage msg = new MailMessage();
-
-
                     model.ContactMes.Add(contact);
                     model.SaveChanges();
                     ViewBag.Message = "پیام شما با موفقیت ارسال شد. پاسخ شما در اسرع وقت به پست الکترونیکی وارد شده ارسال خواهد شد.";
@@ -77,12 +76,64 @@ namespace Blog.Controllers
                 }
                 catch
                 {
+                    ViewBag.Message = "متاسفانه مشکلی در انجام عملیات پیش آمده است. لطفا مجددا تلاش کنید.";
                     return View("Error");
                 }
                 
             }
             return View(contact);
         }
+
+        //[HttpPost]
+        //public ActionResult ContactModal(string name, string sub, string email, string body)
+        //{
+        //    if (!string.IsNullOrWhiteSpace(name)
+        //        && !string.IsNullOrWhiteSpace(email)
+        //        && !string.IsNullOrWhiteSpace(body)
+        //       )
+        //    {
+        //        ContactMe contact = new ContactMe()
+        //        {
+        //            Name=name,
+        //            Subject=sub,
+        //            Email=email,
+        //            Body=body,
+        //            DateTime = DateTime.Now
+        //        };
+        //        try
+        //        {
+        //            model.ContactMes.Add(contact);
+        //            model.SaveChanges();
+        //            ViewBag.Message = "پیام شما با موفقیت دریافت شد:";
+                    
+        //            return View("Success");
+        //        }
+        //        catch
+        //        {
+        //            ViewBag.Message = "متاسفانه مشکلی در انجام عملیات پیش آمده است. لطفا مجددا تلاش کنید.";
+        //            return View("Error");
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Message = "متاسفانه مشکلی در انجام عملیات پیش آمده است. لطفا مجددا تلاش کنید.";
+        //        if (string.IsNullOrWhiteSpace(name))
+        //        {
+        //            ViewBag.err1 = "لطفا نام و نام خانوادگی خود را وارد کنید";
+        //        }
+        //        if (string.IsNullOrWhiteSpace(email))
+        //        {
+        //            ViewBag.err2 = "لطفا پست الکترونیکی خود را وارد کنید";
+        //        }
+        //        if (string.IsNullOrWhiteSpace(body))
+        //        {
+        //            ViewBag.err3 = "لطفا متن پیام خود را وارد کنید";
+        //        }
+        //        return View("Error");
+        //    }
+                
+        //}
         
 
         public ActionResult ContactDelete(int id)
@@ -97,6 +148,12 @@ namespace Blog.Controllers
                 return View("Success");
             }
             return View("NotAdmin");
+        }
+
+        public ActionResult AboutMe()
+        {
+            ViewBag.IsAdmin = IsAdmin;
+            return View();
         }
     }
 }

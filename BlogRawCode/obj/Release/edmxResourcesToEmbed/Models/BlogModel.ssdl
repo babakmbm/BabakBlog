@@ -4,6 +4,7 @@
     <EntitySet Name="Administrators" EntityType="Blog.Models.Store.Administrators" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comments" EntityType="Blog.Models.Store.Comments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContactMe" EntityType="Blog.Models.Store.ContactMe" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmailBank" EntityType="Blog.Models.Store.EmailBank" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Posts" EntityType="Blog.Models.Store.Posts" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PostsTags" EntityType="Blog.Models.Store.PostsTags" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tags" EntityType="Blog.Models.Store.Tags" store:Type="Tables" Schema="dbo" />
@@ -49,6 +50,13 @@
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="DateTime" Type="datetime" Nullable="false" />
     <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmailBank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Posts">
     <Key>

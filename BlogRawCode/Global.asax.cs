@@ -21,6 +21,16 @@ namespace Blog
 
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapRoute(
+                name: "Explorer",
+                url: "Explorer/{*path}",
+                defaults: new
+                {
+                    controller = "Explorer",
+                    action = "Index",
+                    path = UrlParameter.Optional
+                }
+            );
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -28,7 +38,6 @@ namespace Blog
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Posts", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
